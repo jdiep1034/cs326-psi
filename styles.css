@@ -1,0 +1,14 @@
+/* Currently unused */
+/* body { */
+    /* display: flex; */
+    /* flex-flow: column; */
+/* } */
+
+/* Set attributes for the footer of each page */
+footer {
+    margin-top: auto;
+    /* Make footer take up whole width of page */
+    border-top: solid 1px;
+    /* Change footer color */
+    background-color: grey;
+}
