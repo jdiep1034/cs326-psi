@@ -35,25 +35,82 @@
         </div>
       </div>
       <form class="form-inline">
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">login</button>
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Username (placeholder)</button>
       </form>
     </nav>
     <br>
-    <h1>User Profile</h1>
+    <h1>User Profile and Build</h1>
 
 
-<!-- Container for actual content. Currently setup with 3 centered columns -->
+    <!-- Container for actual content. Currently setup with 3 centered columns -->
     <div class="container text-center text-md-left">
+      <!-- First Row of container -->
+      <!-- <div class="row text-center text-md-left mt-3 pb-3">
 
-      <!-- First row of container -->
+        <div class="col mx-auto mt-3">
+          <h2>Current Build Information</h2>
+        </div>
+      </div> -->
+      <div class="row text-center text-md-left mt-3 pb-3">
+
+        <!-- <div class="col-md-3 mx-auto mt-3"> -->
+
+        <!-- </div> -->
+        <div class="col-md-3 mx-auto mt-3">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">ProductID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!-- Row in table -->
+                <th scope="row">1</th>
+                <td>1234214</td>
+                <td>keyboard-thing</td>
+                <td>switch or something idk</td>
+                <td>&#8734</td>
+                <td>Nowhere.com</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>3153155</td>
+                <td>Keyboard-thing2</td>
+                <td>keycap</td>
+                <td>&#8734</td>
+                <td>Nowhere.com</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>&#8734</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+      <hr>
+      <!-- Second row of container -->
       <div class="row text-center text-md-left mt-3 pb-3">
 
         <!-- Grid column 1-->
         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h6 class="text-uppercase mb-4 font-weight-bold">Company name</h6>
-          <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-            consectetur
-            adipisicing elit.</p>
+          <h6 class="text-uppercase mb-4 font-weight-bold">Username (placeholder)</h6>
+          <p>Name: (store name here)</p>
+          <p>Birthday: (store birthday here)</p>
+          <p>Password: <a href='#!'>(click to change)</a></p>
+          <p>Email: <a href="#!">personal-email@example-adress.com</a></p>
+          <p>Phone Number: xxx - yyy - wxyz</p>
         </div>
         <!-- Grid column 1 end-->
 
@@ -81,15 +138,15 @@
 
         <!-- Grid column 3-->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+          <h6 class="text-uppercase mb-4 font-weight-bold">Placeholder</h6>
           <p>
-            <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+            <i class="fas fa-home mr-3"></i> Think of something to put here</p>
           <p>
-            <i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+            <i class="fas fa-envelope mr-3"></i> Random Stuff</p>
           <p>
-            <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+            <i class="fas fa-phone mr-3"></i> Random Stuff</p>
           <p>
-            <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            <i class="fas fa-print mr-3"></i> Random Stuff</p>
         </div>
         <!-- Grid column 3 end-->
 
@@ -102,13 +159,23 @@
       <!--Copyright-->
       <div class="container-fluid">
         <div class="row">
-          This is the top row of the footer
+          <div class="col-md-3 mx-auto " id='contact-email'>
+            Report issues at &nbsp <a href="#!" class="badge badge-light">example-email@example-address</a>
+          </div>
+
+          <div class="col-md-3 mx-auto ">
+            Placeholder for more stuff we may add
+          </div>
+
         </div>
         <div class="row">
-          <div class="text-center py-3">© 2020 Copyright:
-            <a href="#!">
-              <strong> Example </strong>
-            </a>
+
+          <div class="col-md-3 mx-auto ">
+            <div class="text-center py-3">© 2020 Copyright:
+              <a href="#!" class="badge badge-light">
+                Example 
+              </a>
+            </div>
           </div>
         </div>
 
