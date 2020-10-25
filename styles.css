@@ -1,0 +1,22 @@
+/* Currently unused */
+/* body { */
+    /* display: flex; */
+    /* flex-flow: column; */
+/* } */
+
+/* Set attributes for the footer of each page */
+footer {
+    margin-top: auto;
+    /* Make footer take up whole width of page */
+    border-top: solid 1px;
+    color: white;
+    /* Change footer color */
+    background-color: darkslategray;
+}
+
+/* Can't get this thing working */
+/* .contact-email a:link {
+    color: purple;
+    background-color: transparent;
+    text-decoration: none;
+} */
