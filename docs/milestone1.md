@@ -84,4 +84,4 @@ The profile page consists of both your user information on the bottom half of th
 
 ### Actual Social Page in bootstrap
 
-![example image](images/social_page>.png)
+![example image](images/social_page.PNG)
