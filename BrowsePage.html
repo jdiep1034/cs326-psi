@@ -38,6 +38,114 @@
         </nav>
         <h1>Browsing Page</h1>
 
+        <!--Search Bar-->
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" placeholder="Search for parts" aria-label="Part Searcher"
+                aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+            </div>
+        </div>
+
+        <!--Sorting Buttons-->
+        <div class="btn-toolbar justify-content-between mb-4" role="group" aria-label="Button group with nested dropdown" style="width: 100%">
+
+            <div class="btn-group mr-2" role="group">
+                <button id="caseButton" type="button" class="btn btn-secondary dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Cases
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                </div>
+                
+                <button id="pcbButton" type="button" class="btn btn-secondary dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    PCBs
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                </div>
+                
+                <button id="ksButton" type="button" class="btn btn-secondary dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Key Switches
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                </div>
+            
+                <button id="kcButton" type="button" class="btn btn-secondary dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Key Caps
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                </div>
+            </div>
+
+            <div class="btn-group mr-2" role="group">
+                <button id="kcButton" type="button" class="btn btn-secondary dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort By
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="itemlist">
+            <div class="card mb-2" style="width: 100%;">
+                <img src="#" class="card-img-top" alt="image of item">
+                <div class="card-body">
+                    <h5 class="card-title">Item Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Item tags listed here (Ex. linear hot-swappable)</h6>
+                    <p class="card-text">Item description will go here.</p>
+                    <a href="#" class="btn btn-primary">Add to build</a>
+                </div>
+            </div>
+
+            <div class="card mb-2" style="width: 100%;">
+                <img src="#" class="card-img-top" alt="image of item">
+                <div class="card-body">
+                    <h5 class="card-title">Item Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Item tags listed here (Ex. linear hot-swappable)</h6>
+                    <p class="card-text">Item description will go here.</p>
+                    <a href="#" class="btn btn-primary">Add to build</a>
+                </div>
+            </div>
+            
+            <div class="card mb-2" style="width: 100%;">
+                <img src="#" class="card-img-top" alt="image of item">
+                <div class="card-body">
+                    <h5 class="card-title">Item Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Item tags listed here (Ex. linear hot-swappable)</h6>
+                    <p class="card-text">Item description will go here.</p>
+                    <a href="#" class="btn btn-primary">Add to build</a>
+                </div>
+            </div>
+        </div>
+
+        <!--Pagination-->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center mt-5">
+                <li class="page-item">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
 
         <!-- Container for actual content. Currently setup with 3 centered columns -->
         <div class="container text-center text-md-left">
@@ -95,12 +203,12 @@
 
             <hr>
         </div>
-        <footer class="page-footer font-small mdb-color pt-4 fixed-bottom">
+        <footer class="page-footer fixed-bottom font-small mdb-color pt-2">
             <!--Copyright-->
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3 mx-auto " id='contact-email'>
-                        Report issues at &nbsp <a href="#!" class="badge badge-light">example-email@example-address</a>
+                        Report issues at &nbsp; <a href="#!" class="badge badge-light">example-email@example-address</a>
                     </div>
 
                     <div class="col-md-3 mx-auto ">
@@ -122,11 +230,10 @@
 
 
             </div>
+            <!-- Grid row -->
+
+        </footer>
     </div>
-    <!-- Grid row -->
-
-    </footer>
-
 </body>
 
 </html>
