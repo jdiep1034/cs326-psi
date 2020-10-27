@@ -29,6 +29,8 @@ Originally made HomePage html as well however that idea was scrapped. Could come
 
 ### Long Vo:
 
+Helped with wireframe with the group
+Completed Social room page which I imagine is similar to when you click on a thread in Slack or open a post in Reddit ( you could see more comments)
 
 
 
@@ -82,4 +84,4 @@ The profile page consists of both your user information on the bottom half of th
 
 ### Actual Social Page in bootstrap
 
-![example image](images/<filename_here>.png)
+![example image](images/social_page>.png)
