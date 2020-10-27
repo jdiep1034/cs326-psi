@@ -2,7 +2,7 @@
 Unchanged from milestone 0
 
 # Breakdown of Work:
-#### Andrew Leger:
+### Andrew Leger:
 
 Drew all the wireframes while discussing with partners
 
@@ -16,7 +16,7 @@ Also, I did make the styles.css page, now that I think of it.^
 Am currently writing most of this milestone1.md. Or atleast most of what's relevant to me / the framework for it.
 
 
-#### Justin Diep:
+### Justin Diep:
 
 Helped with discussion about wireframe with the group.
 
@@ -27,7 +27,7 @@ Created the original Template html which is used for all pages. Navbar and origi
 Originally made HomePage html as well however that idea was scrapped. Could come back to it later.
 
 
-#### Long Vo:
+### Long Vo:
 
 
 
@@ -40,13 +40,16 @@ Note that we changed our implemenation when writing the html a little, so the si
 
 ![example image](images/browsing_page.png)
 
+
 ### Template For info page.
 
 ![example image](images/info_page.png)
 
+
 ### Template For profile page.
 
 ![example image](images/profile_page.png)
+
 
 ### Template For social page.
 
