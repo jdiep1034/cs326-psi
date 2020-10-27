@@ -12,51 +12,51 @@
       padding: 60px 15px 0;
     }
   </style>
+  <link rel="stylesheet" href="styles.css">
+
 </head>
 
-<body class="container">
-  <!--Nav Bar-->
-  <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="HomePage.html">MechKeyMaker</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="InfoPage.html">Guide<span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="BrowsePage.html">Browse Parts</a>
-        <a class="nav-item nav-link" href="SocialPage.html">Look At Builds</a>
+<body>
+  <div class="container">
+    <!--Nav Bar-->
+    <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
+      <a class="navbar-brand" href="HomePage.html">MechKeyMaker</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="InfoPage.html">Guide<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="BrowsePage.html">Browse Parts</a>
+          <a class="nav-item nav-link" href="SocialPage.html">Look At Builds</a>
+        </div>
       </div>
-    </div>
-    <form class="form-inline">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">login</button>
-    </form>
-  </nav>
+      <form class="form-inline">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">login</button>
+      </form>
+    </nav>
+    <h1>Browsing Page</h1>
 
-  <h1>INFO PAGE</h1>
 
-  <!--Footer-->
-  <footer class="page-footer font-small mdb-color pt-4">
-
-    <!-- Footer Links -->
+<!-- Container for actual content. Currently setup with 3 centered columns -->
     <div class="container text-center text-md-left">
 
-      <!-- Footer links -->
+      <!-- First row of container -->
       <div class="row text-center text-md-left mt-3 pb-3">
 
-        <!-- Grid column -->
+        <!-- Grid column 1-->
         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
           <h6 class="text-uppercase mb-4 font-weight-bold">Company name</h6>
           <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
             consectetur
             adipisicing elit.</p>
         </div>
-        <!-- Grid column -->
+        <!-- Grid column 1 end-->
 
         <hr class="w-100 clearfix d-md-none">
 
-        <!-- Grid column -->
+        <!-- Grid column 2-->
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
           <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
           <p>
@@ -72,11 +72,11 @@
             <a href="#!">Help</a>
           </p>
         </div>
+        <!-- Grid column 2 end-->
 
-        <!-- Grid column -->
         <hr class="w-100 clearfix d-md-none">
 
-        <!-- Grid column -->
+        <!-- Grid column 3-->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
           <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
           <p>
@@ -88,28 +88,32 @@
           <p>
             <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
         </div>
-        <!-- Grid column -->
+        <!-- Grid column 3 end-->
 
       </div>
       <!-- Footer links -->
 
       <hr>
-
-
+    </div>
+    <footer class="page-footer font-small mdb-color pt-4 fixed-bottom">
       <!--Copyright-->
-      <div class="text-center py-3">© 2020 Copyright:
-        <a href="#!">
-          <strong> Example </strong>
-        </a>
+      <div class="container-fluid">
+        <div class="row">
+          This is the top row of the footer
+        </div>
+        <div class="row">
+          <div class="text-center py-3">© 2020 Copyright:
+            <a href="#!">
+              <strong> Example </strong>
+            </a>
+          </div>
+        </div>
+
+
+
       </div>
-
-
-
-    </div>
-    <!-- Grid row -->
-
-    </div>
-    <!-- Footer Links -->
+  </div>
+  <!-- Grid row -->
 
   </footer>
 
