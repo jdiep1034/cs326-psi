@@ -66,13 +66,13 @@ The browsing page will be where users can search for parts based on their person
 the user wants to search for any specific part, or if they want to search by keyword. Underneath the Search bar will be 4 dropdown
 buttons for each respective component of a custom mechanical keyboard and on the far right side is sort button which will sort the product listings by price or rating.
 
-![example image](images/browsing_page_browser.png)
+![example image](images/browsing_page_browser.PNG)
 
 ### Actual Info Page in bootstrap
 
 The information page is where the users can learn more about mechanical keyboards and the parts which make up one. Here they can also learn about the many different types of each mechanical keyboard component. Additionally links to other resources will be added at the end for further information. This might just be made into a reference section and I will try to incorporate all information onto this page.
 
-![example image](images/info_page_browser.png)
+![example image](images/info_page_browser.PNG)
 
 ### Actual Profile Page in bootstrap
 
