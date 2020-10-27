@@ -1,8 +1,4 @@
-/* Currently unused */
-/* body { */
-    /* display: flex; */
-    /* flex-flow: column; */
-/* } */
+
 
 /* Set attributes for the footer of each page */
 footer {
@@ -13,10 +9,3 @@ footer {
     /* Change footer color */
     background-color: darkslategray;
 }
-
-/* Can't get this thing working */
-/* .contact-email a:link {
-    color: purple;
-    background-color: transparent;
-    text-decoration: none;
-} */

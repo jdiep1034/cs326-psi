@@ -3,16 +3,16 @@ Unchanged from milestone 0
 
 # Breakdown of Work:
 Andrew Leger:
-    Drew all the wireframes while discussing with partners
-    
-    Completed the profile page.
-    
-    Modified the template page that Justin wrote most of, fixing bugs and rearranging some stuff. 
-    Specifically: Moved body tag to end where it should be, took the center three columns out of the footer class (it shouldn't be a footer, but a row of a container), made the body tag not a container, but put a conatiner inside the body withing its own div, added a footer with bottom positioning. Added support for styles.css file, Added comments
-    
-    Also, I did make the styles.css page, now that I think of it.^
+Drew all the wireframes while discussing with partners
 
-    Am currently writing most of this milestone1.md. Or atleast most of what's relevant to me / the framework for it.
+Completed the profile page.
+
+Modified the template page that Justin wrote most of, fixing bugs and rearranging some stuff. 
+Specifically: Moved body tag to end where it should be, took the center three columns out of the footer class (it shouldn't be a footer, but a row of a container), made the body tag not a container, but put a conatiner inside the body withing its own div, added a footer with bottom positioning that looks pretty. Added support for styles.css file, Added comments
+
+Also, I did make the styles.css page, now that I think of it.^
+
+Am currently writing most of this milestone1.md. Or atleast most of what's relevant to me / the framework for it.
 
 
 
