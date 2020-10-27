@@ -3,6 +3,7 @@ Unchanged from milestone 0
 
 # Breakdown of Work:
 Andrew Leger:
+
 Drew all the wireframes while discussing with partners
 
 Completed the profile page.
