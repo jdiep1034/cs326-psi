@@ -1,6 +1,7 @@
 # Part 0: Data Interactions
+Unchanged from milestone 0
 
-Breakdown of Work:
+# Breakdown of Work:
 Andrew Leger:
     Drew all the wireframes while discussing with partners
     
@@ -16,27 +17,44 @@ Andrew Leger:
 
 
 
-
+# Part 1: Wireframes/Templates
 
 Template For browsing page.
 Note that we changed our implemenation when writing the html a little, so the sidebar on every wireframe is replaced with a top navigation bar.
+
 ![example image](images/browsing_page.png)
+
 Template For info page.
+
 ![example image](images/info_page.png)
+
 Template For profile page.
+
 ![example image](images/profile_page.png)
+
 Template For social page.
+
 ![example image](images/social_page.png)
 
+
+# Part 2: Screenshots of pages in browser
+
 <!-- Teammates place your screenshots of the respective page you did in the images folder and then change the link. -->
+<!-- Also, please name them <something>_page_browser.png to be consistent -->
 Actual browsing page in bootstrap
+
 ![example image](images/<filename_here>.png)
 
 Actual info page in bootstrap
+
 ![example image](images/<filename_here>.png)
 
 Actual profile page in bootstrap
+
 ![example image](images/profile_page_browser.png)
 
+The profile page consists of both your user information on the bottom half of the screen, as well as the build information for the mechanical keyboard you plan on building. Current setup for this part is a simple table (currently filled with dummy values) that houses information like the product id number, it's name, what part it is, the link to the product, etc.
+
 Actual social page in bootstrap
+
 ![example image](images/<filename_here>.png)
