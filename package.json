@@ -1,27 +1,61 @@
 {
-  "name": "mechanical-keyboard",
-  "type": "module",
-  "version": "1.0.0",
-  "description": "psi-project",
-  "main": "server/server.js",
-  "directories": {
-    "doc": "docs"
-  },
-  "dependencies": {
-    "bootstrap": "^4.5.3"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jdiep1034/cs326-psi.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jdiep1034/cs326-psi/issues"
-  },
-  "homepage": "https://github.com/jdiep1034/cs326-psi#readme"
+    "name": "mechanical-keyboard",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "psi-project",
+    "main": "server/server.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "dependencies": {
+        "bootstrap": "^4.5.3",
+        "express": "^4.17.1",
+        "eslint": "^7.11.0"
+    },
+    "eslintConfig": {
+        "env": {
+            "browser": true,
+            "es2021": true,
+            "node": true
+        },
+        "extends": "eslint:recommended",
+        "parserOptions": {
+            "ecmaVersion": 12,
+            "sourceType": "module"
+        },
+        "rules": {
+            "consistent-return": "error",
+            "no-var": "error",
+            "eqeqeq": "error",
+            "semi": [
+                "error",
+                "always"
+            ],
+            "curly": [
+                "warn",
+                "all"
+            ],
+            "prefer-const": [
+                "warn",
+                {}
+            ]
+        },
+        "globals": {
+            "dictionary": true
+        }
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jdiep1034/cs326-psi.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jdiep1034/cs326-psi/issues"
+    },
+    "homepage": "https://github.com/jdiep1034/cs326-psi#readme"
 }

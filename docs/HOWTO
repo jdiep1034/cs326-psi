@@ -1,0 +1,11 @@
+To run server:
+
+First, npm install from terminal to install express module.
+Run server.js through node, if you're using vscode and have merged with my dev-branch, this should be setup already
+and you can just press F5 to run
+
+To go to different webpages, do:
+    localhost:8080/
+    localhost:8080/profile
+    localhost:8080/social
+    localhost:8080/info

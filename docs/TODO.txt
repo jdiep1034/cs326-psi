@@ -1,0 +1,6 @@
+
+Things changed: site now run from server, see HOWTO.txt on how to run server
+
+Things to change in your files:
+    Look at the Browsepage for comments I added, there are a few lines you should change to the updated Browsepage 
+    so links work and styles load properly. (comments begin with 'NOTE:')
