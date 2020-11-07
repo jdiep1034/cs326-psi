@@ -1,0 +1,27 @@
+{
+  "name": "mechanical-keyboard",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "psi-project",
+  "main": "server/server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdiep1034/cs326-psi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdiep1034/cs326-psi/issues"
+  },
+  "homepage": "https://github.com/jdiep1034/cs326-psi#readme"
+}
