@@ -2,6 +2,11 @@ import { createServer } from 'http';
 import { parse } from 'url';
 import { join } from 'path';
 import { writeFile, readFileSync, existsSync /*, fs at */ } from 'fs';
+import express from 'express';
+import path from 'path';
+
+const app = express();
+const port = 8080
 
 let database;
 if (existsSync("database.json")) {
@@ -12,8 +17,57 @@ if (existsSync("database.json")) {
         gameScores: []
     };
 }
+app.use(express.static('public'));
 
-createServer(async (req, res) => {
+app.get('/', (req, res) => {
+    const path = 'client/BrowsePage.html'
+    console.log('Trying to serve: BrowsePage');
+    if (existsSync(path)) {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(readFileSync(path));
+        res.end();
+    }
+    // res.send(readFileSync(path));
+})
+app.get('/profile', (req, res) => {
+    const path = 'client/profilePage.html'
+    console.log('Trying to serve: profilePage');
+    if (existsSync(path)) {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(readFileSync(path));
+        res.end();
+    }
+    // res.send(readFileSync(path));
+})
+
+app.get('/social', (req, res) => {
+    const path = 'client/SocialPage.html'
+    console.log('Trying to serve: SocialPage');
+    if (existsSync(path)) {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(readFileSync(path));
+        res.end();
+    }
+    // res.send(readFileSync(path));
+})
+app.get('/info', (req, res) => {
+    const path = 'client/InfoPage.html'
+    console.log('Trying to serve: InfoPage');
+    if (existsSync(path)) {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(readFileSync(path));
+        res.end();
+    }
+    // res.send(readFileSync(path));
+});
+app.get('/switches', (req, res) => {
+
+});
+app.listen(port, () => {
+    console.log('Server listening on port:', port);
+})
+
+/* createServer(async (req, res) => {
     const parsed = parse(req.url, true);
 
     if (parsed.pathname === '/wordScore') {
@@ -86,4 +140,4 @@ createServer(async (req, res) => {
             res.end();
         }
     }
-}).listen(8080);
+}).listen(8080); */

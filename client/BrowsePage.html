@@ -12,7 +12,8 @@
             padding: 60px 15px 0;
         }
     </style>
-    <link rel="stylesheet" href="styles.css">
+    <!-- NOTE: change your files from styles.css to css/styles.css -->
+    <link rel="stylesheet" href="css/styles.css">
 
 </head>
 
@@ -27,13 +28,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="InfoPage.html">Guide<span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="BrowsePage.html">Browse Parts</a>
-                    <a class="nav-item nav-link" href="SocialPage.html">Look At Builds</a>
+                    <!-- NOTE: Changed hrefs for the buttons. Please change in your respective files -->
+                    <a class="nav-item nav-link" href="info">Guide<span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="/">Browse Parts</a>
+                    <a class="nav-item nav-link" href="social">Look At Builds</a>
                 </div>
             </div>
             <form class="form-inline">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">login</button>
+                <!-- NOTE: I changed the button type, copy paste this into your respective files
+                     so links work everywhere -->
+                <a href='profile' class="btn btn-outline-primary my-2 my-sm-0">login</a>
             </form>
         </nav>
         <h1>Browsing Page</h1>
@@ -48,38 +52,39 @@
         </div>
 
         <!--Sorting Buttons-->
-        <div class="btn-toolbar justify-content-between mb-4" role="group" aria-label="Button group with nested dropdown" style="width: 100%">
+        <div class="btn-toolbar justify-content-between mb-4" role="group"
+            aria-label="Button group with nested dropdown" style="width: 100%">
 
             <div class="btn-group mr-2" role="group">
-                <button id="caseButton" type="button" class="btn btn-secondary dropdown-toggle"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button id="caseButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     Cases
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                     <a class="dropdown-item" href="#">Dropdown link</a>
                     <a class="dropdown-item" href="#">Dropdown link</a>
                 </div>
-                
-                <button id="pcbButton" type="button" class="btn btn-secondary dropdown-toggle"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                <button id="pcbButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     PCBs
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                     <a class="dropdown-item" href="#">Dropdown link</a>
                     <a class="dropdown-item" href="#">Dropdown link</a>
                 </div>
-                
-                <button id="ksButton" type="button" class="btn btn-secondary dropdown-toggle"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                <button id="ksButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     Key Switches
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                     <a class="dropdown-item" href="#">Dropdown link</a>
                     <a class="dropdown-item" href="#">Dropdown link</a>
                 </div>
-            
-                <button id="kcButton" type="button" class="btn btn-secondary dropdown-toggle"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                <button id="kcButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     Key Caps
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -89,8 +94,8 @@
             </div>
 
             <div class="btn-group mr-2" role="group">
-                <button id="kcButton" type="button" class="btn btn-secondary dropdown-toggle"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button id="kcButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     Sort By
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -120,7 +125,7 @@
                     <a href="#" class="btn btn-primary">Add to build</a>
                 </div>
             </div>
-            
+
             <div class="card mb-2" style="width: 100%;">
                 <img src="#" class="card-img-top" alt="image of item">
                 <div class="card-body">
