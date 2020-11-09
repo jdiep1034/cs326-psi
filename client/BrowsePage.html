@@ -56,56 +56,41 @@
             aria-label="Button group with nested dropdown" style="width: 100%">
 
             <div class="btn-group mr-2" role="group">
-                <button id="caseButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <button id="caseButton" type="button" class="btn btn-secondary" aria-haspopup="true"
+                    aria-expanded="false">
                     Cases
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                </div>
 
-                <button id="pcbButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <button id="pcbButton" type="button" class="btn btn-secondary" aria-haspopup="true"
+                    aria-expanded="false">
                     PCBs
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                </div>
 
-                <button id="ksButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <button id="ksButton" type="button" class="btn btn-secondary" aria-haspopup="true"
+                    aria-expanded="false">
                     Key Switches
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                </div>
 
-                <button id="kcButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <button id="kcButton" type="button" class="btn btn-secondary" aria-haspopup="true"
+                    aria-expanded="false">
                     Key Caps
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                </div>
             </div>
 
-            <div class="btn-group mr-2" role="group">
-                <button id="kcButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+            <div id="sort-group" class="btn-group mr-2" role="group">
+                <h4 class="mr-2">Sort By:</h4>
+                <button id="kcButton" type="button" class="btn btn-secondary"
                     aria-haspopup="true" aria-expanded="false">
-                    Sort By
+                    Highest Price
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                </div>
+                <button id="kcButton" type="button" class="btn btn-secondary"
+                    aria-haspopup="true" aria-expanded="false">
+                    Lowest Price
+                </button>
             </div>
         </div>
 
-        <div class="itemlist">
+        <div id="product-table" class="itemlist">
             <div class="card mb-2" style="width: 100%;">
                 <img src="#" class="card-img-top" alt="image of item">
                 <div class="card-body">
