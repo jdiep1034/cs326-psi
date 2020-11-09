@@ -87,7 +87,7 @@ app.post('/dummypost', (req, res) => {
 app.get('/userParts', (req, res) => {
     console.log("Trying to send: JSON response data");
     res.writeHead(200, { 'Content-Type': 'text/json' });
-    res.write(String.raw`{ "id": 0, "name": "Andrew", "type": "switch", "link": "http://www.example.com" }`);
+    res.write(String.raw`[{ "id": 0, "name": "Gateron Red", "type": "linear-switch", "link": "http://www.example.com" }]`);
     res.end();
     // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
 });
