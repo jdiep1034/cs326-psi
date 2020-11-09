@@ -18,49 +18,53 @@ if (existsSync("database.json")) {
         cap: []
     };
 }
+
+//Serve css data
 app.use(express.static('public'));
+// Serve the webpages
+app.use(express.static('client'));
 
-app.get('/', (req, res) => {
-    const path = 'client/BrowsePage.html';
-    console.log('Trying to serve: BrowsePage');
-    if (existsSync(path)) {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(readFileSync(path));
-        res.end();
-    }
-    // res.send(readFileSync(path));
-});
-app.get('/profile', (req, res) => {
-    const path = 'client/profilePage.html';
-    console.log('Trying to serve: profilePage');
-    if (existsSync(path)) {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(readFileSync(path));
-        res.end();
-    }
-    // res.send(readFileSync(path));
-});
+// app.get('/', (req, res) => {
+//     const path = 'client/BrowsePage.html';
+//     console.log('Trying to serve: BrowsePage');
+//     if (existsSync(path)) {
+//         res.writeHead(200, { 'Content-Type': 'text/html' });
+//         res.write(readFileSync(path));
+//         res.end();
+//     }
+//     // res.send(readFileSync(path));
+// });
+// app.get('/profile', (req, res) => {
+//     const path = 'client/profilePage.html';
+//     console.log('Trying to serve: profilePage');
+//     if (existsSync(path)) {
+//         res.writeHead(200, { 'Content-Type': 'text/html' });
+//         res.write(readFileSync(path));
+//         res.end();
+//     }
+//     // res.send(readFileSync(path));
+// });
 
-app.get('/social', (req, res) => {
-    const path = 'client/SocialPage.html';
-    console.log('Trying to serve: SocialPage');
-    if (existsSync(path)) {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(readFileSync(path));
-        res.end();
-    }
-    // res.send(readFileSync(path));
-});
-app.get('/info', (req, res) => {
-    const path = 'client/InfoPage.html';
-    console.log('Trying to serve: InfoPage');
-    if (existsSync(path)) {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(readFileSync(path));
-        res.end();
-    }
-    // res.send(readFileSync(path));
-});
+// app.get('/social', (req, res) => {
+//     const path = 'client/SocialPage.html';
+//     console.log('Trying to serve: SocialPage');
+//     if (existsSync(path)) {
+//         res.writeHead(200, { 'Content-Type': 'text/html' });
+//         res.write(readFileSync(path));
+//         res.end();
+//     }
+//     // res.send(readFileSync(path));
+// });
+// app.get('/info', (req, res) => {
+//     const path = 'client/InfoPage.html';
+//     console.log('Trying to serve: InfoPage');
+//     if (existsSync(path)) {
+//         res.writeHead(200, { 'Content-Type': 'text/html' });
+//         res.write(readFileSync(path));
+//         res.end();
+//     }
+//     // res.send(readFileSync(path));
+// });
 app.get('/switches', (req, res) => {
     // Should we be sending dummy data or something? I'm honestly not sure.
     res.send('Switch data I guess?');
@@ -80,7 +84,20 @@ app.post('/dummypost', (req, res) => {
 });
 
 
+app.get('/userParts', (req, res) => {
+    console.log("Trying to send: JSON response data");
+    res.writeHead(200, { 'Content-Type': 'text/json' });
+    res.write(String.raw`{ "id": 0, "name": "Andrew", "type": "switch", "link": "http://www.example.com" }`);
+    res.end();
+    // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
+});
 
+app.get('/userInfo', (req, res) => {
+    console.log("Trying to send: JSON response data");
+    res.writeHead(200, { 'Content-Type': 'text/json' });
+    res.write(String.raw`{ "username": "example-name", "name": "Andrew", "bday": "The 15th century", "email": "example@example.com", "phone": "500-500-5000" }`);
+    res.end();
+});
 
 
 app.listen(port, () => {
