@@ -41,4 +41,4 @@ window.addEventListener("load", async function() {
     document.getElementById('bday').innerText = userInfoData.bday;
     document.getElementById('email').innerText = userInfoData.email;
     document.getElementById('phone').innerText = userInfoData.phone;
-})
+});
