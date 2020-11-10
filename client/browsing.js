@@ -13,7 +13,7 @@ function listParts(fetchPath) {
 
         // part img
         const img = document.createElement('img');
-        img.src = casePart.imgSource;
+        img.src = part.imgSource;
         img.classList.add = "card-img-top";
         img.alt = part.imgDesc;
 
@@ -88,9 +88,9 @@ window.addEventListener("load", async function () {
 
     // If Case button is clicked display all cases
     document.getElementById("caseButton").addEventListener('click', () => {
-        cleanTable();
-        listParts("./caseProducts");
-        addToBtns();
+        await cleanTable();
+        await listParts("./caseProducts");
+        await addToBtns();
     });
 
     // If PCB button is clicked display all pcbs
