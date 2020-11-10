@@ -54,14 +54,23 @@ the browsing page parts table and profile page builds table and profile info.
 
 GET Endpoints:
 	'/': Serves the Browsing page at root level as its the homepage
+
 	'/switches': Just a junk testing endpoint
+	
 	'/userParts': Sends array of json objects for profile page. 
+
 	'/caseProducts'
+
 	'/pcbProducts'
+
 	'/keySwitchProducts'
+
 	'/keyCapProducts'
+
 	'/cableProducts'
+
 	All the above send the same response of randomly generated json blobs. These will retrieve their respective tables when we implement databases.
+
 	'/userInfo': Generates json for populating a random user profile
 
 POST Endpoints:
