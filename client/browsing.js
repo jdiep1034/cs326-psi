@@ -28,6 +28,11 @@ async function listParts(fetchPath) {
         name.className = "card-title";
         name.innerText = part.name;
 
+        // part price
+        const price = document.createElement('h5');
+        price.className = "card-subtitle";
+        price.innerText = part.price;
+
         // part id
         const id = document.createElement('h6');
         id.className = "card-subtitle mb-2 text-muted";
