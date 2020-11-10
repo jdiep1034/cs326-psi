@@ -76,6 +76,12 @@ GET Endpoints:
 POST Endpoints:
 	'/updateParts': For now, just sends a "response receieved" message. We have no need to store data before getting a dbms set up
 # Part 2: Front-End Implementation
+![example image](images/m2_images/profile_page.png)
 
+Pictures of the profile page running on heroku. Zoomed out so everything is visible.
+
+Table hosts user keyboard build information, currently with randomly generated data
+
+Lower is the profile info. Currently it is just randomly generated junk data
 # Part 3: Deployment
 https://psi-326.herokuapp.com/
