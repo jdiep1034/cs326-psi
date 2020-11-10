@@ -83,5 +83,10 @@ Pictures of the profile page running on heroku. Zoomed out so everything is visi
 Table hosts user keyboard build information, currently with randomly generated data
 
 Lower is the profile info. Currently it is just randomly generated junk data
+
+![example image](images/m2_images/info_page.png)
+
+Picture of the info page. This is just static information, so not much has changed besides some prettification
+
 # Part 3: Deployment
 https://psi-326.herokuapp.com/
