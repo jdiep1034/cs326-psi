@@ -88,10 +88,11 @@ app.post('/dummypost', (req, res) => {
 app.get('/userParts', (req, res) => {
     console.log("Trying to send: JSON response data");
     res.writeHead(200, { 'Content-Type': 'text/json' });
-    res.write(String.raw`[{ "id": 034, "name": "Gateron Red", "type": "linear-switch", "cost": $9.99, "link": "http://www.example.com" },
-                            { "id":132, "name": "HyperX Pudding Keycaps", "type": "cherry-keycaps", "cost": $19.99, "link": "http://amazing.com"},
-                            { "id":138, "name": "Hot-swappable Optical PCB", "type": "hot-swap-optical-pcb","cost": $49.99, "link": "http://amazing.com"},
-                            { "id":382, "name": "Coorded USB to USB C cable", "type": "cable", "cost": $4.99, "link": "http://amazing.com"},]`);
+    res.write(JSON.stringify([
+        { id: 34, name: "Gateron Red", type: "linear-switch", cost: faker.commerce.price(), link: faker.internet.url() },
+        { id: 132, name: "HyperX Pudding Keycaps", type: "cherry-keycaps", cost: faker.commerce.price(), link: faker.internet.url() },
+        { id: 138, name: "Hot-swappable Optical PCB", type: "hot-swap-optical-pcb", cost: faker.commerce.price(), link: faker.internet.url() },
+        { id: 382, name: "Coorded USB to USB C cable", type: "cable", cost: faker.commerce.price(), link: faker.internet.url() }]));
     res.end();
     // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
 });
@@ -104,7 +105,8 @@ app.get('/userInfo', (req, res) => {
     const date = faker.date.past();
     const email = faker.internet.email();
     const phone = faker.phone.phoneNumber();
-    res.write(String.raw`{ "username": ${username}, "name": ${name}, "bday": ${date}, "email": ${email}, "phone": ${phone} }`);
+    // res.write(String.raw`{ "username": ${username}, "name": ${name}, "bday": ${date}, "email": ${email}, "phone": ${phone} }`);
+    res.write(JSON.stringify({ username: username, name: name, bday: date, email: email, phone: phone }));
     res.end();
 });
 
