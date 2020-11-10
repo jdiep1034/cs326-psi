@@ -70,8 +70,8 @@ async function addToBtns() {
                 })
             });
         });
-    };
-};
+    }
+}
 
 
 // Function to clear all parts in table
@@ -80,8 +80,8 @@ function cleanTable() {
 
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
-    };
-};
+    }
+}
 
 
 window.addEventListener("load", async function () {

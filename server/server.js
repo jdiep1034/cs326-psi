@@ -73,7 +73,7 @@ app.get('/switches', (req, res) => {
 });
 
 // This receives post requests
-app.post('/dummypost', (req, res) => {
+app.post('/updateParts', (req, res) => {
     // TODO: Do something with the post request. Commented lines not working currently
     // let body = '';
     // req.on('data', data => body += data);
