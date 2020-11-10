@@ -17,6 +17,10 @@
         
 
 ### Long:
+	Reworked social page html and setup to dynamically get  "comments"
+	Set up get endpoints
+	Worked on social.js
+	Deploy to heroku
 
 # Part 0 API planning
 
@@ -127,6 +131,10 @@ Lower is the profile info. Currently it is just randomly generated junk data
 ![example image](images/m2_images/info_page.png)
 
 Picture of the info page. This is just static information, so not much has changed besides some prettification
+
+![example image](images/m2_images/social-page-update.png)
+
+Picture of the social page. The comments are parsed and generated accordingly.
 
 # Part 3: Deployment
 https://psi-326.herokuapp.com/
