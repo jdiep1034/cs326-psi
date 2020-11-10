@@ -9,3 +9,5 @@ footer {
     /* Change footer color */
     background-color: darkslategray;
 }
+
+.clear { clear: both; height: 100px; }

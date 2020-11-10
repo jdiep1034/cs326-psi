@@ -10,7 +10,7 @@
     "dependencies": {
         "bootstrap": "^4.5.3",
         "express": "^4.17.1",
-        "eslint": "^7.11.0"
+        "faker": "^5.1.0"
     },
     "eslintConfig": {
         "env": {
@@ -44,7 +44,9 @@
             "dictionary": true
         }
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "eslint": "^7.11.0"
+    },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>MechKeyMaker</title>
+    <title>Browse</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +14,7 @@
     </style>
     <!-- NOTE: change your files from styles.css to css/styles.css -->
     <link rel="stylesheet" href="css/styles.css">
-
+    <script type="module" src="browsing.js"></script>
 </head>
 
 <body>
@@ -29,15 +29,15 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <div class="navbar-nav">
                     <!-- NOTE: Changed hrefs for the buttons. Please change in your respective files -->
-                    <a class="nav-item nav-link" href="info">Guide<span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="/">Browse Parts</a>
-                    <a class="nav-item nav-link" href="social">Look At Builds</a>
+                    <a class="nav-item nav-link" href="InfoPage.html">Guide<span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="BrowsePage.html">Browse Parts</a>
+                    <a class="nav-item nav-link" href="SocialPage.html">Look At Builds</a>
                 </div>
             </div>
             <form class="form-inline">
                 <!-- NOTE: I changed the button type, copy paste this into your respective files
                      so links work everywhere -->
-                <a href='profile' class="btn btn-outline-primary my-2 my-sm-0">login</a>
+                <a href="profilePage.html" class="btn btn-outline-primary my-2 my-sm-0">login</a>
             </form>
         </nav>
         <h1>Browsing Page</h1>
@@ -52,60 +52,47 @@
         </div>
 
         <!--Sorting Buttons-->
-        <div class="btn-toolbar justify-content-between mb-4" role="group"
-            aria-label="Button group with nested dropdown" style="width: 100%">
-
+        <div class="btn-toolbar justify-content-between mb-4" role="group" style="width: 100%">
             <div class="btn-group mr-2" role="group">
-                <button id="caseButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <button id="caseButton" type="button" class="btn btn-secondary">
                     Cases
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                </div>
 
-                <button id="pcbButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <button id="pcbButton" type="button" class="btn btn-secondary" aria-haspopup="true"
+                    aria-expanded="false">
                     PCBs
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                </div>
 
-                <button id="ksButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <button id="ksButton" type="button" class="btn btn-secondary" aria-haspopup="true"
+                    aria-expanded="false">
                     Key Switches
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                </div>
 
-                <button id="kcButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <button id="kcButton" type="button" class="btn btn-secondary" aria-haspopup="true"
+                    aria-expanded="false">
                     Key Caps
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                </div>
+
+                <button id="cableButton" type="button" class="btn btn-secondary">
+                    Cables
+                </button>
             </div>
 
-            <div class="btn-group mr-2" role="group">
-                <button id="kcButton" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Sort By
+            <div id="sort-group" class="btn-group mr-2" role="group">
+                <h4 class="mr-2">Sort By:</h4>
+                <button id="kcButton" type="button" class="btn btn-secondary" aria-haspopup="true"
+                    aria-expanded="false">
+                    Highest Price
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                </div>
+                <button id="kcButton" type="button" class="btn btn-secondary" aria-haspopup="true"
+                    aria-expanded="false">
+                    Lowest Price
+                </button>
             </div>
         </div>
 
-        <div class="itemlist">
+        <div id="product-table" class="itemlist">
+            <!-- Example card
             <div class="card mb-2" style="width: 100%;">
                 <img src="#" class="card-img-top" alt="image of item">
                 <div class="card-body">
@@ -114,100 +101,22 @@
                     <p class="card-text">Item description will go here.</p>
                     <a href="#" class="btn btn-primary">Add to build</a>
                 </div>
-            </div>
-
-            <div class="card mb-2" style="width: 100%;">
-                <img src="#" class="card-img-top" alt="image of item">
-                <div class="card-body">
-                    <h5 class="card-title">Item Name</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Item tags listed here (Ex. linear hot-swappable)</h6>
-                    <p class="card-text">Item description will go here.</p>
-                    <a href="#" class="btn btn-primary">Add to build</a>
-                </div>
-            </div>
-
-            <div class="card mb-2" style="width: 100%;">
-                <img src="#" class="card-img-top" alt="image of item">
-                <div class="card-body">
-                    <h5 class="card-title">Item Name</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Item tags listed here (Ex. linear hot-swappable)</h6>
-                    <p class="card-text">Item description will go here.</p>
-                    <a href="#" class="btn btn-primary">Add to build</a>
-                </div>
-            </div>
+            </div>-->
         </div>
 
         <!--Pagination-->
-        <nav aria-label="Page navigation example">
+        <nav id="pn" aria-label="Page navigation example">
             <ul class="pagination justify-content-center mt-5">
                 <li class="page-item">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    <a id="prev" class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                    <a id="next" class="page-link" href="#">Next</a>
                 </li>
             </ul>
         </nav>
 
-        <!-- Container for actual content. Currently setup with 3 centered columns -->
-        <div class="container text-center text-md-left">
-
-            <!-- First row of container -->
-            <div class="row text-center text-md-left mt-3 pb-3">
-
-                <!-- Grid column 1-->
-                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Company name</h6>
-                    <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                        consectetur
-                        adipisicing elit.</p>
-                </div>
-                <!-- Grid column 1 end-->
-
-                <hr class="w-100 clearfix d-md-none">
-
-                <!-- Grid column 2-->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
-                    <p>
-                        <a href="#!">About Keyswitches</a>
-                    </p>
-                    <p>
-                        <a href="#!">About Keycaps</a>
-                    </p>
-                    <p>
-                        <a href="#!">About PCB</a>
-                    </p>
-                    <p>
-                        <a href="#!">Help</a>
-                    </p>
-                </div>
-                <!-- Grid column 2 end-->
-
-                <hr class="w-100 clearfix d-md-none">
-
-                <!-- Grid column 3-->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                    <p>
-                        <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                    <p>
-                        <i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
-                    <p>
-                        <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                    <p>
-                        <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-                </div>
-                <!-- Grid column 3 end-->
-
-            </div>
-            <!-- Footer links -->
-
-            <hr>
-        </div>
+        <div class="clear"></div>
         <footer class="page-footer fixed-bottom font-small mdb-color pt-2">
             <!--Copyright-->
             <div class="container-fluid">
