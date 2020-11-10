@@ -30,8 +30,8 @@ async function listParts(fetchPath) {
 
         // part price
         const price = document.createElement('h5');
-        price.className = "card-subtitle";
-        price.innerText = part.price;
+        price.className = "card-subtitle mb-2";
+        price.innerText = "$".concat(part.price);
 
         // part id
         const id = document.createElement('h6');
