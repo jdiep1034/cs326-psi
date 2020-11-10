@@ -12,7 +12,7 @@ window.addEventListener("load", async function() {
         const cost = document.createElement('td');
         const link = document.createElement('td');
         
-        $scope.th = "row";
+        th.scope = "row";
         th.innerText = rowNum.toString();
         rowNum += 1;
 
