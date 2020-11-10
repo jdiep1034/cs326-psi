@@ -1,6 +1,6 @@
 
 // Function to list all "" parts in table
-function listParts(fetchPath) {
+async function listParts(fetchPath) {
     const partsRequest = await fetch(fetchPath);
     const partsData = partsRequest.ok ? await partsRequest.json() : [];
 
@@ -54,15 +54,15 @@ function listParts(fetchPath) {
 
         //append card to product table div
         document.getElementById("product-table").appendChild(main);
-    };
-};
+    }
+}
 
 
 // Function to add eventlistener to all "add" buttons
-function addToBtns() {
+async function addToBtns() {
     let btnArray = document.getElementsByClassName("addToBuild");
     for (let i = 0; i < btnArray.length; i++) {
-        btnArray[i].addEventListener('click', () => {
+        btnArray[i].addEventListener('click', async () => {
             const response = await fetch('/updateParts', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -78,7 +78,7 @@ function addToBtns() {
 function cleanTable() {
     const parent = document.getElementById("product-table");
 
-    while (parent.firstChild){
+    while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     };
 };
@@ -87,37 +87,37 @@ function cleanTable() {
 window.addEventListener("load", async function () {
 
     // If Case button is clicked display all cases
-    document.getElementById("caseButton").addEventListener('click', () => {
-        await cleanTable();
+    document.getElementById("caseButton").addEventListener('click', async () => {
+        cleanTable();
         await listParts("./caseProducts");
         await addToBtns();
     });
 
     // If PCB button is clicked display all pcbs
-    document.getElementById("pcbButton").addEventListener('click', () => {
+    document.getElementById("pcbButton").addEventListener('click', async () => {
         cleanTable();
-        listParts("./pcbProducts");
-        addToBtns();
+        await listParts("./pcbProducts");
+        await addToBtns();
     });
 
     // If Key Switch button is clicked display all key switches
-    document.getElementById("ksButton").addEventListener('click', () => {
+    document.getElementById("ksButton").addEventListener('click', async () => {
         cleanTable();
-        listParts("./keySwitchProducts");
-        addToBtns();
+        await listParts("./keySwitchProducts");
+        await addToBtns();
     });
 
     // If Key Caps button is clicked display all key caps
-    document.getElementById("kcButton").addEventListener('click', () => {
+    document.getElementById("kcButton").addEventListener('click', async () => {
         cleanTable();
-        listParts("./keyCapProducts");
-        addToBtns();
+        await listParts("./keyCapProducts");
+        await addToBtns();
     });
 
     //If Cables button is clicked display all cables
-    document.getElementById("cableButton").addEventListener('click', () => {
+    document.getElementById("cableButton").addEventListener('click', async () => {
         cleanTable();
-        listParts("./cableProducts");
-        addToBtns();
+        await listParts("./cableProducts");
+        await addToBtns();
     });
 });
