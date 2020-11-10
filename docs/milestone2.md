@@ -98,13 +98,13 @@ Implemented functions for BrowsePage, ProfilePage, and SocialPage. InfoPage is s
 ### Screen shot for Create
 clicking the "Add to build" button will initialize a part build list for the user if one is not created already
 
-![example image](images//m2_images/browsing_page.PNG)
+![example image](images//m2_images/browsing_page.png)
 
 
 ### Screen shot for Read
 clicking any of tabs will read in a list of parts in that respective category
 
-![example image](images/m2_images/browsing_page.PNG)
+![example image](images/m2_images/browsing_page.png)
 
 
 ### Screen shot for Update.
