@@ -38,6 +38,9 @@ app.post('/updateParts', (req, res) => {
     res.send('Post Request Received');
 });
 
+app.post('/removePart', (req, res) => {
+    res.send('Post Request Received');
+});
 
 app.get('/userParts', (req, res) => {
     console.log("Trying to send: JSON response data");
@@ -47,6 +50,17 @@ app.get('/userParts', (req, res) => {
         { id: 132, name: "HyperX Pudding Keycaps", type: "cherry-keycaps", cost: faker.commerce.price(), link: faker.internet.url() },
         { id: 138, name: "Hot-swappable Optical PCB", type: "hot-swap-optical-pcb", cost: faker.commerce.price(), link: faker.internet.url() },
         { id: 382, name: "Coorded USB to USB C cable", type: "cable", cost: faker.commerce.price(), link: faker.internet.url() }]));
+    res.end();
+    // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
+});
+app.get('/socialGet', (req, res) => {
+    console.log("Trying to send: JSON response data");
+    res.writeHead(200, { 'Content-Type': 'text/json' });
+    res.write(JSON.stringify([
+        { date: "Oct 14, 2020", email: "john@email.com" , bodyText: "I love reds" },
+        { date: "Nov 14, 1945", email: "mary@email.com" , bodyText: "I can type faster than 100wpm" },
+        { date: "Sep 14, 2020", email: "cena@email.com" , bodyText: "I type with 2 fingers" },
+        { date: "Aug 14, 2020", email: "cocojuice@email.com" , bodyText: "I like using vintage keyboards" }]));
     res.end();
     // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
 });

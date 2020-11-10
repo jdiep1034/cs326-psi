@@ -59,18 +59,28 @@ the browsing page parts table and profile page builds table and profile info.
 
 GET Endpoints:
 	'/': Serves the Browsing page at root level as its the homepage
+
 	'/switches': Just a junk testing endpoint
+	
 	'/userParts': Sends array of json objects for profile page. 
+
 	'/caseProducts'
+
 	'/pcbProducts'
+
 	'/keySwitchProducts'
+
 	'/keyCapProducts'
+
 	'/cableProducts'
+
 	All the above send the same response of randomly generated json blobs. These will retrieve their respective tables when we implement databases.
+
 	'/userInfo': Generates json for populating a random user profile
 
 POST Endpoints:
 	'/updateParts': For now, just sends a "response receieved" message. We have no need to store data before getting a dbms set up
+	'/removePart': Same as above for now
 # Part 2: Front-End Implementation
 Implemented functions for BrowsePage, ProfilePage, and SocialPage. InfoPage is static page so nothing needed tp be implememnted for that page.
 + BrowsePage
@@ -107,7 +117,16 @@ clicking add button on the browser page will add the part to the user's part lis
 clicking remove button next to any item will remove that item from the user's part list.
 
 ![example image](images/m2_images/profile_page.png)
---
+
+Pictures of the profile page running on heroku. Zoomed out so everything is visible.
+
+Table hosts user keyboard build information, currently with randomly generated data
+
+Lower is the profile info. Currently it is just randomly generated junk data
+
+![example image](images/m2_images/info_page.png)
+
+Picture of the info page. This is just static information, so not much has changed besides some prettification
 
 # Part 3: Deployment
 https://psi-326.herokuapp.com/
