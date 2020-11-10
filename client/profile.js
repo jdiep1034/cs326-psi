@@ -1,6 +1,6 @@
 
 // Function to add event listener to remove buttons
-function addToRemButton() {
+async function addToRemButton() {
     let btnArray = document.getElementsByClassName("remove");
     for (let i = 0; i < btnArray.length; i++) {
         btnArray[i].addEventListener('click', () => {
@@ -99,5 +99,5 @@ window.addEventListener("load", async function () {
     document.getElementById('email').innerText = userInfoData.email;
     document.getElementById('phone').innerText = userInfoData.phone;
 
-    addToRemButton();
+    await addToRemButton();
 });
