@@ -132,7 +132,7 @@ Lower is the profile info. Currently it is just randomly generated junk data
 
 Picture of the info page. This is just static information, so not much has changed besides some prettification
 
-![example image](images/m2_images/social-page-update.png)
+![example image](images/social-page-update.png)
 
 Picture of the social page. The comments are parsed and generated accordingly.
 
