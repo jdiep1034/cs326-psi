@@ -98,6 +98,44 @@ app.get('/userParts', (req, res) => {
     // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
 });
 
+function blob() {
+    const imgSource = faker.internet.url();
+    const imgDesc = faker.commerce.productDescription();
+    const name = faker.commerce.productName();
+    const id = faker.random.number();
+    const desc = faker.commerce.productDescription();
+    return { imgSource: imgSource, imgDesc: imgDesc, name: name, id: id, desc: desc };
+}
+function writeBlob(res) {
+    const array = [];
+    for (let i = 0; i < 10; i++) {
+        array.push(blob());
+    }
+    res.writeHead(200, { 'Content-Type': 'text/json' });
+    res.write(JSON.stringify(array, null, 2));
+    return;
+}
+// const x = {imgSource : "asdfoiwje.com", imgDesc : "picture of part", name : "name of part", id: unique id number, desc : "part description"}
+app.get('/caseProducts', (req, res) => {
+    writeBlob(res);
+    res.end();
+});
+app.get('/pcbProducts', (req, res) => {
+    writeBlob(res);
+    res.end();
+});
+app.get('/keySwitchProducts', (req, res) => {
+    writeBlob(res);
+    res.end();
+});
+app.get('/keyCapProducts', (req, res) => {
+    writeBlob(res);
+    res.end();
+});
+app.get('/cableProducts', (req, res) => {
+    writeBlob(res);
+    res.end();
+});
 app.get('/userInfo', (req, res) => {
     console.log("Trying to send: JSON response data");
     res.writeHead(200, { 'Content-Type': 'text/json' });
