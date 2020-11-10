@@ -73,7 +73,7 @@ window.addEventListener("load", async function () {
         id.innerText = userPart.id;
         name.innerText = userPart.name;
         type.innerText = userPart.type;
-        cost.innerText = userPart.cost;
+        cost.innerText = "$".concat(userPart.cost);
         link.innerText = userPart.link;
         remove.innerText = "Remove";
 
