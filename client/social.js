@@ -1,5 +1,5 @@
 window.addEventListener("load", async function() {
-    const apiResult = await fetch("./social");
+    const apiResult = await fetch("./socialGet");
     const apiData = apiResult.ok ? await apiResult.json() : [];
 
     const container = document.getElementById('socialBody');

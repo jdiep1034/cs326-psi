@@ -53,6 +53,17 @@ app.get('/userParts', (req, res) => {
     res.end();
     // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
 });
+app.get('/socialGet', (req, res) => {
+    console.log("Trying to send: JSON response data");
+    res.writeHead(200, { 'Content-Type': 'text/json' });
+    res.write(JSON.stringify([
+        { date: "Oct 14, 2020", email: "john@email.com", cardTitle: "hold on", bodyText: "I love reds" },
+        { date: "Nov 14, 1945", email: "mary@email.com", cardTitle: "whoa there", bodyText: "I can type faster than 100wpm" },
+        { date: "Sep 14, 2020", email: "cena@email.com", cardTitle: "mechEnthusiast", bodyText: "I type with 2 fingers" },
+        { date: "Aug 14, 2020", email: "cocojuice@email.com", cardTitle: "cable", bodyText: "I like using vintage keyboards" }]));
+    res.end();
+    // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
+});
 
 function blob() {
     const imgSource = "https://cdn.shopify.com/s/files/1/1473/3902/products/658baabe15b30353f6c8386a00a112e1_52ab83c4-011c-41cf-b07e-df27d5038d0a_large.jpg?v=1584436526";
