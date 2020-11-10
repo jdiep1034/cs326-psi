@@ -75,6 +75,7 @@ GET Endpoints:
 
 POST Endpoints:
 	'/updateParts': For now, just sends a "response receieved" message. We have no need to store data before getting a dbms set up
+	'/removePart': Same as above for now
 # Part 2: Front-End Implementation
 ![example image](images/m2_images/profile_page.png)
 

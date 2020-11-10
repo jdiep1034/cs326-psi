@@ -38,6 +38,9 @@ app.post('/updateParts', (req, res) => {
     res.send('Post Request Received');
 });
 
+app.post('/removePart', (req, res) => {
+    res.send('Post Request Received');
+});
 
 app.get('/userParts', (req, res) => {
     console.log("Trying to send: JSON response data");
