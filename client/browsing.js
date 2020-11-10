@@ -1,70 +1,64 @@
-function listCases() {
-    const casePartsRequest = await fetch("./caseParts");
-    const casePartsData = casePartsRequest.ok ? await casePartsRequest.json() : [];
 
-    for (const casePart of casePartsData) {
+// Function to list all "" parts in table
+function listParts(fetchPath) {
+    const partsRequest = await fetch(fetchPath);
+    const partsData = partsRequest.ok ? await partsRequest.json() : [];
 
-        // Card div
-        const cardMain = document.createElement('div');
-        cardMain.classList.add = "card mb-2";
-        cardMain.style.width = "100%";
+    for (const part of partsData) {
 
-        // Case img
+        // part div
+        const main = document.createElement('div');
+        main.classList.add = "card mb-2";
+        main.style.width = "100%";
+
+        // part img
         const img = document.createElement('img');
         img.src = casePart.imgSource;
         img.classList.add = "card-img-top";
-        img.alt = casePart.imgDesc;
+        img.alt = part.imgDesc;
 
-        // Card body
-        const cardBody = document.createElement('div');
-        cardBody.classList.add = "card-body";
+        // part body
+        const body = document.createElement('div');
+        body.classList.add = "card-body";
 
-        // Case name
+        // part name
         const name = document.createElement('h5');
         name.classList.add = "card-title";
-        name.innerText = casePart.name;
+        name.innerText = part.name;
 
-        // Case id
+        // part id
         const id = document.createElement('h6');
         id.classList.add = "card-subtitle mb-2 text-muted";
-        id.innerText = casePart.id;
+        id.innerText = part.id;
 
-        // Case description
+        // part description
         const desc = document.createElement('p');
         desc.classList.add = "card-text";
-        desc.innerText = casePart.desc;
+        desc.innerText = part.desc;
 
-        // "Add Case to User's build" button
+        // "Add part to User's build" button
         const button = document.createElement('a');
         button.classList.add = "btn btn-primary addToBuild";
-        button.id = casePart.id.toString();
+        button.id = part.id.toString();
         button.innerText = "Add to build";
 
         // Append children to card body
-        cardBody.appendChild(name);
-        cardBody.appendChild(id);
-        cardBody.appendChild(desc);
-        cardBody.appendChild(button);
+        body.appendChild(name);
+        body.appendChild(id);
+        body.appendChild(desc);
+        body.appendChild(button);
 
         // Append img and card body to card div
-        cardMain.appendChild(img);
-        cardMain.appendChild(cardBody);
+        main.appendChild(img);
+        main.appendChild(body);
 
         //append card to product table div
-        document.getElementById("product-table").appendChild(cardMain);
+        document.getElementById("product-table").appendChild(main);
     };
-}
-
-function listPcbs() { };
-
-function listSwitches() { };
-
-function listKeyCaps() { };
-
-function listCables() { };
+};
 
 
-// Add eventlistener to all "add" buttons
+// Function to add eventlistener to all "add" buttons
 function addtoBtns() {
     let btnArray = document.getElementsByClassName("addToBuild");
     for (let i = 0; i < btnArray.length; i++) {
@@ -79,6 +73,7 @@ function addtoBtns() {
     };
 };
 
+
 // Function to clear all parts in table
 function cleanTable() {
     const parent = document.getElementById("product-table");
@@ -88,40 +83,41 @@ function cleanTable() {
     };
 };
 
+
 window.addEventListener("load", async function () {
 
     // If Case button is clicked display all cases
     document.getElementById("caseButton").addEventListener('click', () => {
         cleanTable();
-        listCases();
+        listParts("./caseProducts");
         addToBtns();
     });
 
     // If PCB button is clicked display all pcbs
-    document.getElementById("caseButton").addEventListener('click', () => {
+    document.getElementById("pcbButton").addEventListener('click', () => {
         cleanTable();
-        listPcbs();
+        listParts("./pcbProducts");
         addToBtns();
     });
 
     // If Key Switch button is clicked display all key switches
-    document.getElementById("caseButton").addEventListener('click', () => {
+    document.getElementById("ksButton").addEventListener('click', () => {
         cleanTable();
-        listSwitches();
+        listParts("./keySwitchProducts");
         addToBtns();
     });
 
     // If Key Caps button is clicked display all key caps
-    document.getElementById("caseButton").addEventListener('click', () => {
+    document.getElementById("kcButton").addEventListener('click', () => {
         cleanTable();
-        listKeyCaps();
+        listParts("./keyCapProducts");
         addToBtns();
     });
 
     //If Cables button is clicked display all cables
-    document.getElementById("caseButton").addEventListener('click', () => {
+    document.getElementById("cableButton").addEventListener('click', () => {
         cleanTable();
-        listCables();
+        listParts("./cableProducts");
         addToBtns();
     });
 });
