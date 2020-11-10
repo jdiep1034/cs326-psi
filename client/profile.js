@@ -1,4 +1,4 @@
-window.addEventListener("load", async function() {
+window.addEventListener("load", async function () {
     const userPartsRequest = await fetch("./userParts");
     const userPartsData = userPartsRequest.ok ? await userPartsRequest.json() : [];
 
@@ -11,7 +11,7 @@ window.addEventListener("load", async function() {
         const type = document.createElement('td');
         const cost = document.createElement('td');
         const link = document.createElement('td');
-        
+
         th.scope = "row";
         th.innerText = rowNum.toString();
         rowNum += 1;
@@ -28,7 +28,7 @@ window.addEventListener("load", async function() {
         tr.appendChild(type);
         tr.appendChild(cost);
         tr.appendChild(link);
-        
+
         document.getElementById('user-parts-table').appendChild(tr);
     }
 
