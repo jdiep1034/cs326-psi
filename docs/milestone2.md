@@ -5,7 +5,9 @@
         Setup js express, made a package.json (since we apparently didn't have one yet)
         Setup API endpoints for get requests and post requests
         Organized file structure for project
+		Setup faker for mostly random fake data responses
     Made a TODO page and a Server Start guide "HOWTO"
+	Setup the project on Heroku
 
 ### Justin:
 
