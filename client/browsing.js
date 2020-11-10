@@ -13,7 +13,7 @@ async function listParts(fetchPath) {
 
         // part img
         const img = document.createElement('img');
-        img.src = casePart.imgSource;
+        img.src = part.imgSource;
         img.classList.add = "card-img-top";
         img.alt = part.imgDesc;
 
