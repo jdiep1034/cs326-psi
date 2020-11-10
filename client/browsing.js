@@ -59,7 +59,7 @@ function listParts(fetchPath) {
 
 
 // Function to add eventlistener to all "add" buttons
-function addtoBtns() {
+function addToBtns() {
     let btnArray = document.getElementsByClassName("addToBuild");
     for (let i = 0; i < btnArray.length; i++) {
         btnArray[i].addEventListener('click', () => {
