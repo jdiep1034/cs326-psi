@@ -13,9 +13,8 @@
         }
     </style>
     <!-- NOTE: change your files from styles.css to css/styles.css -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../public\css/styles.css">
     <script type="module" src="browsing.js"></script>
-
 </head>
 
 <body>
@@ -31,14 +30,14 @@
                 <div class="navbar-nav">
                     <!-- NOTE: Changed hrefs for the buttons. Please change in your respective files -->
                     <a class="nav-item nav-link" href="InfoPage.html">Guide<span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="/BrowsePage.html">Browse Parts</a>
+                    <a class="nav-item nav-link" href="BrowsePage.html">Browse Parts</a>
                     <a class="nav-item nav-link" href="SocialPage.html">Look At Builds</a>
                 </div>
             </div>
             <form class="form-inline">
                 <!-- NOTE: I changed the button type, copy paste this into your respective files
                      so links work everywhere -->
-                <a href='ProfilePage.html' class="btn btn-outline-primary my-2 my-sm-0">login</a>
+                <a href="profilePage.html" class="btn btn-outline-primary my-2 my-sm-0">login</a>
             </form>
         </nav>
         <h1>Browsing Page</h1>
@@ -53,12 +52,9 @@
         </div>
 
         <!--Sorting Buttons-->
-        <div class="btn-toolbar justify-content-between mb-4" role="group"
-            aria-label="Button group with nested dropdown" style="width: 100%">
-
+        <div class="btn-toolbar justify-content-between mb-4" role="group" style="width: 100%">
             <div class="btn-group mr-2" role="group">
-                <button id="caseButton" type="button" class="btn btn-secondary" aria-haspopup="true"
-                    aria-expanded="false">
+                <button id="caseButton" type="button" class="btn btn-secondary">
                     Cases
                 </button>
 
@@ -92,6 +88,7 @@
         </div>
 
         <div id="product-table" class="itemlist">
+            <!--
             <div class="card mb-2" style="width: 100%;">
                 <img src="#" class="card-img-top" alt="image of item">
                 <div class="card-body">
@@ -120,20 +117,17 @@
                     <p class="card-text">Item description will go here.</p>
                     <a href="#" class="btn btn-primary">Add to build</a>
                 </div>
-            </div>
+            </div>-->
         </div>
 
         <!--Pagination-->
-        <nav aria-label="Page navigation example">
+        <nav id="pn" aria-label="Page navigation example">
             <ul class="pagination justify-content-center mt-5">
                 <li class="page-item">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    <a id="prev" class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                    <a id="next" class="page-link" href="#">Next</a>
                 </li>
             </ul>
         </nav>
