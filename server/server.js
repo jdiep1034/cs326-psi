@@ -7,7 +7,8 @@ import express from 'express';
 import faker from 'faker';
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
+
 
 // let database;
 // if (existsSync("database.json")) {
