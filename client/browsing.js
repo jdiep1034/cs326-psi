@@ -51,6 +51,7 @@ async function listParts(fetchPath) {
 
         // Append children to card body
         body.appendChild(name);
+        body.appendChild(price);
         body.appendChild(id);
         body.appendChild(desc);
         body.appendChild(button);
