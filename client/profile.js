@@ -1,3 +1,20 @@
+
+// Function to add event listener to remove buttons
+function addToRemButton() {
+    let btnArray = document.getElementsByClassName("remove");
+    for (let i = 0; i < btnArray.length; i++) {
+        btnArray[i].addEventListener('click', () => {
+            const response = await fetch('/removePart', {
+                method: 'POST',
+                body: JSON.stringify({
+                    partID: btnArray[i].id
+                })
+            });
+        });
+    };
+};
+
+
 window.addEventListener("load", async function () {
     const userPartsRequest = await fetch("./userParts");
     const userPartsData = userPartsRequest.ok ? await userPartsRequest.json() : [];
@@ -15,18 +32,21 @@ window.addEventListener("load", async function () {
     const headerType = document.createElement('th');
     const headerCost = document.createElement('th');
     const headerLink = document.createElement('th');
+    const headerRemove = document.createElement('th');
 
     headerId.innerText = "Product ID";
     headerName.innerText = "Name";
     headerType.innerText = "Type";
     headerCost.innerText = "Cost";
     headerLink.innerText = "Link";
+    headerRemove.innerText = "Remove Item"
 
     headerTr.appendChild(headerId);
     headerTr.appendChild(headerName);
     headerTr.appendChild(headerType);
     headerTr.appendChild(headerCost);
     headerTr.appendChild(headerLink);
+    headerTr.appendChild(headerRemove);
 
     document.getElementById('user-parts-table').appendChild(headerTr);
 
@@ -40,16 +60,22 @@ window.addEventListener("load", async function () {
         const type = document.createElement('td');
         const cost = document.createElement('td');
         const link = document.createElement('td');
+        const remove = document.createElement('button');
 
         th.scope = "row";
         th.innerText = rowNum.toString();
         rowNum += 1;
+
+        remove.className = "btn btn-danger remove";
+        remove.type = "button";
+        remove.id = userPart.id;
 
         id.innerText = userPart.id;
         name.innerText = userPart.name;
         type.innerText = userPart.type;
         cost.innerText = userPart.cost;
         link.innerText = userPart.link;
+        remove.innerText = "Remove";
 
         tr.appendChild(th);
         tr.appendChild(id);
@@ -57,6 +83,7 @@ window.addEventListener("load", async function () {
         tr.appendChild(type);
         tr.appendChild(cost);
         tr.appendChild(link);
+        tr.appendChild(remove);
 
         document.getElementById('user-parts-table').appendChild(tr);
     }
@@ -71,4 +98,6 @@ window.addEventListener("load", async function () {
     document.getElementById('bday').innerText = userInfoData.bday;
     document.getElementById('email').innerText = userInfoData.email;
     document.getElementById('phone').innerText = userInfoData.phone;
+
+    addToRemButton();
 });

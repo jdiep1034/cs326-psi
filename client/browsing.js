@@ -8,37 +8,37 @@ async function listParts(fetchPath) {
 
         // part div
         const main = document.createElement('div');
-        main.classList.add = "card mb-2";
+        main.className = "card mb-2";
         main.style.width = "100%";
 
         // part img
         const img = document.createElement('img');
         img.src = part.imgSource;
-        img.classList.add = "card-img-top";
+        img.className = "card-img-top";
         img.alt = part.imgDesc;
 
         // part body
         const body = document.createElement('div');
-        body.classList.add = "card-body";
+        body.className = "card-body";
 
         // part name
         const name = document.createElement('h5');
-        name.classList.add = "card-title";
+        name.className = "card-title";
         name.innerText = part.name;
 
         // part id
         const id = document.createElement('h6');
-        id.classList.add = "card-subtitle mb-2 text-muted";
+        id.className = "card-subtitle mb-2 text-muted";
         id.innerText = part.id;
 
         // part description
         const desc = document.createElement('p');
-        desc.classList.add = "card-text";
+        desc.className = "card-text";
         desc.innerText = part.desc;
 
         // "Add part to User's build" button
         const button = document.createElement('a');
-        button.classList.add = "btn btn-primary addToBuild";
+        button.className = "btn btn-primary addToBuild";
         button.id = part.id.toString();
         button.innerText = "Add to build";
 
