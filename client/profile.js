@@ -3,7 +3,7 @@
 async function addToRemButton() {
     let btnArray = document.getElementsByClassName("remove");
     for (let i = 0; i < btnArray.length; i++) {
-        btnArray[i].addEventListener('click', () => {
+        btnArray[i].addEventListener('click', async () => {
             const response = await fetch('/removePart', {
                 method: 'POST',
                 body: JSON.stringify({

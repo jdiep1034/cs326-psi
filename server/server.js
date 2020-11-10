@@ -10,22 +10,13 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 
-// let database;
-// if (existsSync("database.json")) {
-//     database = JSON.parse(readFileSync("database.json"));
-// } else {
-//     database = {
-//         pcb: [],
-//         switch: [],
-//         cap: []
-//     };
-// }
-
 //Serve css data
 app.use(express.static('public'));
 // Serve the webpages
 app.use(express.static('client'));
 
+
+// Serve BrowsePage.html at the root directory
 app.get('/', (req, res) => {
     const path = 'client/BrowsePage.html';
     console.log('Trying to serve: BrowsePage');
@@ -36,21 +27,14 @@ app.get('/', (req, res) => {
     }
     // res.send(readFileSync(path));
 });
+
+// Dummy testing endpoint that will be removed eventually
 app.get('/switches', (req, res) => {
-    // Should we be sending dummy data or something? I'm honestly not sure.
     res.send('Switch data I guess?');
 });
 
-// This receives post requests
+// This receives post requests. Dummy response for now.
 app.post('/updateParts', (req, res) => {
-    // TODO: Do something with the post request. Commented lines not working currently
-    // let body = '';
-    // req.on('data', data => body += data);
-    // const data = JSON.parse(body);
-    // database.pcb.push(
-    //     {
-    //         data: data.pcb
-    //     });
     res.send('Post Request Received');
 });
 
