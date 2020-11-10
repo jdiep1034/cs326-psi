@@ -10,6 +10,11 @@
 	Setup the project on Heroku
 
 ### Justin:
+	Worked with Andrew on planning API stuff we needed (part 0).
+    Setup front-end for browse page and profile page: 
+        Refined html and js for both pages
+        Setup up Get and Post requests on browse and profile page.
+        
 
 ### Long:
 
@@ -77,6 +82,40 @@ POST Endpoints:
 	'/updateParts': For now, just sends a "response receieved" message. We have no need to store data before getting a dbms set up
 	'/removePart': Same as above for now
 # Part 2: Front-End Implementation
+Implemented functions for BrowsePage, ProfilePage, and SocialPage. InfoPage is static page so nothing needed tp be implememnted for that page.
++ BrowsePage
+	+ Implemented /caseProducts, /pcbProducts, /keySwitchProducts, /keyCapProducts, and /cableProducts
+		+ Each was a GET Request to retrieve the list of the respective part. (ex. /caseProduct returns array of objects (cases))
+		+ The list of parts is activated by clicking on the respective tab at the top of the page
+	+ Also implemented a /updatePart
+		+ This will later update the user's list of parts by adding the respective part to the user's list
+		+ Activated by pressing the "Add to build" button on each part card
++ ProfilePage
+	+ Implemented /userParts, /userInfo, and /removePart
+		+ /userParts is an array of the parts the user selected for their custom build
+		+ /userInfo returns the user's info (username, name, bday, phone, password, email)
+		+ /removePart will later remove the chosen part from the user's selected parts list.
+### Screen shot for Create
+clicking the "Add to build" button will initialize a part build list for the user if one is not created already
+
+![example image](images//m2_images/browsing_page.PNG)
+
+
+### Screen shot for Read
+clicking any of tabs will read in a list of parts in that respective category
+
+![example image](images/m2_images/browsing_page.PNG)
+
+
+### Screen shot for Update.
+clicking add button on the browser page will add the part to the user's part list. updating their build list.
+
+![example image](images/m2_images/profile_page.png)
+
+
+### Screen shot for Delete.
+clicking remove button next to any item will remove that item from the user's part list.
+
 ![example image](images/m2_images/profile_page.png)
 
 Pictures of the profile page running on heroku. Zoomed out so everything is visible.
