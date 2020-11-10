@@ -27,11 +27,10 @@ apiData.forEach((result, idx) => {
 
   // Construct card content
   const content = `
-    <div class="card" style="width: 100%;">
+    <div class="card" style="width: 95%;">
             <div class="card-body">
                 <h6 class="card-subtitle mb-2 text-muted">${result.date}</h6>
                 <h6 class="card-subtitle mb-2 text-muted">${result.email}</h6>
-                <h5 class="card-title">${result.cardTitle}</h5>
                 <p class="card-text">${result.bodyText}</p>
                 <a href="#" class="card-link">Like</a>
                 <a href="#" class="card-link">comments</a>
