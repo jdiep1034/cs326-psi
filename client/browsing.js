@@ -36,7 +36,7 @@ async function listParts(fetchPath) {
         // part id
         const id = document.createElement('h6');
         id.className = "card-subtitle mb-2 text-muted";
-        id.innerText = part.id;
+        id.innerText = "Part ID: ".concat(part.id);
 
         // part description
         const desc = document.createElement('p');
