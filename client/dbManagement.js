@@ -1,4 +1,4 @@
-const pgp = require("pg-promise")({
+const pgp = require('pg-promise')({
     connect(client) {
         console.log('Connected to database:', client.connectionParameters.database);
     },
@@ -48,10 +48,10 @@ async function getCables() {
     return await connectAndRun(db => db.any('SELECT * FROM Cables'));
 }
 
-(async () => {
-    const r = await getCables();
-    console.log(r);
-})();
+// (async () => {
+//     const r = await getCables();
+//     console.log(r);
+// })();
 
 console.log('hi');
 

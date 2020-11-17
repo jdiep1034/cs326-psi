@@ -133,5 +133,6 @@ const db = require('../client/dbManagement');
 
 (async () => {
     const r = await db.getCables();
+    console.log("DOING STUFF HERE");
     console.log(r);
 })();
