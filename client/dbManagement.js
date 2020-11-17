@@ -21,7 +21,7 @@ async function connectAndRun(task) {
         connection = await db.connect();
         return await task(connection);
     } catch (e) {
-        console.log(e);
+        console.error(e);
         throw e;
     } finally {
         try {
