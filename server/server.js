@@ -132,7 +132,8 @@ app.listen(port, () => {
 const db = require('../client/dbManagement');
 
 (async () => {
-    const r = await db.getCables();
     console.log("DOING STUFF HERE");
+    const r = await db.getCables();
+
     console.log(r);
 })();
