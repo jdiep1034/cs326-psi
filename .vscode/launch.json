@@ -5,9 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "DB test",
+            "program": "${workspaceFolder}\\client\\dbManagement.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node",
+            "env": {
+            }
+        },
+        {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Run Server",
             "skipFiles": [
                 "<node_internals>/**"
             ],

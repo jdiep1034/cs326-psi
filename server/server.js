@@ -1,13 +1,19 @@
 // import { createServer } from 'http';
 // import { parse } from 'url';
 // import { join } from 'path';
-import { readFileSync, existsSync /*, fs at */ } from 'fs';
-import express from 'express';
+// import { readFileSync, existsSync /*, fs at */ } from 'fs';
+const fs = require('fs');
+const readFileSync = fs.readFileSync;
+const existsSync = fs.existsSync;
+const express = require('express');
+const faker = require('faker');
+// import express from 'express';
 // import path from 'path';
-import faker from 'faker';
+// import faker from 'faker';
 
 const app = express();
 const port = process.env.PORT || 8080;
+
 
 
 //Serve css data
@@ -57,10 +63,10 @@ app.get('/socialGet', (req, res) => {
     console.log("Trying to send: JSON response data");
     res.writeHead(200, { 'Content-Type': 'text/json' });
     res.write(JSON.stringify([
-        { date: "Oct 14, 2020", email: "john@email.com" , bodyText: "I love reds" },
-        { date: "Nov 14, 1945", email: "mary@email.com" , bodyText: "I can type faster than 100wpm" },
-        { date: "Sep 14, 2020", email: "cena@email.com" , bodyText: "I type with 2 fingers" },
-        { date: "Aug 14, 2020", email: "cocojuice@email.com" , bodyText: "I like using vintage keyboards" }]));
+        { date: "Oct 14, 2020", email: "john@email.com", bodyText: "I love reds" },
+        { date: "Nov 14, 1945", email: "mary@email.com", bodyText: "I can type faster than 100wpm" },
+        { date: "Sep 14, 2020", email: "cena@email.com", bodyText: "I type with 2 fingers" },
+        { date: "Aug 14, 2020", email: "cocojuice@email.com", bodyText: "I like using vintage keyboards" }]));
     res.end();
     // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
 });
@@ -121,3 +127,13 @@ app.get('/userInfo', (req, res) => {
 app.listen(port, () => {
     console.log('Server listening on port:', port);
 });
+
+
+const db = require('../client/dbManagement');
+// This just here for testing purposes.
+(async () => {
+    console.log("DOING STUFF HERE");
+    const r = await db.getCables();
+
+    console.log(r);
+})();
