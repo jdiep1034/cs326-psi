@@ -26,22 +26,22 @@ const port = process.env.PORT || 8080;
 const db = require('../client/dbManagement');
 let userFound;
 const strategy = new LocalStrategy(
-    async (email, password, done) => {
+    async (username, password, done) => {
     (async () => {
     console.log("DOING STUFF HERE");
-    userFound = await db.findUser(email);
+    userFound = await db.findUser(username);
     console.log(userFound);
 })();
 	if (!userFound) {
 	// no such user
 	return done(null, false, { 'message' : 'Wrong cred' });
 	}
-	if (!validatePassword(email, password)) {
+	if (!validatePassword(username, password)) {
 	await new Promise((r) => setTimeout(r, 2000)); // two second delay
 	return done(null, false, { 'message' : 'Wrong password' });
 	}
 	// success!
-	return done(null, email);
+	return done(null, username);
     });
 
 app.use(expressSession(session));
@@ -182,13 +182,13 @@ app.get('/userInfo', (req, res) => {
   '61236629f33285cbc73dc563cfc49e96a00396dc9e3a220d7cd5aad0fa2f3827d03d41d55cb2834042119e5f495fc3dc8ba3073429dd5a5a1430888e0d115250'
 ] }; */
 
- function findUser(email) {
+ /* function findUser(email) {
     if (!userFound) {
 	return false;
     } else {
 	return true;
     }
-} 
+}  */
 
 function validatePassword(name, pwd) {
     if (!userFound) {
