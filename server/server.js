@@ -31,6 +31,8 @@ const strategy = new LocalStrategy(
     console.log("DOING STUFF HERE");
     userFound = await db.findUser(username);
     console.log(userFound);
+    console.log(userFound[name].salt);
+    console.log(userFound[name].hashedPwd)
 })();
 	if (!userFound) {
 	// no such user
@@ -194,7 +196,8 @@ function validatePassword(name, pwd) {
     if (!userFound) {
 	return false;
     }
-    if (!mc.check(pwd, userFound.salt, userFound.hashedPwd)) {
+
+    if (!mc.check(pwd, userFound[name].salt, userFound[name].hashedPwd)) {
 	return false;
     }
     return true;
