@@ -210,7 +210,7 @@ app.get('/',
 // Handle post data from the login.html form.
 app.post('/login',
 passport.authenticate('local' , {     // use username/password authentication
-'successRedirect' : '/profilePage.html',   // when we login, go to /private 
+'successRedirect' : 'client/profilePage.html',   // when we login, go to /private 
 'failureRedirect' : '/login'      // otherwise, back to login
 }));
 
