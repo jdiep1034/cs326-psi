@@ -31,6 +31,12 @@ const strategy = new LocalStrategy(
     console.log("DOING STUFF HERE");
     userFound = await db.findUser(username);
     console.log(userFound);
+    const salt = userFound.find(item => item.username === username).salt;
+    const hashedPwd = userFound.find(item => item.username === username).hashedPwd;
+    console.log(salt);
+    console.log(hashedPwd);
+
+    
 })();
 	if (!userFound) {
 	// no such user
@@ -190,15 +196,15 @@ app.get('/userInfo', (req, res) => {
     }
 }  */
 
-function validatePassword(name, pwd) {
-    console.log(name)
-    console.log(pwd)
+function validatePassword(username, pwd) {
+    console.log(username);
+    console.log(pwd);
     if (!userFound) {
         console.log("why is it wrong here");
 	return false;
     }
-    const salt = userFound.find(item => item.username === name).salt;
-    const hashedPwd = userFound.find(item => item.username === name).hashedPwd;
+    const salt = userFound.find(item => item.username === username).salt;
+    const hashedPwd = userFound.find(item => item.username === username).hashedPwd;
     console.log(salt);
     console.log(hashedPwd);
     if (!mc.check(pwd, salt, hashedPwd)) {
