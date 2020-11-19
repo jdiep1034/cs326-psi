@@ -50,7 +50,7 @@ async function getCables() {
 }
 
 async function findUser(email) {
-    return await connectAndRun(db => db.any('SELECT * FROM profiles where email=$1', [email]));
+    return JSON.stringify(await connectAndRun(db => db.any('SELECT * FROM profiles where email=$1', [email])));
 } 
 
 

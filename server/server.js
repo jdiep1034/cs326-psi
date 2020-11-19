@@ -24,10 +24,15 @@ const session = {
 const app = express();
 const port = process.env.PORT || 8080;
 const db = require('../client/dbManagement');
-
+let userFound;
 const strategy = new LocalStrategy(
     async (email, password, done) => {
-	if (!findUser(email)) {
+    (async () => {
+    console.log("DOING STUFF HERE");
+    userFound = await db.findUser(email);
+    console.log(userFound);
+})();
+	if (!userFound) {
 	// no such user
 	return done(null, false, { 'message' : 'Wrong cred' });
 	}
@@ -172,23 +177,24 @@ app.get('/userInfo', (req, res) => {
     res.write(JSON.stringify({ username: username, name: name, bday: date, email: email, phone: phone }));
     res.end();
 });
-const users = { 'emery' : [
+/* const users = { 'emery' : [
   '2401f90940e037305f71ffa15275fb0d',
   '61236629f33285cbc73dc563cfc49e96a00396dc9e3a220d7cd5aad0fa2f3827d03d41d55cb2834042119e5f495fc3dc8ba3073429dd5a5a1430888e0d115250'
-] };
-function findUser(email) {
-    if (! db.findUser(email)) {
+] }; */
+
+/* function findUser(email) {
+    if (!userFound) {
 	return false;
     } else {
 	return true;
     }
-}
+} */
 
 function validatePassword(name, pwd) {
-    if (!findUser(name)) {
+    if (!userFound) {
 	return false;
     }
-    if (!mc.check(pwd, users[name][0], users[name][1])) {
+    if (!mc.check(pwd, userFound.salt, userFound.hashedPwd)) {
 	return false;
     }
     return true;
@@ -204,7 +210,7 @@ app.get('/',
 // Handle post data from the login.html form.
 app.post('/login',
 passport.authenticate('local' , {     // use username/password authentication
-'successRedirect' : '/private',   // when we login, go to /private 
+'successRedirect' : '/profilePage.html',   // when we login, go to /private 
 'failureRedirect' : '/login'      // otherwise, back to login
 }));
 
@@ -226,7 +232,7 @@ app.get('/private/:userID/',
 		res.write('<br/><a href="/logout">click here to logout</a>');
 		res.end();
 	} else {
-		res.redirect('/private/');
+		res.redirect('/profilePage/');
 	}
 	});
 

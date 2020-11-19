@@ -10,9 +10,10 @@ async function addToRemButton() {
                     partID: btnArray[i].id
                 })
             });
-        });
-    };
-};
+            console.log(response);
+            });
+    }
+}
 
 
 window.addEventListener("load", async function () {
@@ -39,7 +40,7 @@ window.addEventListener("load", async function () {
     headerType.innerText = "Type";
     headerCost.innerText = "Cost";
     headerLink.innerText = "Link";
-    headerRemove.innerText = "Remove Item"
+    headerRemove.innerText = "Remove Item";
 
     headerTr.appendChild(headerId);
     headerTr.appendChild(headerName);
