@@ -32,9 +32,9 @@ const strategy = new LocalStrategy(
     userFound = await db.findUser(username);
     console.log(userFound);
     const salt = userFound.find(item => item.username === username).salt;
-    const hashedPwd = userFound.find(item => item.username === username).hashedPwd;
+    const hashedpwd = userFound.find(item => item.username === username).hashedpwd;
     console.log(salt);
-    console.log(hashedPwd);
+    console.log(hashedpwd);
 
     
 })();
@@ -204,10 +204,10 @@ function validatePassword(username, pwd) {
 	return false;
     }
     const salt = userFound.find(item => item.username === username).salt;
-    const hashedPwd = userFound.find(item => item.username === username).hashedPwd;
+    const hashedpwd = userFound.find(item => item.username === username).hashedpwd;
     console.log(salt);
-    console.log(hashedPwd);
-    if (!mc.check(pwd, salt, hashedPwd)) {
+    console.log(hashedpwd);
+    if (!mc.check(pwd, salt, hashedpwd)) {
 	return false;
     }
     return true;
