@@ -210,8 +210,8 @@ app.get('/',
 // Handle post data from the login.html form.
 app.post('/login',
 passport.authenticate('local' , {     // use username/password authentication
-'successRedirect' : 'client/profilePage.html',   // when we login, go to /private 
-'failureRedirect' : '/login'      // otherwise, back to login
+'successRedirect' : '/profilePage.html',   // when we login, go to /private 
+'failureRedirect' : '/InfoPage.html'      // otherwise, back to login
 }));
 
 // Handle the URL /login (just output the login.html file).
@@ -223,7 +223,7 @@ app.get('/logout', (req, res) => {
     req.logout(); // Logs us out!
     res.redirect('/login'); // back to login
 });
-app.get('/private/:userID/',
+/* app.get('/private/:userID/',
 	checkLoggedIn, // We also protect this route: authenticated...
 	(req, res) => {
 	if (req.params.userID === req.user) {
@@ -234,7 +234,7 @@ app.get('/private/:userID/',
 	} else {
 		res.redirect('/profilePage/');
 	}
-	});
+	}); */
 
 
 app.listen(port, () => {
