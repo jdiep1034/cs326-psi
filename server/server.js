@@ -182,13 +182,13 @@ app.get('/userInfo', (req, res) => {
   '61236629f33285cbc73dc563cfc49e96a00396dc9e3a220d7cd5aad0fa2f3827d03d41d55cb2834042119e5f495fc3dc8ba3073429dd5a5a1430888e0d115250'
 ] }; */
 
-/* function findUser(email) {
+ function findUser(email) {
     if (!userFound) {
 	return false;
     } else {
 	return true;
     }
-} */
+} 
 
 function validatePassword(name, pwd) {
     if (!userFound) {
@@ -199,13 +199,13 @@ function validatePassword(name, pwd) {
     }
     return true;
 }
-/* 
+
 app.get('/',
 	checkLoggedIn,
 	(req, res) => {
-        console.log("CHecking login")
+        console.log("CHecking login");
         res.send("hello world");
-	}); */
+	}); 
 
 // Handle post data from the login.html form.
 app.post('/login',

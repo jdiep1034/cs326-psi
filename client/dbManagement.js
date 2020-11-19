@@ -49,8 +49,8 @@ async function getCables() {
     return await connectAndRun(db => db.any('SELECT * FROM Cables'));
 }
 
-async function findUser(email) {
-    return JSON.stringify(await connectAndRun(db => db.any('SELECT * FROM profiles where email=$1', [email])));
+async function findUser(username) {
+    return await connectAndRun(db => db.any('SELECT * FROM profiles where username=$1', [username]));
 } 
 
 
