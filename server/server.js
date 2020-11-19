@@ -191,6 +191,8 @@ app.get('/userInfo', (req, res) => {
 }  */
 
 function validatePassword(name, pwd) {
+    console.log(name)
+    console.log(pwd)
     if (!userFound) {
         console.log("why is it wrong here");
 	return false;
