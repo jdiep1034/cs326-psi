@@ -192,11 +192,13 @@ app.get('/userInfo', (req, res) => {
 
 function validatePassword(name, pwd) {
     if (!userFound) {
+        console.log("why is it wrong here");
 	return false;
     }
     const salt = userFound.find(item => item.username === name).salt;
     const hashedPwd = userFound.find(item => item.username === name).hashedPwd;
-    console.log(salt,hashedPwd)
+    console.log(salt);
+    console.log(hashedPwd);
     if (!mc.check(pwd, salt, hashedPwd)) {
 	return false;
     }
