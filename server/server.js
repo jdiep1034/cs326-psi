@@ -1,9 +1,16 @@
+// File Stream stuff
 const fs = require('fs');
 const readFileSync = fs.readFileSync;
 const existsSync = fs.existsSync;
+
+// server webpage serving and endpoint handling
 const express = require('express');
-const faker = require('faker');
 const expressSession = require('express-session');
+
+// data faking
+const faker = require('faker');
+
+// Login system
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const minicrypt = require('../server/miniCrypt');
@@ -13,6 +20,9 @@ const session = {
     resave: false,
     saveUninitialized: false
 };
+
+
+// Database operations
 const db = require('../client/dbManagement');
 
 const app = express();
@@ -63,23 +73,23 @@ app.use(express.urlencoded({ 'extended': true })); // allow URLencoded data
 
 
 
-//Serve css data
+// Serve css data
 app.use(express.static('public'));
 // Serve the webpages
 app.use(express.static('client'));
 
 
 // Serve BrowsePage.html at the root directory
-app.get('/', (req, res) => {
-    const path = 'client/BrowsePage.html';
-    console.log('Trying to serve: BrowsePage');
-    if (existsSync(path)) {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(readFileSync(path));
-        res.end();
-    }
-    // res.send(readFileSync(path));
-});
+// app.get('/', (req, res) => {
+//     const path = 'client/BrowsePage.html';
+//     console.log('Trying to serve: BrowsePage');
+//     if (existsSync(path)) {
+//         res.writeHead(200, { 'Content-Type': 'text/html' });
+//         res.write(readFileSync(path));
+//         res.end();
+//     }
+//     // res.send(readFileSync(path));
+// });
 
 // Dummy testing endpoint that will be removed eventually
 app.get('/switches', (req, res) => {
@@ -122,7 +132,7 @@ function checkLoggedIn(req, res, next) {
         // If we are authenticated, run the next route.
         next();
     } else {
-        res.redirect('/');
+        res.redirect('/login.html');
     }
 }
 
@@ -254,8 +264,8 @@ function validatePassword(username, pwd) {
 app.get('/',
     checkLoggedIn,
     (req, res) => {
-        console.log("CHecking login");
-        res.send("hello world");
+        console.log("Checking login");
+        res.send("Hello world");
     });
 
 // Handle post data from the login.html form.
