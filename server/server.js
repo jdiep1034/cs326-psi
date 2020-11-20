@@ -1,3 +1,7 @@
+// import { createServer } from 'http';
+// import { parse } from 'url';
+// import { join } from 'path';
+// import { readFileSync, existsSync /*, fs at */ } from 'fs';
 const fs = require('fs');
 const readFileSync = fs.readFileSync;
 const existsSync = fs.existsSync;
@@ -13,7 +17,9 @@ const session = {
     resave : false,
     saveUninitialized: false
 };
-const db = require('../client/dbManagement');
+// import express from 'express';
+// import path from 'path';
+// import faker from 'faker';
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -135,7 +141,6 @@ function blob() {
     const price = faker.commerce.price();
     return { imgSource: imgSource, imgDesc: imgDesc, name: name, id: id, desc: desc, price: price };
 }
-// eslint-disable-next-line no-unused-vars
 function writeBlob(res) {
     const array = [];
     for (let i = 0; i < 10; i++) {
@@ -145,68 +150,25 @@ function writeBlob(res) {
     res.write(JSON.stringify(array, null, 2));
     return;
 }
-
-
-// Convert a pcb tuple obtained from a SQL table into an object with correctly named keys
-function pcbObject(object) {
-    return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price };
-}
-function caseObject(object) {
-    return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price };
-}
-function switchObject(object) {
-    return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price };
-}
-function keyCapObject(object) {
-    return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price };
-}
-function cableObject(object) {
-    return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price };
-}
-
-// Convert all tuples in an sql table object into an array of objects with correct key names using the function f
-// @param f: {} => {}
-function convertDbToObject(sqlObject, f) {
-    return sqlObject.map(object => {
-        return f(object);
-    });
-}
-// Send an sql table in json form in a server response to a get request. Server response must be ended manually.
-function writeDbObject(res, sqlObject, f) {
-    res.writeHead(200, { 'Content-Type': 'text/json' });
-    res.write(JSON.stringify(convertDbToObject(sqlObject, f), null, 2));
-    // allow calling function to end response
-}
-
 // const x = {imgSource : "asdfoiwje.com", imgDesc : "picture of part", name : "name of part", id: unique id number, desc : "part description"}
-app.get('/caseProducts', async (req, res) => {
-    // writeBlob(res);
-    const sqlObject = await db.getCases();
-    writeDbObject(res, sqlObject, caseObject);
+app.get('/caseProducts', (req, res) => {
+    writeBlob(res);
     res.end();
 });
-app.get('/pcbProducts', async (req, res) => {
-    // writeBlob(res);
-    const sqlObject = await db.getPCBs();
-    writeDbObject(res, sqlObject, pcbObject);
+app.get('/pcbProducts', (req, res) => {
+    writeBlob(res);
     res.end();
 });
-app.get('/keySwitchProducts', async (req, res) => {
-    // writeBlob(res);
-    const sqlObject = await db.getSwitches();
-    writeDbObject(res, sqlObject, switchObject);
+app.get('/keySwitchProducts', (req, res) => {
+    writeBlob(res);
     res.end();
 });
-app.get('/keyCapProducts', async (req, res) => {
-    // writeBlob(res);
-    const sqlObject = await db.getkeyCaps();
-    writeDbObject(res, sqlObject, keyCapObject);
+app.get('/keyCapProducts', (req, res) => {
+    writeBlob(res);
     res.end();
 });
-app.get('/cableProducts', async (req, res) => {
-    // writeBlob(res);
-    const sqlObject = await db.getCables();
-    writeDbObject(res, sqlObject, cableObject);
+app.get('/cableProducts', (req, res) => {
+    writeBlob(res);
     res.end();
 });
 app.get('/userInfo', (req, res) => {
@@ -288,10 +250,15 @@ app.get('/logout', (req, res) => {
 	}); */
 
 
-
-// Start the server
 app.listen(port, () => {
     console.log('Server listening on port:', port);
 });
 
 
+// This just here for testing purposes.
+(async () => {
+    console.log("DOING STUFF HERE");
+    const r = await db.getCables();
+
+    console.log(r);
+})();
