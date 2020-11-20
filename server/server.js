@@ -122,7 +122,7 @@ function checkLoggedIn(req, res, next) {
         // If we are authenticated, run the next route.
         next();
     } else {
-        res.redirect('/');
+        res.redirect('/login.html');
     }
 }
 
