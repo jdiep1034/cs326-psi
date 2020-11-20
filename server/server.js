@@ -70,7 +70,7 @@ app.use(express.static('client'));
 
 
 // Serve BrowsePage.html at the root directory
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
     const path = 'client/BrowsePage.html';
     console.log('Trying to serve: login.html');
     if (existsSync(path)) {
@@ -79,7 +79,7 @@ app.get('/', (req, res) => {
         res.end();
     }
     // res.send(readFileSync(path));
-});
+}); */
 
 // Dummy testing endpoint that will be removed eventually
 app.get('/switches', (req, res) => {
