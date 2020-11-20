@@ -10,6 +10,8 @@ async function addToRemButton() {
                     partID: btnArray[i].id
                 })
             });
+            console.log(response);
+            });
         });
     }
 }
