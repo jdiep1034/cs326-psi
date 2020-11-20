@@ -246,8 +246,8 @@ app.get('/userInfo', (req, res) => {
 }  */
 
 function validatePassword(username, pwd) {
-    console.log(username);
-    console.log(pwd);
+    // console.log(username);
+    // console.log(pwd);
     if (!userFound) {
         console.log("why is it wrong here");
         return false;
@@ -262,7 +262,7 @@ function validatePassword(username, pwd) {
     return true;
 }
 
- app.get('/',
+app.get('/',
     checkLoggedIn,
     (req, res) => {
         console.log("Checking login");
@@ -298,22 +298,22 @@ app.get('/logout', (req, res) => {
     }
     }); */
 app.post('/register',
-	(req, res) => {
-    const email = req.body['email'];
-	const username = req.body['username'];
-    const ret = mc.hash(req.body['password']);
-    
-	if (db.addUser(email,username,234, ret[1],ret[0])) {
-	res.redirect('/login.html');
-	} else {
-	res.redirect('/register.html');
-	}
-	});
+    (req, res) => {
+        const email = req.body['email'];
+        const username = req.body['username'];
+        const ret = mc.hash(req.body['password']);
+
+        if (db.addUser(email, username, 234, ret[1], ret[0])) {
+            res.redirect('/login.html');
+        } else {
+            res.redirect('/register.html');
+        }
+    });
 
 // Register URL
 app.get('/register',
-	(req, res) => res.sendFile('client/register.html',
-			{ 'root' : __dirname }));
+    (req, res) => res.sendFile('client/register.html',
+        { 'root': __dirname }));
 
 
 
