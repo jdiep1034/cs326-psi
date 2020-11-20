@@ -53,6 +53,10 @@ async function findUser(username) {
     return await connectAndRun(db => db.any('SELECT * FROM profiles where username=$1', [username]));
 } 
 
+async function addUser(email,username,buildID,password,salt) {
+    return await connectAndRun(db => db.any('INSERT INTO profiles VALUES ($1, $2, $3,$4,$5)', [email,username,buildID,password,salt]));
+} 
+
 
 // Retrieve a table of cases compatible with a chosen pcb
 // Return value: List of objects, each containing a tuple of the table
@@ -92,5 +96,6 @@ module.exports = {
     getCables: getCables,
     getCasesFromPCBs: getCasesFromPCBs,
     getSwitchesFromPCBs: getSwitchesFromPCBs,
-    findUser: findUser
+    findUser: findUser,
+    addUser:addUser
 };

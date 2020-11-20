@@ -286,6 +286,23 @@ app.get('/logout', (req, res) => {
         res.redirect('/profilePage/');
     }
     }); */
+app.post('/register',
+	(req, res) => {
+    const email = req.body['email'];
+	const username = req.body['username'];
+    const ret = mc.hash(req.body['password']);
+    
+	if (db.addUser(email,username,234, ret[1],ret[0])) {
+	res.redirect('/login');
+	} else {
+	res.redirect('/register');
+	}
+	});
+
+// Register URL
+app.get('/register',
+	(req, res) => res.sendFile('html/register.html',
+			{ 'root' : __dirname }));
 
 
 
