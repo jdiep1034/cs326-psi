@@ -1,7 +1,7 @@
 
 // Function to add event listener to remove buttons
 async function addToRemButton() {
-    let btnArray = document.getElementsByClassName("remove");
+    const btnArray = document.getElementsByClassName("remove");
     for (let i = 0; i < btnArray.length; i++) {
         btnArray[i].addEventListener('click', async () => {
             const response = await fetch('/removePart', {
@@ -12,6 +12,7 @@ async function addToRemButton() {
             });
             console.log(response);
             });
+        });
     }
 }
 

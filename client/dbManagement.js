@@ -93,5 +93,4 @@ module.exports = {
     getCasesFromPCBs: getCasesFromPCBs,
     getSwitchesFromPCBs: getSwitchesFromPCBs,
     findUser: findUser
-
 };
