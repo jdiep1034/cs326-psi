@@ -254,8 +254,8 @@ function validatePassword(username, pwd) {
     }
     const salt = userFound.find(item => item.username === username).salt;
     const hashedpwd = userFound.find(item => item.username === username).hashedpwd;
-    console.log(salt);
-    console.log(hashedpwd);
+    // console.log(salt);
+    // console.log(hashedpwd);
     if (!mc.check(pwd, salt, hashedpwd)) {
         return false;
     }
