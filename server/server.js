@@ -301,7 +301,7 @@ app.post('/register',
 
 // Register URL
 app.get('/register',
-	(req, res) => res.sendFile('html/register.html',
+	(req, res) => res.sendFile('client/register.html',
 			{ 'root' : __dirname }));
 
 
