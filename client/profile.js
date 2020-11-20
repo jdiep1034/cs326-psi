@@ -1,3 +1,4 @@
+//const db = require('../client/dbManagement');
 
 // Function to add event listener to remove buttons
 async function addToRemButton() {
@@ -12,7 +13,6 @@ async function addToRemButton() {
             });
             console.log(response);
             });
-        });
     }
 }
 

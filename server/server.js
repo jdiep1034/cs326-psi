@@ -29,18 +29,18 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 let userFound;
+let user;
 const strategy = new LocalStrategy(
     async (username, password, done) => {
         (async () => {
             console.log("DOING STUFF HERE");
             userFound = await db.findUser(username);
             console.log(userFound);
-            const salt = userFound.find(item => item.username === username).salt;
-            const hashedpwd = userFound.find(item => item.username === username).hashedpwd;
+            user = userFound.find(item => item.username === username);
+            const salt = user.salt;
+            const hashedpwd = user.hashedpwd;
             console.log(salt);
             console.log(hashedpwd);
-
-
         })();
         if (!userFound) {
             // no such user
@@ -80,6 +80,8 @@ app.use(express.static('client'));
 
 
 // Serve BrowsePage.html at the root directory
+
+=======
 // app.get('/', (req, res) => {
 //     const path = 'client/BrowsePage.html';
 //     console.log('Trying to serve: BrowsePage');
@@ -222,11 +224,11 @@ app.get('/cableProducts', async (req, res) => {
 app.get('/userInfo', (req, res) => {
     console.log("Trying to send: JSON response data");
     res.writeHead(200, { 'Content-Type': 'text/json' });
-    const username = faker.internet.userName();
-    const name = faker.name.findName();
-    const date = faker.date.past();
-    const email = faker.internet.email();
-    const phone = faker.phone.phoneNumber();
+    const username = user.username;
+    const name = user.username;
+    const date = "some day";
+    const email = user.email;
+    const phone = "111 2222 3333";
     // res.write(String.raw`{ "username": ${username}, "name": ${name}, "bday": ${date}, "email": ${email}, "phone": ${phone} }`);
     res.write(JSON.stringify({ username: username, name: name, bday: date, email: email, phone: phone }));
     res.end();
@@ -261,7 +263,7 @@ function validatePassword(username, pwd) {
     return true;
 }
 
-app.get('/',
+ app.get('/',
     checkLoggedIn,
     (req, res) => {
         console.log("Checking login");
@@ -296,6 +298,23 @@ app.get('/logout', (req, res) => {
         res.redirect('/profilePage/');
     }
     }); */
+app.post('/register',
+	(req, res) => {
+    const email = req.body['email'];
+	const username = req.body['username'];
+    const ret = mc.hash(req.body['password']);
+    
+	if (db.addUser(email,username,234, ret[1],ret[0])) {
+	res.redirect('/login.html');
+	} else {
+	res.redirect('/register.html');
+	}
+	});
+
+// Register URL
+app.get('/register',
+	(req, res) => res.sendFile('client/register.html',
+			{ 'root' : __dirname }));
 
 
 
@@ -303,5 +322,3 @@ app.get('/logout', (req, res) => {
 app.listen(port, () => {
     console.log('Server listening on port:', port);
 });
-
-
