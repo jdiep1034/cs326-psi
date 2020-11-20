@@ -12,7 +12,6 @@ async function addToRemButton() {
             });
             console.log(response);
             });
-        });
     }
 }
 
