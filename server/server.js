@@ -81,7 +81,6 @@ app.use(express.static('client'));
 
 // Serve BrowsePage.html at the root directory
 
-=======
 // app.get('/', (req, res) => {
 //     const path = 'client/BrowsePage.html';
 //     console.log('Trying to serve: BrowsePage');
