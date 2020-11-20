@@ -293,9 +293,9 @@ app.post('/register',
     const ret = mc.hash(req.body['password']);
     
 	if (db.addUser(email,username,234, ret[1],ret[0])) {
-	res.redirect('/login');
+	res.redirect('/login.html');
 	} else {
-	res.redirect('/register');
+	res.redirect('/register.html');
 	}
 	});
 
