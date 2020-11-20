@@ -69,7 +69,7 @@ app.use(express.static('client'));
 
 // Serve BrowsePage.html at the root directory
 app.get('/', (req, res) => {
-    const path = 'client/login.html';
+    const path = 'client/BrowsePage.html';
     console.log('Trying to serve: login.html');
     if (existsSync(path)) {
         res.writeHead(200, { 'Content-Type': 'text/html' });
