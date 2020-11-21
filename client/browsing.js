@@ -65,6 +65,76 @@ async function listParts(fetchPath) {
     }
 }
 
+// Function for back button depending on which part the build process is on
+async function back(number) {
+    const backButton = document.getElementById("backButton");
+    if (number === 0) {
+        backButton.addEventListener('click', async () => {
+            cleanTable();
+
+            document.getElementById("pcbButton").disabled = false;
+            document.getElementById("caseButton").disabled = true;
+            document.getElementById("backButton").style.visibility = "hidden";
+
+            document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>PCB</span> of your choice to proceed to cases.</b>";
+
+            await listParts("./pcbProducts");
+            await pcbButtons();
+        });
+    } else if (number === 1) {
+        backButton.addEventListener('click', async () => {
+            cleanTable();
+
+            document.getElementById("ksButton").disabled = true;
+            document.getElementById("caseButton").disabled = false;
+            back(0);
+
+            document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Case</span> of your choice to proceed to cases.</b>";
+
+            await listParts("./caseProducts");
+            await caseButtons();
+        });
+    } else if (number === 2) {
+        backButton.addEventListener('click', async () => {
+            cleanTable();
+
+            document.getElementById("kcButton").disabled = true;
+            document.getElementById("ksButton").disabled = false;
+            back(1);
+
+            document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Keyswitch</span> of your choice to proceed to cases.</b>";
+
+            await listParts("./keySwitchProducts");
+            await ksButtons();
+        });
+    } else if (number === 3) {
+        backButton.addEventListener('click', async () => {
+            cleanTable();
+
+            document.getElementById("cableButton").disabled = true;
+            document.getElementById("kcButton").disabled = false;
+            back(2);
+
+            document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Keycap</span> of your choice to proceed to cases.</b>";
+
+            await listParts("./keyCapProducts");
+            await kcButtons();
+        });
+    } else if (number === 4) {
+        backButton.addEventListener('click', async () => {
+            cleanTable();
+
+            document.getElementById("kcButton").disabled = true;
+            document.getElementById("cableButton").disabled = false;
+            back(3);
+
+            document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Cable</span> of your choice to proceed to cases.</b>";
+
+            await listParts("./cableProducts");
+            await cableButtons();
+        });
+    }
+}
 
 // Function to add eventlistener to all buttons on pcb page
 async function pcbButtons() {
@@ -82,6 +152,8 @@ async function pcbButtons() {
 
             document.getElementById("pcbButton").disabled = true;
             document.getElementById("caseButton").disabled = false;
+            document.getElementById("backButton").style.visibility = "visible";
+            back(0);
 
             document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Case</span> of your choice to proceed to cases.</b>";
 
@@ -211,18 +283,21 @@ window.addEventListener("load", async function () {
     document.getElementById("kcButton").disabled = true;
     document.getElementById("cableButton").disabled = true;
 
-    document.getElementById("partTab").style.visibility = "hidden";
+    document.getElementById("partGroup").style.visibility = "hidden";
+    document.getElementById("sortGroup").style.visibility = "hidden";
     document.getElementById("rebuildButton").style.visibility = "hidden";
     document.getElementById("cbuildButton").style.visibility = "hidden";
+    document.getElementById("backButton").style.visibility = "hidden";
 
     // when Build button is first clicked list pcbs and remove button
-    document.getElementById("mainButton").addEventListener('click', async () => {
+    document.getElementById("beginButton").addEventListener('click', async () => {
         cleanTable();
 
-        const button = document.getElementById("mainButton");
+        const button = document.getElementById("beginButton");
         button.parentNode.removeChild(button);
 
-        document.getElementById("partTab").style.visibility = "visible";
+        document.getElementById("partGroup").style.visibility = "visible";
+        document.getElementById("sortGroup").style.visibility = "visible";
 
         document.getElementById("pcbButton").disabled = false;
 

@@ -71,16 +71,12 @@
             <div class="col-md-3 mx-auto mr-2" id="cbuildButton">
                 <a class="btn btn-info my-sm-0" href="profilePage.html">See Build</a>
             </div>
-            <!--Button to initialize build process-->
-            <div class="col-md-3 mx-auto ">
-                <a class="btn btn-success my-sm-0" id="mainButton">Begin Build</a>
-            </div>
         </div>
 
 
         <!--Progress Tab / Sorting Buttons-->
-        <div id="partTab" class="btn-toolbar justify-content-between mb-4" role="group" style="width: 100%">
-            <div class="btn-group mr-2" role="group">
+        <div class="btn-toolbar justify-content-between mb-4" role="group" style="width: 100%">
+            <div id="partGroup" class="btn-group mr-2" role="group">
                 <button id="pcbButton" type="button" class="btn btn-secondary" aria-haspopup="true"
                     aria-expanded="false">
                     PCBs
@@ -105,13 +101,24 @@
                 </button>
             </div>
 
-            <div id="sort-group" class="btn-group mr-2" role="group">
+            <div id="build-group" class="btn-group mr-2" role="group">
+                <button id="beginButton" type="button" class="btn btn-success" aria-haspopup="true"
+                    aria-expanded="false">
+                    Begin Build
+                </button>
+                <button id="backButton" type="button" class="btn btn-danger" aria-haspopup="true"
+                    aria-expanded="false">
+                    Go Back
+                </button>
+            </div>
+
+            <div id="sortGroup" class="btn-group mr-2" role="group">
                 <h4 class="mr-2">Sort By:</h4>
-                <button id="kcButton" type="button" class="btn btn-secondary" aria-haspopup="true"
+                <button id="highestButton" type="button" class="btn btn-secondary" aria-haspopup="true"
                     aria-expanded="false">
                     Highest Price
                 </button>
-                <button id="kcButton" type="button" class="btn btn-secondary" aria-haspopup="true"
+                <button id="lowestButton" type="button" class="btn btn-secondary" aria-haspopup="true"
                     aria-expanded="false">
                     Lowest Price
                 </button>
