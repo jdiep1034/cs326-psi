@@ -290,6 +290,8 @@ async function cableButtons() {
             document.getElementById("partGroup").style.visibility = "hidden";
             document.getElementById("sortGroup").style.visibility = "hidden";
             document.getElementById("buildButtons").style.visibility = "visible";
+            document.getElementById("rebuildButton").style.visibility = "visible";
+            document.getElementById("cbuildButton").style.visibility = "visible";
             const backButton = document.getElementById("backButton");
 
             // Back button function
