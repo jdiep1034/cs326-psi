@@ -66,8 +66,8 @@ async function listParts(fetchPath) {
 }
 
 
-// Function to add eventlistener to all "add" buttons
-async function addToBtns() {
+// Function to add eventlistener to all buttons on pcb page
+async function pcbButtons() {
     let btnArray = document.getElementsByClassName("addToBuild");
     for (let i = 0; i < btnArray.length; i++) {
         btnArray[i].addEventListener('click', async () => {
@@ -77,6 +77,41 @@ async function addToBtns() {
                     partID: btnArray[i].id
                 })
             });
+
+            cleanTable();
+
+            document.getElementById("pcbButton").disabled = true;
+            document.getElementById("caseButton").disabled = false;
+
+            document.getElementById("userInstruction").innerHTML = "<b>Select a <u>Case</u> of your choice to proceed to cases.</b>"
+
+            await listParts("./caseProducts");
+            await caseButtons();
+        });
+    }
+}
+
+// Function to add eventlistener to all buttons on case page
+async function caseButtons() {
+    let btnArray = document.getElementsByClassName("addToBuild");
+    for (let i = 0; i < btnArray.length; i++) {
+        btnArray[i].addEventListener('click', async () => {
+            const response = await fetch('/updateParts', {
+                method: 'POST',
+                body: JSON.stringify({
+                    partID: btnArray[i].id
+                })
+            });
+
+            cleanTable();
+
+            document.getElementById("caseButton").disabled = true;
+            document.getElementById("ksButton").disabled = false;
+
+            document.getElementById("userInstruction").innerHTML = "<b>Select a <u>CKeyswitch</u> of your choice to proceed to keycaps.</b>"
+
+            await listParts("./keySwitchProducts");
+            await caseButtons();
         });
     }
 }
@@ -103,16 +138,16 @@ window.addEventListener("load", async function () {
     // when Build button is first clicked list pcbs
     document.getElementById("mainButton").addEventListener('click', async () => {
         cleanTable();
-        
+
         const button = document.getElementById("mainButton");
         button.parentNode.removeChild(button);
-        
+
         document.getElementById("pcbButton").disabled = false;
 
-        document.getElementById("userInstruction").innerHTML = "Select a PCB of your choice to proceed to cases.<br><i>Warning: Process will restart and build will be incomplete if page is left or refreshed.</i>"
-        
+        document.getElementById("userInstruction").innerHTML = "<b>Select a <u>PCB</u> of your choice to proceed to cases.</b>"
+
         await listParts("./pcbProducts");
-        await addToBtns();
+        await pcbButtons();
     });
 
     // If Case button is clicked display all cases
