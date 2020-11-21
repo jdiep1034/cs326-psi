@@ -1,7 +1,7 @@
 // File Stream stuff
-const fs = require('fs');
-const readFileSync = fs.readFileSync;
-const existsSync = fs.existsSync;
+// const fs = require('fs');
+// const readFileSync = fs.readFileSync;
+// const existsSync = fs.existsSync;
 
 // server webpage serving and endpoint handling
 const express = require('express');
@@ -15,6 +15,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const minicrypt = require('../server/miniCrypt');
 const mc = new minicrypt();
+
 const session = {
     secret: process.env.SECRET || 'SECRET', // set this encryption key in Heroku config (never in GitHub)!
     resave: false,
@@ -28,31 +29,41 @@ const db = require('../client/dbManagement');
 const app = express();
 const port = process.env.PORT || 8080;
 
-let userFound;
+// let userFound;
 let user;
 const strategy = new LocalStrategy(
     async (username, password, done) => {
-        (async () => {
-            console.log("DOING STUFF HERE");
-            userFound = await db.findUser(username);
-            console.log(userFound);
-            user = userFound.find(item => item.username === username);
-            const salt = user.salt;
-            const hashedpwd = user.hashedpwd;
-            console.log(salt);
-            console.log(hashedpwd);
-        })();
-        if (!userFound) {
-            // no such user
+
+        // First look for user in database
+        const dbQuery = await db.findUser(username);
+
+        // console.log(userFound);
+
+        // if user is not found
+        if (dbQuery.length === 0) { // pretty sure we move the below if statement up here for error checking
             return done(null, false, { 'message': 'Wrong cred' });
+
         }
-        if (!validatePassword(username, password)) {
+        // Set the global user. This is really bad and I need to figure out how to fix it
+        user = dbQuery.find(item => item.username === username);
+
+        if (!validatePassword(username, password, user)) {
             await new Promise((r) => setTimeout(r, 2000)); // two second delay
             return done(null, false, { 'message': 'Wrong password' });
         }
         // success!
         return done(null, username);
     });
+
+function validatePassword(username, pwd, sqlUser) {
+    const salt = sqlUser.salt;
+    const hashedpwd = sqlUser.hashedpwd;
+
+    if (!mc.check(pwd, salt, hashedpwd)) {
+        return false;
+    }
+    return true;
+}
 
 app.use(expressSession(session));
 passport.use(strategy);
@@ -232,35 +243,7 @@ app.get('/userInfo', (req, res) => {
     res.write(JSON.stringify({ username: username, name: name, bday: date, email: email, phone: phone }));
     res.end();
 });
-/* const users = { 'emery' : [
-  '2401f90940e037305f71ffa15275fb0d',
-  '61236629f33285cbc73dc563cfc49e96a00396dc9e3a220d7cd5aad0fa2f3827d03d41d55cb2834042119e5f495fc3dc8ba3073429dd5a5a1430888e0d115250'
-] }; */
 
-/* function findUser(email) {
-   if (!userFound) {
-   return false;
-   } else {
-   return true;
-   }
-}  */
-
-function validatePassword(username, pwd) {
-    // console.log(username);
-    // console.log(pwd);
-    if (!userFound) {
-        console.log("why is it wrong here");
-        return false;
-    }
-    const salt = userFound.find(item => item.username === username).salt;
-    const hashedpwd = userFound.find(item => item.username === username).hashedpwd;
-    // console.log(salt);
-    // console.log(hashedpwd);
-    if (!mc.check(pwd, salt, hashedpwd)) {
-        return false;
-    }
-    return true;
-}
 
 app.get('/',
     checkLoggedIn,
@@ -273,7 +256,7 @@ app.get('/',
 app.post('/login',
     passport.authenticate('local', {     // use username/password authentication
         'successRedirect': '/profilePage.html',   // when we login, go to /private 
-        'failureRedirect': '/InfoPage.html'      // otherwise, back to login
+        'failureRedirect': '/login.html'      // otherwise, back to login
     }));
 
 // Handle the URL /login (just output the login.html file).
@@ -285,30 +268,19 @@ app.get('/logout', (req, res) => {
     req.logout(); // Logs us out!
     res.redirect('/login'); // back to login
 });
-/* app.get('/private/:userID/',
-    checkLoggedIn, // We also protect this route: authenticated...
-    (req, res) => {
-    if (req.params.userID === req.user) {
-        res.writeHead(200, {"Content-Type" : "text/html"});
-        res.write('<H1>HELLO ' + req.params.userID + "</H1>");
-        res.write('<br/><a href="/logout">click here to logout</a>');
-        res.end();
-    } else {
-        res.redirect('/profilePage/');
-    }
-    }); */
-app.post('/register',
-    (req, res) => {
-        const email = req.body['email'];
-        const username = req.body['username'];
-        const ret = mc.hash(req.body['password']);
 
-        if (db.addUser(email, username, 234, ret[1], ret[0])) {
-            res.redirect('/login.html');
-        } else {
-            res.redirect('/register.html');
-        }
-    });
+
+app.post('/register', (req, res) => {
+    const email = req.body['email'];
+    const username = req.body['username'];
+    const ret = mc.hash(req.body['password']);
+
+    if (db.addUser(email, username, 234, ret[1], ret[0])) {
+        res.redirect('/login.html');
+    } else {
+        res.redirect('/register.html');
+    }
+});
 
 // Register URL
 app.get('/register',
