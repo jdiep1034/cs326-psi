@@ -85,7 +85,7 @@ async function pcbButtons() {
             document.getElementById("backButton").style.visibility = "visible";
 
             // Back button function
-            backButton.removeEventListener('click', async () => { });
+            backButton.removeEventListener('click');
             backButton.addEventListener('click', async () => {
                 cleanTable();
 
@@ -127,7 +127,7 @@ async function caseButtons() {
             document.getElementById("ksButton").disabled = false;
 
             // Back button function
-            backButton.removeEventListener('click', async () => { });
+            backButton.removeEventListener('click');
             backButton.addEventListener('click', async () => {
                 cleanTable();
 
@@ -168,7 +168,7 @@ async function ksButtons() {
             document.getElementById("kcButton").disabled = false;
 
             // Back button function
-            backButton.removeEventListener('click', async () => { });
+            backButton.removeEventListener('click');
             backButton.addEventListener('click', async () => {
                 cleanTable();
 
@@ -209,7 +209,7 @@ async function kcButtons() {
             document.getElementById("cableButton").disabled = false;
 
             // Back button function
-            backButton.removeEventListener('click', async () => { });
+            backButton.removeEventListener('click');
             backButton.addEventListener('click', async () => {
                 cleanTable();
 
@@ -251,7 +251,7 @@ async function cableButtons() {
             document.getElementById("cbuildButton").style.visibility = "visible";
 
             // Back button function
-            backButton.removeEventListener('click', async () => { });
+            backButton.removeEventListener('click');
             backButton.addEventListener('click', async () => {
                 cleanTable();
 
