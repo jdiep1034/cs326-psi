@@ -47,7 +47,7 @@ async function listParts(fetchPath) {
         const button = document.createElement('a');
         button.className = "btn btn-primary addToBuild";
         button.id = part.id.toString();
-        button.innerText = "Add to build";
+        button.innerText = "Select and Proceed to Next Part";
 
         // Append children to card body
         body.appendChild(name);
@@ -103,6 +103,14 @@ window.addEventListener("load", async function () {
     // when Build button is first clicked list pcbs
     document.getElementById("mainButton").addEventListener('click', async () => {
         cleanTable();
+        
+        const button = document.getElementById("mainButton");
+        button.parentNode.removeChild(button);
+        
+        document.getElementById("pcbButton").disabled = false;
+
+        document.getElementById("userInstruction").innerHTML = "Select a PCB of your choice to proceed to cases.<br><i>Warning: Process will restart and build will be incomplete if page is left or refreshed.</i>"
+        
         await listParts("./pcbProducts");
         await addToBtns();
     });
