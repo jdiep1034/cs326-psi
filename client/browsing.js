@@ -94,6 +94,11 @@ function cleanTable() {
 
 window.addEventListener("load", async function () {
 
+    document.getElementById("caseButton").disabled = true;
+    document.getElementById("kshButton").disabled = true;
+    document.getElementById("kcButton").disabled = true;
+    document.getElementById("cableButton").disabled = true;
+
     // If Case button is clicked display all cases
     document.getElementById("caseButton").addEventListener('click', async () => {
         cleanTable();
