@@ -97,9 +97,9 @@ window.addEventListener("load", async function () {
     document.getElementById('navbarUsername').innerText = userInfoData.username;
     document.getElementById('username').innerText = userInfoData.username;
     document.getElementById('name').innerText = userInfoData.name;
-    document.getElementById('bday').innerText = userInfoData.bday;
+    // document.getElementById('bday').innerText = userInfoData.bday;
     document.getElementById('email').innerText = userInfoData.email;
-    document.getElementById('phone').innerText = userInfoData.phone;
+    // document.getElementById('phone').innerText = userInfoData.phone;
 
     await addToRemButton();
 });

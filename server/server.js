@@ -1,7 +1,7 @@
 // File Stream stuff
-// const fs = require('fs');
-// const readFileSync = fs.readFileSync;
-// const existsSync = fs.existsSync;
+const fs = require('fs');
+const readFileSync = fs.readFileSync;
+const existsSync = fs.existsSync;
 
 // server webpage serving and endpoint handling
 const express = require('express');
@@ -106,14 +106,40 @@ app.use(express.static('client'));
 //     // res.send(readFileSync(path));
 // });
 
+// Profile Page is now a private page until logged in.
+app.get('/profilePage.html', checkLoggedIn, (req, res) => {
+    const path = 'private/profilePage.html';
+    console.log('Trying to serve: profilePage');
+    if (existsSync(path)) {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(readFileSync(path));
+        res.end();
+    }
+    // res.send(readFileSync(path));
+});
+
+app.get('/profile.js', checkLoggedIn, (req, res) => {
+    const path = 'private/profile.js';
+    console.log('Trying to serve: profilePage');
+    if (existsSync(path)) {
+        res.writeHead(200, { 'Content-Type': 'text/javascript' });
+        res.write(readFileSync(path));
+        res.end();
+    }
+    // res.send(readFileSync(path));
+});
+
+
 // Dummy testing endpoint that will be removed eventually
 app.get('/switches', (req, res) => {
     res.send('Switch data I guess?');
 });
 
 
-let build = {
+const build = {
     pcb: null,
+    pcbSwitchType: null,
+    pcbCaseType: null,
     case: null,
     switch: null,
     keycap: null,
@@ -135,8 +161,15 @@ app.post('/updateParts', (req, res) => {
         build[data.partType] = parseInt(data.partID, 10);
         console.log(build);
 
+        // Store compatibility parameters if receiving pcb information
+        if (data.partType === 'pcb') {
+            const tuple = await db.getSpecificPcb(build[data.partType]);
+            // console.log(tuple);
+            build.pcbSwitchType = tuple[0].switch_type;
+            build.pcbCaseType = tuple[0].pcb_size;
+        }
         res.writeHead(200);
-        res.end('Post Request Received');
+        res.end('Post Request Handled');
     });
 
     // res.send('Post Request Received');
@@ -147,10 +180,11 @@ app.get('/insertBuild', checkLoggedIn, (req, res) => {
     if (build.pcb && build.case && build.switch && build.keycap && build.cable) {
         console.log('Inserting build in table');
         db.addBuild(user.buildid, build.pcb, build.case, build.switch, build.keycap, build.cable);
+        res.end();
     } else {
         console.log('Failed insert');
+        res.end();
     }
-
 });
 
 app.post('/removePart', (req, res) => {
@@ -245,7 +279,7 @@ function writeDbObject(res, sqlObject, f) {
 // const x = {imgSource : "asdfoiwje.com", imgDesc : "picture of part", name : "name of part", id: unique id number, desc : "part description"}
 app.get('/caseProducts', async (req, res) => {
     // writeBlob(res);
-    const sqlObject = await db.getCases();
+    const sqlObject = await db.getCasesFromPCBs(build.pcbCaseType);
     writeDbObject(res, sqlObject, caseObject);
     res.end();
 });
@@ -257,7 +291,8 @@ app.get('/pcbProducts', async (req, res) => {
 });
 app.get('/keySwitchProducts', async (req, res) => {
     // writeBlob(res);
-    const sqlObject = await db.getSwitches();
+    // const sqlObject = await db.getSwitches();
+    const sqlObject = await db.getSwitchesFromPCBs(build.pcbSwitchType);
     writeDbObject(res, sqlObject, switchObject);
     res.end();
 });
@@ -273,7 +308,7 @@ app.get('/cableProducts', async (req, res) => {
     writeDbObject(res, sqlObject, cableObject);
     res.end();
 });
-app.get('/userInfo', (req, res) => {
+app.get('/userInfo',  (req, res) => {
     console.log("Trying to send: JSON response data");
     res.writeHead(200, { 'Content-Type': 'text/json' });
     const username = user.username;
