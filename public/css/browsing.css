@@ -1,4 +1,10 @@
+#warning{
+    color: darkred;
+}
 
+#partWord{
+    color: teal;
+}
 /* Set attributes for the footer of each page */
 footer {
     margin-top: auto;
