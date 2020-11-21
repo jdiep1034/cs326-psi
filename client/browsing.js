@@ -9,7 +9,7 @@ async function listParts(fetchPath) {
         // part div
         const main = document.createElement('div');
         main.className = "card mb-2";
-        main.style.width = "100%";
+        main.style.width = "50%";
 
         // part img
         const img = document.createElement('img');
