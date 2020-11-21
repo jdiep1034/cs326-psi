@@ -32,7 +32,13 @@ const port = process.env.PORT || 8080;
 // let userFound;
 let user; // TODO, Make this not global.
 
-// let build = {};
+let build = {
+    pcbPart: null,
+    casePart: null,
+    switchPart: null,
+    keycapPart: null,
+    cablePart: null
+};
 
 const strategy = new LocalStrategy(
     async (username, password, done) => {
@@ -116,6 +122,7 @@ app.get('/switches', (req, res) => {
 // This receives post requests. Dummy response for now.
 // TODO: Have this return the proper database entry.
 app.post('/updateParts', checkLoggedIn, (req, res) => {
+    // Add pcbPart to data object. 
     res.send('Post Request Received');
 });
 
