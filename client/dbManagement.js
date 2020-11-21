@@ -21,8 +21,10 @@ async function connectAndRun(task) {
         connection = await db.connect();
         return await task(connection);
     } catch (e) {
+        console.error('Error in handling SQL query');
         console.error(e);
-        throw e;
+        // throw e;
+        return null;
     } finally {
         try {
             connection.done();
@@ -50,12 +52,14 @@ async function getCables() {
 }
 
 async function findUser(username) {
-    return await connectAndRun(db => db.any('SELECT * FROM profiles where username=$1', [username]));
-} 
 
-async function addUser(email,username,buildID,password,salt) {
-    return await connectAndRun(db => db.any('INSERT INTO profiles VALUES ($1, $2, $3,$4,$5)', [email,username,buildID,password,salt]));
-} 
+    const r = await connectAndRun(db => db.any('SELECT * FROM profiles where username=$1', [username]));
+    return r;
+}
+
+async function addUser(email, username, buildID, password, salt) {
+    return await connectAndRun(db => db.any('INSERT INTO profiles VALUES ($1, $2, $3,$4,$5)', [email, username, buildID, password, salt]));
+}
 
 
 // Retrieve a table of cases compatible with a chosen pcb
@@ -97,5 +101,5 @@ module.exports = {
     getCasesFromPCBs: getCasesFromPCBs,
     getSwitchesFromPCBs: getSwitchesFromPCBs,
     findUser: findUser,
-    addUser:addUser
+    addUser: addUser
 };
