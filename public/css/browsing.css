@@ -1,6 +1,6 @@
 #product-table{
     display: grid;
-    grid: repeat(auto,2) / auto-flow;
+    grid-template-columns: repeat(2,auto) / auto-flow;
 }
 
 /* Set attributes for the footer of each page */
