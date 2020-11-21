@@ -9,7 +9,7 @@ async function listParts(fetchPath) {
         // part div
         const main = document.createElement('div');
         main.className = "card mb-2";
-        main.style.width = "50%";
+        main.style.width = "100%";
 
         // part img
         const img = document.createElement('img');
@@ -94,22 +94,23 @@ function cleanTable() {
 
 window.addEventListener("load", async function () {
 
+    document.getElementById("pcbButton").disabled = true;
     document.getElementById("caseButton").disabled = true;
     document.getElementById("ksButton").disabled = true;
     document.getElementById("kcButton").disabled = true;
     document.getElementById("cableButton").disabled = true;
 
+    // when Build button is first clicked list pcbs
+    document.getElementById("mainButton").addEventListener('click', async () => {
+        cleanTable();
+        await listParts("./pcbProducts");
+        await addToBtns();
+    });
+
     // If Case button is clicked display all cases
     document.getElementById("caseButton").addEventListener('click', async () => {
         cleanTable();
         await listParts("./caseProducts");
-        await addToBtns();
-    });
-
-    // If PCB button is clicked display all pcbs
-    document.getElementById("pcbButton").addEventListener('click', async () => {
-        cleanTable();
-        await listParts("./pcbProducts");
         await addToBtns();
     });
 
