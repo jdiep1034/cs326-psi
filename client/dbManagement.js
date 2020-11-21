@@ -80,11 +80,21 @@ async function getSwitchesFromPCBs(switch_type) {
 
 
 
+//Use this function to retrieve the build from the sql table for display on the profile page
+async function getBuild(buildID) {
+    return await connectAndRun(db => db.any('SELECT * FROM builds where buildID=$1;', [buildID]));
+}
 
 
+// Use this to insert a new build into the build table
+async function newBuild(buildID, pcbID, caseID, switchID, keycapID, cableID) {
+    return await connectAndRun(db => db.none('INSERT INTO builds values($1, $2, $3);', [buildID, pcbID, caseID, switchID, keycapID, cableID]));
+}
 
-
-
+//Use this function to delete a build from the table
+async function deleteBuild(buildID) {
+    return await connectAndRun(db => db.none('DELETE FROM builds where buildID=$1', [buildID]));
+}
 
 
 // testing here
@@ -105,5 +115,9 @@ module.exports = {
     getCasesFromPCBs: getCasesFromPCBs,
     getSwitchesFromPCBs: getSwitchesFromPCBs,
     findUser: findUser,
-    addUser: addUser
+    addUser: addUser,
+    getBuild: getBuild,
+    newBuild: newBuild,
+    deleteBuild: deleteBuild
+
 };
