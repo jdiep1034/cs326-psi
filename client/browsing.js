@@ -158,7 +158,7 @@ async function pcbButtons() {
             document.getElementById("pcbButton").disabled = true;
             document.getElementById("caseButton").disabled = false;
             document.getElementById("backButton").style.visibility = "visible";
-            back(0);
+            await back(0);
 
             document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Case</span> of your choice to proceed to cases.</b>";
 
@@ -184,7 +184,7 @@ async function caseButtons() {
 
             document.getElementById("caseButton").disabled = true;
             document.getElementById("ksButton").disabled = false;
-            back(1);
+            await back(1);
 
             document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Keyswitch</span> of your choice to proceed to keycaps.</b>";
 
@@ -210,7 +210,7 @@ async function ksButtons() {
 
             document.getElementById("ksButton").disabled = true;
             document.getElementById("kcButton").disabled = false;
-            back(2);
+            await back(2);
 
             document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Keycap</span> of your choice to proceed to cables.</b>";
 
@@ -236,7 +236,7 @@ async function kcButtons() {
 
             document.getElementById("kcButton").disabled = true;
             document.getElementById("cableButton").disabled = false;
-            back(3);
+            await back(3);
 
             document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Cable</span> of your choice to finish.</b>";
 
@@ -263,7 +263,7 @@ async function cableButtons() {
             document.getElementById("partTab").style.visibility = "hidden";
             document.getElementById("rebuildButton").style.visibility = "visible";
             document.getElementById("cbuildButton").style.visibility = "visible";
-            back(4);
+            await back(4);
 
             document.getElementById("cableButton").disabled = true;
 
