@@ -41,7 +41,7 @@
                 <a href="profilePage.html" class="btn btn-primary my-2 my-sm-0">My Profile</a>
             </form>
         </nav>
-        <h1>Browsing Page</h1>
+        <h1 id="backToTop">Browsing Page</h1>
 
         <!--Search Bar
         <div class="input-group mb-2">
@@ -61,7 +61,7 @@
         </div>
 
         <div class="col-md-3 mx-auto " style="align-self: center;">
-            <a class="btn btn-success my-sm-0" href="#backToTop">Begin Build</a>
+            <a class="btn btn-success my-sm-0" id="mainButton">Begin Build</a>
         </div>
 
 
@@ -135,17 +135,24 @@
         <footer class="page-footer fixed-bottom font-small mdb-color pt-2">
             <!--Copyright-->
             <div class="container-fluid">
+
                 <div class="row">
+
                     <div class="col-md-3 mx-auto " id='contact-email'>
                         Report issues at &nbsp; <a href="#!" class="badge badge-light">example-email@example-address</a>
                     </div>
 
                     <div class="col-md-3 mx-auto ">
+                        <a class="nav-link btn btn-info my-sm-0" href="#backToTop">Go to Top of Page</a>
+                      </div>
+
+                    <div class="col-md-3 mx-auto ">
                         Placeholder for more stuff we may add
                     </div>
-                </div>
-                <div class="row">
 
+                </div>
+
+                <div class="row">
                     <div class="col-md-3 mx-auto ">
                         <div class="text-center py-3">© 2020 Copyright:
                             <a href="#!" class="badge badge-light">
@@ -154,8 +161,6 @@
                         </div>
                     </div>
                 </div>
-
-
 
             </div>
             <!-- Grid row -->
