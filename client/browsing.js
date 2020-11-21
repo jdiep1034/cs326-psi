@@ -95,7 +95,7 @@ function cleanTable() {
 window.addEventListener("load", async function () {
 
     document.getElementById("caseButton").disabled = true;
-    document.getElementById("kshButton").disabled = true;
+    document.getElementById("ksButton").disabled = true;
     document.getElementById("kcButton").disabled = true;
     document.getElementById("cableButton").disabled = true;
 
