@@ -181,11 +181,12 @@ async function cableButtons() {
             cleanTable();
 
             document.getElementById("partTab").style.visibility = "hidden";
+            document.getElementById("buildButtons").style.visibility = "visible";
 
             document.getElementById("cableButton").disabled = true;
 
             document.getElementById("userInstruction").innerHTML = "<b>Build complete.</b>";
-            document.getElementById("warning").innerHTML = "<b>See your build by clicking on 'My Profile' at the top right of your screen.<br>Or restart your build by clicking 'Build Your Own' or refreshing the page.</b>";
+            document.getElementById("warning").innerHTML = "<b>See your build by clicking on 'My Profile' at the top right of your screen.<br>Rebuild by clicking 'Build Your Own' or refreshing the page.</b>";
         });
     }
 }
@@ -210,6 +211,7 @@ window.addEventListener("load", async function () {
     document.getElementById("cableButton").disabled = true;
 
     document.getElementById("partTab").style.visibility = "hidden";
+    document.getElementById("buildButtons").style.visibility = "hidden";
 
     // when Build button is first clicked list pcbs and remove button
     document.getElementById("mainButton").addEventListener('click', async () => {

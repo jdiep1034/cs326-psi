@@ -41,7 +41,7 @@
                 <a href="profilePage.html" class="btn btn-primary my-2 my-sm-0">My Profile</a>
             </form>
         </nav>
-        <h1 id="backToTop">Browsing Page</h1>
+        <h1 id="backToTop">Build Page</h1>
 
         <!--Search Bar
         <div class="input-group mb-2">
@@ -62,12 +62,23 @@
             <b><i>Process will restart and build will be incomplete if page is left or refreshed.</i></b>
         </div>
 
+        <!--Buttons to appear after build completion-->
+        <div id="buildButtons" style="align-self: center;">
+            <div class="col-md-3 mx-auto mr-2" style="align-self: center;">
+                <a class="btn btn-info my-sm-0" id="mainButton">Rebuild</a>
+            </div>
+            <div class="col-md-3 mx-auto " style="align-self: center;">
+                <a class="btn btn-info my-sm-0" id="mainButton">See My Build</a>
+            </div>
+        </div>
+
+        <!--Button to initialize build process-->
         <div class="col-md-3 mx-auto " style="align-self: center;">
             <a class="btn btn-success my-sm-0" id="mainButton">Begin Build</a>
         </div>
 
 
-        <!--Sorting Buttons-->
+        <!--Progress Tab / Sorting Buttons-->
         <div id="partTab" class="btn-toolbar justify-content-between mb-4" role="group" style="width: 100%">
             <div class="btn-group mr-2" role="group">
                 <button id="pcbButton" type="button" class="btn btn-secondary" aria-haspopup="true"
@@ -107,6 +118,7 @@
             </div>
         </div>
 
+        <!--Table to list products-->
         <div id="product-table" class="itemlist">
             <!-- Example card
             <div class="card mb-2" style="width: 100%;">
