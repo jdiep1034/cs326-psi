@@ -83,7 +83,7 @@ async function pcbButtons() {
             document.getElementById("pcbButton").disabled = true;
             document.getElementById("caseButton").disabled = false;
 
-            document.getElementById("userInstruction").innerHTML = "<b>Select a <u>Case</u> of your choice to proceed to cases.</b>";
+            document.getElementById("userInstruction").innerHTML = "<b>Select a <u><span style='color:darkcyan'>Case</span></u> of your choice to proceed to cases.</b>";
 
             await listParts("./caseProducts");
             await caseButtons();
@@ -108,7 +108,7 @@ async function caseButtons() {
             document.getElementById("caseButton").disabled = true;
             document.getElementById("ksButton").disabled = false;
 
-            document.getElementById("userInstruction").innerHTML = "<b>Select a <u>Keyswitch</u> of your choice to proceed to keycaps.</b>";
+            document.getElementById("userInstruction").innerHTML = "<b>Select a <u><span style='color:darkcyan'>Keyswitch</span></u> of your choice to proceed to keycaps.</b>";
 
             await listParts("./keySwitchProducts");
             await ksButtons();
@@ -133,7 +133,7 @@ async function ksButtons() {
             document.getElementById("ksButton").disabled = true;
             document.getElementById("kcButton").disabled = false;
 
-            document.getElementById("userInstruction").innerHTML = "<b>Select a <u>Keycap</u> of your choice to proceed to cables.</b>";
+            document.getElementById("userInstruction").innerHTML = "<b>Select a <u><span style='color:darkcyan'>Keycap</span></u> of your choice to proceed to cables.</b>";
 
             await listParts("./keyCapProducts");
             await kcButtons();
@@ -158,7 +158,7 @@ async function kcButtons() {
             document.getElementById("kcButton").disabled = true;
             document.getElementById("cableButton").disabled = false;
 
-            document.getElementById("userInstruction").innerHTML = "<b>Select a <u>Cable</u> of your choice to finish.</b>";
+            document.getElementById("userInstruction").innerHTML = "<b>Select a <u><span style='color:darkcyan'>Cable</span></u> of your choice to finish.</b>";
 
             await listParts("./cableProducts");
             await cableButtons();
@@ -185,7 +185,7 @@ async function cableButtons() {
             document.getElementById("cableButton").disabled = true;
 
             document.getElementById("userInstruction").innerHTML = "<b>Build complete.</b>";
-            document.getElementById("uwarning").innerHTML = "<b>See your build by clicking on 'My Profile' at the top right of your screen.</b>";
+            document.getElementById("warning").innerHTML = "<b>See your build by clicking on 'My Profile' at the top right of your screen.</b>";
         });
     }
 }
@@ -222,7 +222,7 @@ window.addEventListener("load", async function () {
 
         document.getElementById("pcbButton").disabled = false;
 
-        document.getElementById("userInstruction").innerHTML = "<b>Select a <u>PCB</u> of your choice to proceed to cases.</b>";
+        document.getElementById("userInstruction").innerHTML = "<b>Select a <u><span style='color:darkcyan'>PCB</span></u> of your choice to proceed to cases.</b>";
 
         await listParts("./pcbProducts");
         await pcbButtons();
