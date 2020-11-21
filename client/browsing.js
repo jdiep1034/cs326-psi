@@ -73,6 +73,7 @@ async function pcbBack() {
     const backButton = document.getElementById("backButton");
     backButton.style.visibility = "hidden";
 
+    backButton.addEventListener('click', pcbBack);
     backButton.removeEventListener('click', caseBack);
 
     document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>PCB</span> of your choice to proceed to cases.</b>";
@@ -88,6 +89,7 @@ async function caseBack() {
     document.getElementById("ksButton").disabled = true;
     const backButton = document.getElementById("backButton");
 
+    backButton.addEventListener('click', caseBack);
     backButton.removeEventListener('click', ksBack);
 
     document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Case</span> of your choice to proceed to cases.</b>";
@@ -103,6 +105,7 @@ async function ksBack() {
     document.getElementById("ksButton").disabled = false;
     const backButton = document.getElementById("backButton");
 
+    backButton.addEventListener('click', ksBack);
     backButton.removeEventListener('click', kcBack);
 
     document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Keyswitch</span> of your choice to proceed to cases.</b>";
@@ -118,6 +121,7 @@ async function kcBack() {
     document.getElementById("kcButton").disabled = false;
     const backButton = document.getElementById("backButton");
 
+    backButton.addEventListener('click', kcBack);
     backButton.removeEventListener('click', cableBack);
 
     document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Keycap</span> of your choice to proceed to cases.</b>";
@@ -133,7 +137,7 @@ async function cableBack() {
     document.getElementById("cableButton").disabled = false;
     const backButton = document.getElementById("backButton");
 
-    backButton.removeEventListener('click', cableBack);
+    backButton.addEventListener('click', cableBack);
 
     document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Cable</span> of your choice to proceed to cases.</b>";
 
