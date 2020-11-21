@@ -30,7 +30,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 // let userFound;
-let user;
+let user; // TODO, Make this not global.
 
 // let build = {};
 
@@ -111,7 +111,10 @@ app.get('/switches', (req, res) => {
     res.send('Switch data I guess?');
 });
 
+
+
 // This receives post requests. Dummy response for now.
+// TODO: Have this return the proper database entry.
 app.post('/updateParts', checkLoggedIn, (req, res) => {
     res.send('Post Request Received');
 });
@@ -121,6 +124,7 @@ app.post('/removePart', (req, res) => {
 });
 
 // Modify this to display the actual build
+// TODO Have this return the proper database entry
 app.get('/userParts', (req, res) => {
     console.log("Trying to send: JSON response data");
     res.writeHead(200, { 'Content-Type': 'text/json' });
