@@ -69,6 +69,7 @@ async function listParts(fetchPath) {
 async function back(number) {
     const backButton = document.getElementById("backButton");
     if (number === 0) {
+        backButton.removeEventListener('click',async ()=>{});
         backButton.addEventListener('click', async () => {
             cleanTable();
 
@@ -82,6 +83,7 @@ async function back(number) {
             await pcbButtons();
         });
     } else if (number === 1) {
+        backButton.removeEventListener('click',async ()=>{});
         backButton.addEventListener('click', async () => {
             cleanTable();
 
@@ -95,6 +97,7 @@ async function back(number) {
             await caseButtons();
         });
     } else if (number === 2) {
+        backButton.removeEventListener('click',async ()=>{});
         backButton.addEventListener('click', async () => {
             cleanTable();
 
@@ -108,6 +111,7 @@ async function back(number) {
             await ksButtons();
         });
     } else if (number === 3) {
+        backButton.removeEventListener('click',async ()=>{});
         backButton.addEventListener('click', async () => {
             cleanTable();
 
@@ -121,6 +125,7 @@ async function back(number) {
             await kcButtons();
         });
     } else if (number === 4) {
+        backButton.removeEventListener('click',async ()=>{});
         backButton.addEventListener('click', async () => {
             cleanTable();
 
