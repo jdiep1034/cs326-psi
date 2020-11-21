@@ -137,6 +137,7 @@ async function cableBack() {
     const backButton = document.getElementById("backButton");
 
     backButton.addEventListener('click', kcBack);
+    backButton.removeEventListener('click', cableBack);
 
     document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Cable</span> of your choice to proceed to cases.</b>";
 
