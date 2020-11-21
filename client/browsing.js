@@ -159,6 +159,7 @@ async function pcbButtons() {
             const response = await fetch('/updateParts', {
                 method: 'POST',
                 body: JSON.stringify({
+                    partType: 'pcb',
                     partID: btnArray[i].id
                 })
             });
@@ -188,9 +189,10 @@ async function caseButtons() {
     let btnArray = document.getElementsByClassName("addToBuild");
     for (let i = 0; i < btnArray.length; i++) {
         btnArray[i].addEventListener('click', async () => {
-            const response = await fetch('/updateParts', {
+            await fetch('/updateParts', {
                 method: 'POST',
                 body: JSON.stringify({
+                    partType: 'case',
                     partID: btnArray[i].id
                 })
             });
@@ -223,6 +225,7 @@ async function ksButtons() {
             const response = await fetch('/updateParts', {
                 method: 'POST',
                 body: JSON.stringify({
+                    partType: 'switch',
                     partID: btnArray[i].id
                 })
             });
@@ -255,6 +258,7 @@ async function kcButtons() {
             const response = await fetch('/updateParts', {
                 method: 'POST',
                 body: JSON.stringify({
+                    partType: 'keycap',
                     partID: btnArray[i].id
                 })
             });
@@ -287,6 +291,7 @@ async function cableButtons() {
             const response = await fetch('/updateParts', {
                 method: 'POST',
                 body: JSON.stringify({
+                    partType: 'cable',
                     partID: btnArray[i].id
                 })
             });
@@ -355,6 +360,10 @@ window.addEventListener("load", async function () {
 
         await listParts("./pcbProducts");
         await pcbButtons();
+    });
+
+    document.getElementById('cbuildButton').addEventListener('click', async () => {
+        await fetch('/insertBuild');
     });
 
     /*

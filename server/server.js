@@ -32,13 +32,7 @@ const port = process.env.PORT || 8080;
 // let userFound;
 let user; // TODO, Make this not global.
 
-let build = {
-    pcbPart: null,
-    casePart: null,
-    switchPart: null,
-    keycapPart: null,
-    cablePart: null
-};
+
 
 const strategy = new LocalStrategy(
     async (username, password, done) => {
@@ -118,12 +112,45 @@ app.get('/switches', (req, res) => {
 });
 
 
+let build = {
+    pcb: null,
+    case: null,
+    switch: null,
+    keycap: null,
+    cable: null
+};
 
 // This receives post requests. Dummy response for now.
 // TODO: Have this return the proper database entry.
-app.post('/updateParts', checkLoggedIn, (req, res) => {
+app.post('/updateParts', (req, res) => {
     // Add pcbPart to data object. 
-    res.send('Post Request Received');
+    console.log('starting post');
+    let body = '';
+    req.on('data', data => body += data);
+    req.on('end', async () => {
+        const data = JSON.parse(body);
+        console.log("Post request handling");
+        console.log(data);
+
+        build[data.partType] = parseInt(data.partID, 10);
+        console.log(build);
+
+        res.writeHead(200);
+        res.end('Post Request Received');
+    });
+
+    // res.send('Post Request Received');
+});
+
+app.get('/insertBuild', checkLoggedIn, (req, res) => {
+    console.log('Trying insert');
+    if (build.pcb && build.case && build.switch && build.keycap && build.cable) {
+        console.log('Inserting build in table');
+        db.addBuild(user.buildid, build.pcb, build.case, build.switch, build.keycap, build.cable);
+    } else {
+        console.log('Failed insert');
+    }
+
 });
 
 app.post('/removePart', (req, res) => {
