@@ -51,8 +51,8 @@ async function getCables() {
     return await connectAndRun(db => db.any('SELECT * FROM Cables;'));
 }
 
-async function getSpecificPcb(buildID) {
-    return await connectAndRun(db => db.any('SELECT * FROM PCBs WHERE buildID=$1;', [buildID]));
+async function getSpecificPcb(itemID) {
+    return await connectAndRun(db => db.any('SELECT * FROM PCBs WHERE itemID=$1;', [itemID]));
 }
 
 async function findUser(username) {
@@ -71,13 +71,15 @@ async function addBuild(buildID, pcbID, caseID, switchID, keycapID, cableID) {
 // Retrieve a table of cases compatible with a chosen pcb
 // Return value: List of objects, each containing a tuple of the table
 async function getCasesFromPCBs(pcb_size) {
-    return await connectAndRun(db => db.any('SELECT c.itemId, c.partname, c.partDescription, c.pcb_size FROM pcbs p join cases c on p.PCB_size=c.PCB_size WHERE p.PCB_size=$1;', [pcb_size]));
+    // return await connectAndRun(db => db.any('SELECT c.itemId, c.image, c.partname, c.partDescription, c.pcb_size, c.price, c.purchase_link FROM pcbs p join cases c on p.PCB_size=c.PCB_size WHERE p.PCB_size=$1;', [pcb_size]));
+    return await connectAndRun(db => db.any('SELECT * FROM cases WHERE PCB_size=$1;', [pcb_size]));
 }
 
 // Retrieve a tables of switches compatible with a chosen pcb
 // Return value: List of objects, each containing a tuple of the table
 async function getSwitchesFromPCBs(switch_type) {
-    return await connectAndRun(db => db.any('SELECT s.itemID, s.partname, s.partdescription, s.switch_type FROM pcbs p join switches s on p.switch_type=s.switch_type WHERE p.switch_type=$1;', [switch_type]));
+    // return await connectAndRun(db => db.any('SELECT s.itemID, s.image, s.partname, s.partdescription, s.switch_type, s.price, s.purchase_link FROM pcbs p join switches s on p.switch_type=s.switch_type WHERE p.switch_type=$1;', [switch_type]));
+    return await connectAndRun(db => db.any('SELECT * FROM switches WHERE switch_type=$1;', [switch_type]));
 }
 
 
@@ -121,6 +123,7 @@ module.exports = {
     getBuild: getBuild,
     newBuild: newBuild,
     deleteBuild: deleteBuild,
-    addBuild: addBuild
+    addBuild: addBuild,
+    getSpecificPcb: getSpecificPcb
 
 };
