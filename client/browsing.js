@@ -180,8 +180,6 @@ async function cableButtons() {
 
             cleanTable();
 
-            document.getElementById("partTab").style.visibility = hidden;
-
             document.getElementById("cableButton").disabled = true;
 
             document.getElementById("userInstruction").innerHTML = "<b>Build complete.</b>";
@@ -209,16 +207,12 @@ window.addEventListener("load", async function () {
     document.getElementById("kcButton").disabled = true;
     document.getElementById("cableButton").disabled = true;
 
-    document.getElementById("partTab").style.visibility = hidden;
-
     // when Build button is first clicked list pcbs and remove button
     document.getElementById("mainButton").addEventListener('click', async () => {
         cleanTable();
 
         const button = document.getElementById("mainButton");
         button.parentNode.removeChild(button);
-
-        document.getElementById("partTab").style.visibility = visible;
 
         document.getElementById("pcbButton").disabled = false;
 
