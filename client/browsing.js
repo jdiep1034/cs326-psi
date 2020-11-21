@@ -139,6 +139,12 @@ async function cableBack() {
     backButton.addEventListener('click', kcBack);
     backButton.removeEventListener('click', cableBack);
 
+    document.getElementById("partGroup").style.visibility = "visible";
+    document.getElementById("sortGroup").style.visibility = "visible";
+    document.getElementById("buildButtons").style.visibility = "hidden";
+    document.getElementById("rebuildButton").style.visibility = "hidden";
+    document.getElementById("cbuildButton").style.visibility = "hidden";
+
     document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Cable</span> of your choice to proceed to cases.</b>";
 
     await listParts("./cableProducts");
