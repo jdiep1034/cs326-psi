@@ -36,36 +36,38 @@ async function connectAndRun(task) {
 
 // The next 5 functions are generic select * statements for each table in the database. TODO: Add tables for login and profile
 async function getPCBs() {
-    return await connectAndRun(db => db.any('SELECT * FROM PCBs'));
+    return await connectAndRun(db => db.any('SELECT * FROM PCBs;'));
 }
 async function getCases() {
-    return await connectAndRun(db => db.any('SELECT * FROM Cases'));
+    return await connectAndRun(db => db.any('SELECT * FROM Cases;'));
 }
 async function getSwitches() {
-    return await connectAndRun(db => db.any('SELECT * FROM Switches'));
+    return await connectAndRun(db => db.any('SELECT * FROM Switches;'));
 }
 async function getkeyCaps() {
-    return await connectAndRun(db => db.any('SELECT * FROM keyCaps'));
+    return await connectAndRun(db => db.any('SELECT * FROM keyCaps;'));
 }
 async function getCables() {
-    return await connectAndRun(db => db.any('SELECT * FROM Cables'));
+    return await connectAndRun(db => db.any('SELECT * FROM Cables;'));
 }
 
 async function getSpecificPcb(buildID) {
-    return await connectAndRun(db => db.any('SELECT * FROM PCBs WHERE buildID=$1', [buildID]));
+    return await connectAndRun(db => db.any('SELECT * FROM PCBs WHERE buildID=$1;', [buildID]));
 }
 
 async function findUser(username) {
 
-    const r = await connectAndRun(db => db.any('SELECT * FROM profiles where username=$1', [username]));
+    const r = await connectAndRun(db => db.any('SELECT * FROM profiles where username=$1;', [username]));
     return r;
 }
 
 async function addUser(email, username, buildID, password, salt) {
-    return await connectAndRun(db => db.any('INSERT INTO profiles VALUES ($1, $2, $3,$4,$5)', [email, username, buildID, password, salt]));
+    return await connectAndRun(db => db.any('INSERT INTO profiles (email, username, hashedpwd, salt) VALUES ($1, $2, $3, $4);', [email, username, password, salt]));
 }
 
-
+async function addBuild(buildID, pcbID, caseID, switchID, keycapID, cableID) {
+    return await connectAndRun(db => db.any('INSERT INTO Builds VALUES ($1, $2, $3, $4, $5, $6);', [buildID, pcbID, caseID, switchID, keycapID, cableID]));
+}
 // Retrieve a table of cases compatible with a chosen pcb
 // Return value: List of objects, each containing a tuple of the table
 async function getCasesFromPCBs(pcb_size) {
@@ -118,6 +120,7 @@ module.exports = {
     addUser: addUser,
     getBuild: getBuild,
     newBuild: newBuild,
-    deleteBuild: deleteBuild
+    deleteBuild: deleteBuild,
+    addBuild: addBuild
 
 };
