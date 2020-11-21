@@ -31,6 +31,9 @@ const port = process.env.PORT || 8080;
 
 // let userFound;
 let user;
+
+// let build = {};
+
 const strategy = new LocalStrategy(
     async (username, password, done) => {
 
@@ -109,7 +112,7 @@ app.get('/switches', (req, res) => {
 });
 
 // This receives post requests. Dummy response for now.
-app.post('/updateParts', (req, res) => {
+app.post('/updateParts', checkLoggedIn, (req, res) => {
     res.send('Post Request Received');
 });
 
@@ -117,6 +120,7 @@ app.post('/removePart', (req, res) => {
     res.send('Post Request Received');
 });
 
+// Modify this to display the actual build
 app.get('/userParts', (req, res) => {
     console.log("Trying to send: JSON response data");
     res.writeHead(200, { 'Content-Type': 'text/json' });
@@ -286,7 +290,6 @@ app.post('/register', (req, res) => {
 app.get('/register',
     (req, res) => res.sendFile('client/register.html',
         { 'root': __dirname }));
-
 
 
 // Start the server

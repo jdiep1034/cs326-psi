@@ -51,6 +51,10 @@ async function getCables() {
     return await connectAndRun(db => db.any('SELECT * FROM Cables'));
 }
 
+async function getSpecificPcb(buildID) {
+    return await connectAndRun(db => db.any('SELECT * FROM PCBs WHERE buildID=$1', [buildID]));
+}
+
 async function findUser(username) {
 
     const r = await connectAndRun(db => db.any('SELECT * FROM profiles where username=$1', [username]));
