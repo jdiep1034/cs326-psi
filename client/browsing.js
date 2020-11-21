@@ -289,7 +289,7 @@ async function cableButtons() {
             // Hide/show correct tabs to display build progress
             document.getElementById("partGroup").style.visibility = "hidden";
             document.getElementById("sortGroup").style.visibility = "hidden";
-            document.getElementById("builButtons").style.visibility = "visible";
+            document.getElementById("buildButtons").style.visibility = "visible";
             const backButton = document.getElementById("backButton");
 
             // Back button function
