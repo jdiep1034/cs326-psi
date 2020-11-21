@@ -73,8 +73,7 @@ async function pcbBack() {
     const backButton = document.getElementById("backButton");
     backButton.style.visibility = "hidden";
 
-    backButton.addEventListener('click', pcbBack);
-    backButton.removeEventListener('click', caseBack);
+    backButton.removeEventListener('click', pcbBack);
 
     document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>PCB</span> of your choice to proceed to cases.</b>";
 
@@ -89,8 +88,8 @@ async function caseBack() {
     document.getElementById("ksButton").disabled = true;
     const backButton = document.getElementById("backButton");
 
-    backButton.addEventListener('click', caseBack);
-    backButton.removeEventListener('click', ksBack);
+    backButton.addEventListener('click', pcbBack);
+    backButton.removeEventListener('click', caseBack);
 
     document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Case</span> of your choice to proceed to cases.</b>";
 
@@ -105,8 +104,8 @@ async function ksBack() {
     document.getElementById("ksButton").disabled = false;
     const backButton = document.getElementById("backButton");
 
-    backButton.addEventListener('click', ksBack);
-    backButton.removeEventListener('click', kcBack);
+    backButton.addEventListener('click', caseBack);
+    backButton.removeEventListener('click', ksBack);
 
     document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Keyswitch</span> of your choice to proceed to cases.</b>";
 
@@ -121,8 +120,8 @@ async function kcBack() {
     document.getElementById("kcButton").disabled = false;
     const backButton = document.getElementById("backButton");
 
-    backButton.addEventListener('click', kcBack);
-    backButton.removeEventListener('click', cableBack);
+    backButton.addEventListener('click', ksBack);
+    backButton.removeEventListener('click', kcBack);
 
     document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Keycap</span> of your choice to proceed to cases.</b>";
 
@@ -137,7 +136,7 @@ async function cableBack() {
     document.getElementById("cableButton").disabled = false;
     const backButton = document.getElementById("backButton");
 
-    backButton.addEventListener('click', cableBack);
+    backButton.addEventListener('click', kcBack);
 
     document.getElementById("userInstruction").innerHTML = "<b>Select a <span id='partWord'>Cable</span> of your choice to proceed to cases.</b>";
 
@@ -288,9 +287,9 @@ async function cableButtons() {
             cleanTable();
 
             // Hide/show correct tabs to display build progress
-            document.getElementById("partTab").style.visibility = "hidden";
-            document.getElementById("rebuildButton").style.visibility = "visible";
-            document.getElementById("cbuildButton").style.visibility = "visible";
+            document.getElementById("partGroup").style.visibility = "hidden";
+            document.getElementById("sortGroup").style.visibility = "hidden";
+            document.getElementById("builButtons").style.visibility = "visible";
             const backButton = document.getElementById("backButton");
 
             // Back button function
