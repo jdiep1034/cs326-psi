@@ -16,8 +16,8 @@ async function listParts(fetchPath) {
         img.src = part.imgSource;
         img.className = "card-img-top";
         img.alt = part.imgDesc;
-        img.style.height = '150px';
-        img.style.width = '150px';
+        img.style.height = '200px';
+        img.style.width = '200px';
 
         // part body
         const body = document.createElement('div');
