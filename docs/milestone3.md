@@ -98,6 +98,7 @@ Profiles table:
 | buildID     | SERIAL PRIMARY KEY           | The id of the user's build. To be used for lookup in the builds table. Auto increments starting at 1 on insertion to ensure every buildID is unique. |
 | hashedpwd   | varchar(300)                 | The hashed password + salt of the user, generated with minicrypt.js                                                                                  |
 | salt        | varchar(300)                 | The salt of the user, generated with minicrypt.js                                                                                                    |
+
 Builds table:
 | Column Name  | Data Type                                    | Description                                                                          |
 |--------------|----------------------------------------------|--------------------------------------------------------------------------------------|
