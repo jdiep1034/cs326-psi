@@ -12,6 +12,7 @@
 ### Justin:
 	Helped plan how the user would interact and navigate through the build page.
     Gathered data (img url, item name, item description, item type, item price, page url) for all parts stored in database.
+		data.sql
     Researched info for completion of Guide Page.
         edited infopage.html and inserted gathered info.
     Implemented front-end of Build page 
@@ -27,7 +28,7 @@
 	Added register user functionality and it's endpoint (INSERT into profiles table)
 	
 	
-	
+#### Equal work but Justin committed more often with little changes whereas Andrew and Long committed less often with bigger changes
 
 
 # Part 1: Database Implementation
