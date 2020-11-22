@@ -114,60 +114,80 @@ Login system works as done in the class exercise. Though the pages themselves lo
 
 GET ENDPOINTS:
 
+
 /profilePage.html
+
 /profile.js
+
 These two endpoints are now served privately since they require user login to access.
 
 /insertBuild
+
 Inserts the global variable builds into the builds table. Is called client side after ensuring global variable is properly set (and also has checking to ensure its set)
 Only works when logged in
 
 /removePart
+
 Deletes the build for the current user from the builds table. Retrieves the buildID from global user object
 
 /userparts
+
 Retrieves relevant data for the profile page's build table. IE: For actually displaying all the parts you choose for your build.
 It does this by querying the builds table for all the relevant part ids for each part of the current user's build. Then querying each part table for the relevant information and sending it to the client.
 
 /pcbProducts
+
 Retrieves all pcbs for display on the browsing page
 
 /caseProducts
+
 Retreives all cases compatible with the chosen pcb. Client enforces this is called after /pcbProducts sets a variable this needs.
 
 /keySwitchProducts
+
 Same as above, but for the switches table
 
 /keyCapProducts
+
 Retrieves all keycaps. Our small dataset  all keycaps compatible with all switches as non-compatible keycaps are very rare.
 
 /cableProducts
+
 Retreives all cables. Cables are all compatible.
 
 /userInfo
+
 User data to be retreived on the profile page.
 
 /
+
 Root directory now serves the login page by default
 
 /login
+
 Takes you to login page. Same as exercise
 
 /logout
+
 Logs you out
 
 /register
+
 sends register.html page
 
 POST ENDPOINTS:
+
 /updateParts
+
 Updates a global variable build which stores relevant data to later be inserted into the builds table
 
 /login
+
 On succesful login, redirects to profilepage.html
 on fail, redirects to /login
 
 /register
+
 Registers a user. Same as exercise but with a proper database. 
 
 # Part 3: Deployment
