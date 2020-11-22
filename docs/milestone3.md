@@ -192,3 +192,5 @@ Registers a user. Same as exercise but with a proper database.
 
 # Part 3: Deployment
 https://psi-326.herokuapp.com/
+
+For local run. Pull from master. Create a local database and change the relevant credentials in dbManagement.js. Copy paste the create table commands above. Import the data file that we hopefully remember to put on github. Run npm i to install all dependencies. Run server.js with node.
