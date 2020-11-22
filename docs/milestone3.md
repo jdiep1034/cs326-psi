@@ -28,7 +28,7 @@
 	Added register user functionality and it's endpoint (INSERT into profiles table)
 	
 	
-	
+#### Equal work but Justin committed more often with little changes whereas Andrew and Long committed less often with bigger changes
 
 
 # Part 1: Database Implementation
