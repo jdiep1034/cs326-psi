@@ -19,6 +19,14 @@
         process of making their own build by selecting a part and continuing.
 
 ### Long:
+	Helped write the majority of planning for part 3.
+	Implemented login and logout functionality 
+	Add authentication so that if a user is not logged in, he/she can't see the website
+	Set up endpoints for login and logout and connect them to database table (profiles)
+	Edited info, browsing page to get data from profiles table
+	Added register user functionality and it's endpoint (INSERT into profiles table)
+	
+	
 	
 
 
