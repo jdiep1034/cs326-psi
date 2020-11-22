@@ -1,5 +1,3 @@
-//const db = require('../client/dbManagement');
-
 // Function to add event listener to remove buttons
 async function addToRemButton() {
     const btnArray = document.getElementsByClassName("remove");
@@ -12,7 +10,7 @@ async function addToRemButton() {
                 })
             });
             console.log(response);
-            });
+        });
     }
 }
 
@@ -30,25 +28,28 @@ window.addEventListener("load", async function () {
     headerTr.appendChild(headerTh);
 
     const headerId = document.createElement('th');
+    const headerImg = document.createElement('th');
     const headerName = document.createElement('th');
-    const headerType = document.createElement('th');
+    // const headerType = document.createElement('th');
     const headerCost = document.createElement('th');
     const headerLink = document.createElement('th');
-    const headerRemove = document.createElement('th');
+    // const headerRemove = document.createElement('th');
 
     headerId.innerText = "Product ID";
+    headerImg.innerText = 'Image';
     headerName.innerText = "Name";
-    headerType.innerText = "Type";
+    // headerType.innerText = "Type";
     headerCost.innerText = "Cost";
     headerLink.innerText = "Link";
-    headerRemove.innerText = "Remove Item";
+    // headerRemove.innerText = "Remove Item";
 
     headerTr.appendChild(headerId);
+    headerTr.appendChild(headerImg);
     headerTr.appendChild(headerName);
-    headerTr.appendChild(headerType);
+    // headerTr.appendChild(headerType);
     headerTr.appendChild(headerCost);
     headerTr.appendChild(headerLink);
-    headerTr.appendChild(headerRemove);
+    // headerTr.appendChild(headerRemove);
 
     document.getElementById('user-parts-table').appendChild(headerTr);
 
@@ -59,33 +60,49 @@ window.addEventListener("load", async function () {
         const th = document.createElement('th');
         const id = document.createElement('td');
         const name = document.createElement('td');
-        const type = document.createElement('td');
+        // const type = document.createElement('td');
+        const image = document.createElement('td');
         const cost = document.createElement('td');
         const link = document.createElement('td');
-        const remove = document.createElement('button');
+        // const remove = document.createElement('button');
 
         th.scope = "row";
         th.innerText = rowNum.toString();
         rowNum += 1;
 
-        remove.className = "btn btn-danger remove";
-        remove.type = "button";
-        remove.id = userPart.id;
+        // remove.className = "btn btn-danger remove";
+        // remove.type = "button";
+        // remove.id = userPart.id;
 
         id.innerText = userPart.id;
         name.innerText = userPart.name;
-        type.innerText = userPart.type;
-        cost.innerText = "$".concat(userPart.cost);
-        link.innerText = userPart.link;
-        remove.innerText = "Remove";
+
+        // Creating an image for the table
+        const innerImage = document.createElement('img');
+        innerImage.src = userPart.imgSource;
+        innerImage.className = 'card-img-top';
+        innerImage.style.width = '200px';
+        innerImage.style.height = '200px';
+        image.appendChild(innerImage);
+
+        // Creating link attribute
+        const innerLink = document.createElement('a');
+        innerLink.setAttribute('href', userPart.link);
+        innerLink.innerHTML = 'Purchase';
+
+
+        // Creating the other stuff
+        cost.innerText = "$".concat(userPart.price);
+        link.append(innerLink);
+        // remove.innerText = "Remove";
 
         tr.appendChild(th);
         tr.appendChild(id);
+        tr.appendChild(image);
         tr.appendChild(name);
-        tr.appendChild(type);
         tr.appendChild(cost);
         tr.appendChild(link);
-        tr.appendChild(remove);
+        // tr.appendChild(remove);
 
         document.getElementById('user-parts-table').appendChild(tr);
     }
@@ -97,9 +114,9 @@ window.addEventListener("load", async function () {
     document.getElementById('navbarUsername').innerText = userInfoData.username;
     document.getElementById('username').innerText = userInfoData.username;
     document.getElementById('name').innerText = userInfoData.name;
-    document.getElementById('bday').innerText = userInfoData.bday;
+    // document.getElementById('bday').innerText = userInfoData.bday;
     document.getElementById('email').innerText = userInfoData.email;
-    document.getElementById('phone').innerText = userInfoData.phone;
+    // document.getElementById('phone').innerText = userInfoData.phone;
 
     await addToRemButton();
 });

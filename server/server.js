@@ -1,7 +1,7 @@
 // File Stream stuff
-// const fs = require('fs');
-// const readFileSync = fs.readFileSync;
-// const existsSync = fs.existsSync;
+const fs = require('fs');
+const readFileSync = fs.readFileSync;
+const existsSync = fs.existsSync;
 
 // server webpage serving and endpoint handling
 const express = require('express');
@@ -29,16 +29,10 @@ const db = require('../client/dbManagement');
 const app = express();
 const port = process.env.PORT || 8080;
 
-// let userFound;
-let user; // TODO, Make this not global.
+// Global variable keeping track of the currently logged in user
+let user; 
 
-let build = {
-    pcbPart: null,
-    casePart: null,
-    switchPart: null,
-    keycapPart: null,
-    cablePart: null
-};
+
 
 const strategy = new LocalStrategy(
     async (username, password, done) => {
@@ -99,18 +93,30 @@ app.use(express.static('public'));
 app.use(express.static('client'));
 
 
-// Serve BrowsePage.html at the root directory
 
-// app.get('/', (req, res) => {
-//     const path = 'client/BrowsePage.html';
-//     console.log('Trying to serve: BrowsePage');
-//     if (existsSync(path)) {
-//         res.writeHead(200, { 'Content-Type': 'text/html' });
-//         res.write(readFileSync(path));
-//         res.end();
-//     }
-//     // res.send(readFileSync(path));
-// });
+// Profile Page is now a private page until logged in.
+app.get('/profilePage.html', checkLoggedIn, (req, res) => {
+    const path = 'private/profilePage.html';
+    console.log('Trying to serve: profilePage');
+    if (existsSync(path)) {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(readFileSync(path));
+        res.end();
+    }
+    // res.send(readFileSync(path));
+});
+
+app.get('/profile.js', checkLoggedIn, (req, res) => {
+    const path = 'private/profile.js';
+    console.log('Trying to serve: profilePage');
+    if (existsSync(path)) {
+        res.writeHead(200, { 'Content-Type': 'text/javascript' });
+        res.write(readFileSync(path));
+        res.end();
+    }
+    // res.send(readFileSync(path));
+});
+
 
 // Dummy testing endpoint that will be removed eventually
 app.get('/switches', (req, res) => {
@@ -118,30 +124,77 @@ app.get('/switches', (req, res) => {
 });
 
 
+const build = {
+    pcb: null,
+    pcbSwitchType: null,
+    pcbCaseType: null,
+    case: null,
+    switch: null,
+    keycap: null,
+    cable: null
+};
 
-// This receives post requests. Dummy response for now.
-// TODO: Have this return the proper database entry.
-app.post('/updateParts', checkLoggedIn, (req, res) => {
+// Updates the above global variable build with each call.
+// Clientside access to this enforces each part of build is updated in order.
+app.post('/updateParts', (req, res) => {
     // Add pcbPart to data object. 
-    res.send('Post Request Received');
+    console.log('starting post');
+    let body = '';
+    req.on('data', data => body += data);
+    req.on('end', async () => {
+        const data = JSON.parse(body);
+        console.log("Post request handling");
+        console.log(data);
+
+        build[data.partType] = parseInt(data.partID, 10);
+        console.log(build);
+
+        // Store compatibility parameters if receiving pcb information
+        if (data.partType === 'pcb') {
+            const tuple = await db.getSpecificPcb(build[data.partType]);
+            build.pcbSwitchType = tuple[0].switch_type;
+            build.pcbCaseType = tuple[0].pcb_size;
+        }
+        res.writeHead(200);
+        res.end('Post Request Handled');
+    });
+
 });
 
-app.post('/removePart', (req, res) => {
-    res.send('Post Request Received');
+// Adds the build from the global variable build to the builds table with the build id from global variable user.
+// Checks to make sure all variables are initializedi in build and can only be called if the user variable is set
+app.get('/insertBuild', checkLoggedIn, (req, res) => {
+    console.log('Trying insert');
+    if (build.pcb && build.case && build.switch && build.keycap && build.cable) {
+        console.log('Inserting build in table');
+        db.addBuild(user.buildid, build.pcb, build.case, build.switch, build.keycap, build.cable);
+        res.end();
+    } else {
+        console.log('Failed insert');
+        res.end();
+    }
 });
 
-// Modify this to display the actual build
-// TODO Have this return the proper database entry
-app.get('/userParts', (req, res) => {
+// Removes the build for the current user.
+// Should probably be renamed to removeBuild but I don't feel like checking if that breaks something.
+app.get('/removePart', (req, res) => {
+    db.deleteBuild(user.buildid);
+    res.send('Post Request handled');
+});
+
+// Retrieves all the parts from their respective table using the ids stored in the builds table with the id from user
+app.get('/userParts', async (req, res) => {
     console.log("Trying to send: JSON response data");
+    const tuple = await db.getBuild(user.buildid);
+    const pcbPart = await db.getSpecificPcb(tuple[0].pcbpartid);
+    const casePart = await db.getSpecificCase(tuple[0].casepartid);
+    const switchPart = await db.getSpecificSwitch(tuple[0].switchpartid);
+    const keyCapPart = await db.getSpecificKeycap(tuple[0].keycappartid);
+    const cablePart = await db.getSpecificCable(tuple[0].cablepartid);
+    console.log(pcbPart);
     res.writeHead(200, { 'Content-Type': 'text/json' });
-    res.write(JSON.stringify([
-        { id: 34, name: "Gateron Red", type: "linear-switch", cost: faker.commerce.price(), link: faker.internet.url() },
-        { id: 132, name: "HyperX Pudding Keycaps", type: "cherry-keycaps", cost: faker.commerce.price(), link: faker.internet.url() },
-        { id: 138, name: "Hot-swappable Optical PCB", type: "hot-swap-optical-pcb", cost: faker.commerce.price(), link: faker.internet.url() },
-        { id: 382, name: "Coorded USB to USB C cable", type: "cable", cost: faker.commerce.price(), link: faker.internet.url() }]));
+    res.write(JSON.stringify(convertDbToObject([pcbPart[0], casePart[0], switchPart[0], keyCapPart[0], cablePart[0]], pcbObject)));
     res.end();
-    // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
 });
 app.get('/socialGet', (req, res) => {
     console.log("Trying to send: JSON response data");
@@ -186,8 +239,10 @@ function writeBlob(res) {
 
 // Convert a pcb tuple obtained from a SQL table into an object with correctly named keys
 function pcbObject(object) {
-    return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price };
+    return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price, link: object.purchase_link};
 }
+
+// These can be modified for more specific stuff, but they already do everything we need them to.
 function caseObject(object) {
     return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price };
 }
@@ -218,7 +273,7 @@ function writeDbObject(res, sqlObject, f) {
 // const x = {imgSource : "asdfoiwje.com", imgDesc : "picture of part", name : "name of part", id: unique id number, desc : "part description"}
 app.get('/caseProducts', async (req, res) => {
     // writeBlob(res);
-    const sqlObject = await db.getCases();
+    const sqlObject = await db.getCasesFromPCBs(build.pcbCaseType);
     writeDbObject(res, sqlObject, caseObject);
     res.end();
 });
@@ -230,7 +285,8 @@ app.get('/pcbProducts', async (req, res) => {
 });
 app.get('/keySwitchProducts', async (req, res) => {
     // writeBlob(res);
-    const sqlObject = await db.getSwitches();
+    // const sqlObject = await db.getSwitches();
+    const sqlObject = await db.getSwitchesFromPCBs(build.pcbSwitchType);
     writeDbObject(res, sqlObject, switchObject);
     res.end();
 });
