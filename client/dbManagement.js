@@ -55,6 +55,18 @@ async function getSpecificPcb(itemID) {
     return await connectAndRun(db => db.any('SELECT * FROM PCBs WHERE itemID=$1;', [itemID]));
 }
 
+async function getSpecificCase(itemID) {
+    return await connectAndRun(db => db.any('SELECT * FROM cases WHERE itemID=$1;', [itemID]));
+}
+async function getSpecificSwitch(itemID) {
+    return await connectAndRun(db => db.any('SELECT * FROM switches WHERE itemID=$1;', [itemID]));
+}
+async function getSpecificKeycap(itemID) {
+    return await connectAndRun(db => db.any('SELECT * FROM keycaps WHERE itemID=$1;', [itemID]));
+}
+async function getSpecificCable(itemID) {
+    return await connectAndRun(db => db.any('SELECT * FROM cables WHERE itemID=$1;', [itemID]));
+}
 async function findUser(username) {
 
     const r = await connectAndRun(db => db.any('SELECT * FROM profiles where username=$1;', [username]));
@@ -92,7 +104,8 @@ async function getBuild(buildID) {
 
 // Use this to insert a new build into the build table
 async function newBuild(buildID, pcbID, caseID, switchID, keycapID, cableID) {
-    return await connectAndRun(db => db.none('INSERT INTO builds values($1, $2, $3);', [buildID, pcbID, caseID, switchID, keycapID, cableID]));
+    return await connectAndRun(db =>
+        db.none('INSERT INTO builds values($1, $2, $3);'[buildID, pcbID, caseID, switchID, keycapID, cableID]));
 }
 
 //Use this function to delete a build from the table
@@ -124,6 +137,10 @@ module.exports = {
     newBuild: newBuild,
     deleteBuild: deleteBuild,
     addBuild: addBuild,
-    getSpecificPcb: getSpecificPcb
+    getSpecificPcb: getSpecificPcb,
+    getSpecificCase: getSpecificCase,
+    getSpecificSwitch: getSpecificSwitch,
+    getSpecificKeycap: getSpecificKeycap,
+    getSpecificCable: getSpecificCable
 
 };

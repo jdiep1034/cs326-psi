@@ -354,6 +354,7 @@ window.addEventListener("load", async function () {
 
         await listParts("./pcbProducts");
         await pcbButtons();
+        await fetch('./removePart');
     });
 
     document.getElementById('cbuildButton').addEventListener('click', async () => {
