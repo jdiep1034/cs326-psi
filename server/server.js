@@ -8,7 +8,7 @@ const express = require('express');
 const expressSession = require('express-session');
 
 // data faking
-const faker = require('faker');
+// const faker = require('faker');
 
 // Login system
 const passport = require('passport');
@@ -118,10 +118,10 @@ app.get('/profile.js', checkLoggedIn, (req, res) => {
 });
 
 
-// Dummy testing endpoint that will be removed eventually
-app.get('/switches', (req, res) => {
-    res.send('Switch data I guess?');
-});
+// // Dummy testing endpoint that will be removed eventually
+// app.get('/switches', (req, res) => {
+//     res.send('Switch data I guess?');
+// });
 
 
 const build = {
@@ -196,17 +196,17 @@ app.get('/userParts', async (req, res) => {
     res.write(JSON.stringify(convertDbToObject([pcbPart[0], casePart[0], switchPart[0], keyCapPart[0], cablePart[0]], pcbObject)));
     res.end();
 });
-app.get('/socialGet', (req, res) => {
-    console.log("Trying to send: JSON response data");
-    res.writeHead(200, { 'Content-Type': 'text/json' });
-    res.write(JSON.stringify([
-        { date: "Oct 14, 2020", email: "john@email.com", bodyText: "I love reds" },
-        { date: "Nov 14, 1945", email: "mary@email.com", bodyText: "I can type faster than 100wpm" },
-        { date: "Sep 14, 2020", email: "cena@email.com", bodyText: "I type with 2 fingers" },
-        { date: "Aug 14, 2020", email: "cocojuice@email.com", bodyText: "I like using vintage keyboards" }]));
-    res.end();
-    // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
-});
+// app.get('/socialGet', (req, res) => {
+//     console.log("Trying to send: JSON response data");
+//     res.writeHead(200, { 'Content-Type': 'text/json' });
+//     res.write(JSON.stringify([
+//         { date: "Oct 14, 2020", email: "john@email.com", bodyText: "I love reds" },
+//         { date: "Nov 14, 1945", email: "mary@email.com", bodyText: "I can type faster than 100wpm" },
+//         { date: "Sep 14, 2020", email: "cena@email.com", bodyText: "I type with 2 fingers" },
+//         { date: "Aug 14, 2020", email: "cocojuice@email.com", bodyText: "I like using vintage keyboards" }]));
+//     res.end();
+//     // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
+// });
 function checkLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         // If we are authenticated, run the next route.
@@ -215,8 +215,8 @@ function checkLoggedIn(req, res, next) {
         res.redirect('/login.html');
     }
 }
-
-function blob() {
+// Deprecated functions
+/* function blob() {
     const imgSource = "https://cdn.shopify.com/s/files/1/1473/3902/products/658baabe15b30353f6c8386a00a112e1_52ab83c4-011c-41cf-b07e-df27d5038d0a_large.jpg?v=1584436526";
     const imgDesc = faker.commerce.productDescription();
     const name = faker.commerce.productName();
@@ -224,9 +224,10 @@ function blob() {
     const desc = faker.commerce.productDescription();
     const price = faker.commerce.price();
     return { imgSource: imgSource, imgDesc: imgDesc, name: name, id: id, desc: desc, price: price };
-}
-// eslint-disable-next-line no-unused-vars
-function writeBlob(res) {
+} */
+
+
+/* function writeBlob(res) {
     const array = [];
     for (let i = 0; i < 10; i++) {
         array.push(blob());
@@ -234,7 +235,7 @@ function writeBlob(res) {
     res.writeHead(200, { 'Content-Type': 'text/json' });
     res.write(JSON.stringify(array, null, 2));
     return;
-}
+} */
 
 
 // Convert a pcb tuple obtained from a SQL table into an object with correctly named keys
@@ -243,6 +244,7 @@ function pcbObject(object) {
 }
 
 // These can be modified for more specific stuff, but they already do everything we need them to.
+// A case of being more robust than needed.
 function caseObject(object) {
     return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price };
 }
