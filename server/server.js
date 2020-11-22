@@ -338,8 +338,8 @@ app.get('/login',
 
 // Handle logging out (takes us back to the login page).
 app.get('/logout', (req, res) => {
-    res.redirect('/login.html'); // back to login
     req.logout(); // Logs us out!
+    res.redirect('client/login.html'); // back to login
 });
 
 
