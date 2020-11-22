@@ -153,10 +153,10 @@ async function cableBack() {
 
 // Function to add eventlistener to all buttons on pcb page
 async function pcbButtons() {
-    let btnArray = document.getElementsByClassName("addToBuild");
+    const btnArray = document.getElementsByClassName("addToBuild");
     for (let i = 0; i < btnArray.length; i++) {
         btnArray[i].addEventListener('click', async () => {
-            const response = await fetch('/updateParts', {
+            await fetch('/updateParts', {
                 method: 'POST',
                 body: JSON.stringify({
                     partType: 'pcb',
@@ -186,7 +186,7 @@ async function pcbButtons() {
 
 // Function to add eventlistener to all buttons on case page
 async function caseButtons() {
-    let btnArray = document.getElementsByClassName("addToBuild");
+    const btnArray = document.getElementsByClassName("addToBuild");
     for (let i = 0; i < btnArray.length; i++) {
         btnArray[i].addEventListener('click', async () => {
             await fetch('/updateParts', {
@@ -219,10 +219,10 @@ async function caseButtons() {
 
 // Function to add eventlistener to all buttons on keyswitch page
 async function ksButtons() {
-    let btnArray = document.getElementsByClassName("addToBuild");
+    const btnArray = document.getElementsByClassName("addToBuild");
     for (let i = 0; i < btnArray.length; i++) {
         btnArray[i].addEventListener('click', async () => {
-            const response = await fetch('/updateParts', {
+            await fetch('/updateParts', {
                 method: 'POST',
                 body: JSON.stringify({
                     partType: 'switch',
@@ -252,10 +252,10 @@ async function ksButtons() {
 
 // Function to add eventlistener to all buttons on keycap page
 async function kcButtons() {
-    let btnArray = document.getElementsByClassName("addToBuild");
+    const btnArray = document.getElementsByClassName("addToBuild");
     for (let i = 0; i < btnArray.length; i++) {
         btnArray[i].addEventListener('click', async () => {
-            const response = await fetch('/updateParts', {
+            await fetch('/updateParts', {
                 method: 'POST',
                 body: JSON.stringify({
                     partType: 'keycap',
@@ -285,10 +285,10 @@ async function kcButtons() {
 
 // Function to add eventlistener to all buttons on cable page
 async function cableButtons() {
-    let btnArray = document.getElementsByClassName("addToBuild");
+    const btnArray = document.getElementsByClassName("addToBuild");
     for (let i = 0; i < btnArray.length; i++) {
         btnArray[i].addEventListener('click', async () => {
-            const response = await fetch('/updateParts', {
+            await fetch('/updateParts', {
                 method: 'POST',
                 body: JSON.stringify({
                     partType: 'cable',
