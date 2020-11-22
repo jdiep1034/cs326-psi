@@ -118,5 +118,10 @@ window.addEventListener("load", async function () {
     document.getElementById('email').innerText = userInfoData.email;
     // document.getElementById('phone').innerText = userInfoData.phone;
 
+    // Logout button
+    document.getElementById('logoutButton').addEventListener('click', async () => {
+        await fetch('/logout');
+    });
+
     await addToRemButton();
 });
