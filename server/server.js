@@ -187,20 +187,31 @@ app.get('/insertBuild', checkLoggedIn, (req, res) => {
     }
 });
 
-app.post('/removePart', (req, res) => {
-    res.send('Post Request Received');
+// Removes the build for the current user.
+// Should probably be renamed to removeBuild but I don't feel like checking if that breaks something.
+app.get('/removePart', (req, res) => {
+    db.deleteBuild(user.buildid);
+    res.send('Post Request handled');
 });
 
 // Modify this to display the actual build
 // TODO Have this return the proper database entry
-app.get('/userParts', (req, res) => {
+app.get('/userParts', async (req, res) => {
     console.log("Trying to send: JSON response data");
+    const tuple = await db.getBuild(user.buildid);
+    const pcbPart = await db.getSpecificPcb(tuple[0].pcbpartid);
+    const casePart = await db.getSpecificCase(tuple[0].casepartid);
+    const switchPart = await db.getSpecificSwitch(tuple[0].switchpartid);
+    const keyCapPart = await db.getSpecificKeycap(tuple[0].keycappartid);
+    const cablePart = await db.getSpecificCable(tuple[0].cablepartid);
+    console.log(pcbPart);
     res.writeHead(200, { 'Content-Type': 'text/json' });
-    res.write(JSON.stringify([
-        { id: 34, name: "Gateron Red", type: "linear-switch", cost: faker.commerce.price(), link: faker.internet.url() },
-        { id: 132, name: "HyperX Pudding Keycaps", type: "cherry-keycaps", cost: faker.commerce.price(), link: faker.internet.url() },
-        { id: 138, name: "Hot-swappable Optical PCB", type: "hot-swap-optical-pcb", cost: faker.commerce.price(), link: faker.internet.url() },
-        { id: 382, name: "Coorded USB to USB C cable", type: "cable", cost: faker.commerce.price(), link: faker.internet.url() }]));
+    res.write(JSON.stringify(convertDbToObject([pcbPart[0], casePart[0], switchPart[0], keyCapPart[0], cablePart[0]], pcbObject)));
+    // res.write(JSON.stringify([
+    //     { id: 34, name: "Gateron Red", type: "linear-switch", cost: faker.commerce.price(), link: faker.internet.url() },
+    //     { id: 132, name: "HyperX Pudding Keycaps", type: "cherry-keycaps", cost: faker.commerce.price(), link: faker.internet.url() },
+    //     { id: 138, name: "Hot-swappable Optical PCB", type: "hot-swap-optical-pcb", cost: faker.commerce.price(), link: faker.internet.url() },
+    //     { id: 382, name: "Coorded USB to USB C cable", type: "cable", cost: faker.commerce.price(), link: faker.internet.url() }]));
     res.end();
     // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
 });
@@ -247,7 +258,7 @@ function writeBlob(res) {
 
 // Convert a pcb tuple obtained from a SQL table into an object with correctly named keys
 function pcbObject(object) {
-    return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price };
+    return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price, link: object.purchase_link};
 }
 function caseObject(object) {
     return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price };
@@ -308,7 +319,7 @@ app.get('/cableProducts', async (req, res) => {
     writeDbObject(res, sqlObject, cableObject);
     res.end();
 });
-app.get('/userInfo',  (req, res) => {
+app.get('/userInfo', (req, res) => {
     console.log("Trying to send: JSON response data");
     res.writeHead(200, { 'Content-Type': 'text/json' });
     const username = user.username;
