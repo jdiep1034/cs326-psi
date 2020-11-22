@@ -29,8 +29,8 @@ const db = require('../client/dbManagement');
 const app = express();
 const port = process.env.PORT || 8080;
 
-// let userFound;
-let user; // TODO, Make this not global.
+// Global variable keeping track of the currently logged in user
+let user; 
 
 
 
@@ -93,18 +93,6 @@ app.use(express.static('public'));
 app.use(express.static('client'));
 
 
-// Serve BrowsePage.html at the root directory
-
-// app.get('/', (req, res) => {
-//     const path = 'client/BrowsePage.html';
-//     console.log('Trying to serve: BrowsePage');
-//     if (existsSync(path)) {
-//         res.writeHead(200, { 'Content-Type': 'text/html' });
-//         res.write(readFileSync(path));
-//         res.end();
-//     }
-//     // res.send(readFileSync(path));
-// });
 
 // Profile Page is now a private page until logged in.
 app.get('/profilePage.html', checkLoggedIn, (req, res) => {
@@ -146,8 +134,8 @@ const build = {
     cable: null
 };
 
-// This receives post requests. Dummy response for now.
-// TODO: Have this return the proper database entry.
+// Updates the above global variable build with each call.
+// Clientside access to this enforces each part of build is updated in order.
 app.post('/updateParts', (req, res) => {
     // Add pcbPart to data object. 
     console.log('starting post');
@@ -164,7 +152,6 @@ app.post('/updateParts', (req, res) => {
         // Store compatibility parameters if receiving pcb information
         if (data.partType === 'pcb') {
             const tuple = await db.getSpecificPcb(build[data.partType]);
-            // console.log(tuple);
             build.pcbSwitchType = tuple[0].switch_type;
             build.pcbCaseType = tuple[0].pcb_size;
         }
@@ -172,9 +159,10 @@ app.post('/updateParts', (req, res) => {
         res.end('Post Request Handled');
     });
 
-    // res.send('Post Request Received');
 });
 
+// Adds the build from the global variable build to the builds table with the build id from global variable user.
+// Checks to make sure all variables are initializedi in build and can only be called if the user variable is set
 app.get('/insertBuild', checkLoggedIn, (req, res) => {
     console.log('Trying insert');
     if (build.pcb && build.case && build.switch && build.keycap && build.cable) {
@@ -194,8 +182,7 @@ app.get('/removePart', (req, res) => {
     res.send('Post Request handled');
 });
 
-// Modify this to display the actual build
-// TODO Have this return the proper database entry
+// Retrieves all the parts from their respective table using the ids stored in the builds table with the id from user
 app.get('/userParts', async (req, res) => {
     console.log("Trying to send: JSON response data");
     const tuple = await db.getBuild(user.buildid);
@@ -207,13 +194,7 @@ app.get('/userParts', async (req, res) => {
     console.log(pcbPart);
     res.writeHead(200, { 'Content-Type': 'text/json' });
     res.write(JSON.stringify(convertDbToObject([pcbPart[0], casePart[0], switchPart[0], keyCapPart[0], cablePart[0]], pcbObject)));
-    // res.write(JSON.stringify([
-    //     { id: 34, name: "Gateron Red", type: "linear-switch", cost: faker.commerce.price(), link: faker.internet.url() },
-    //     { id: 132, name: "HyperX Pudding Keycaps", type: "cherry-keycaps", cost: faker.commerce.price(), link: faker.internet.url() },
-    //     { id: 138, name: "Hot-swappable Optical PCB", type: "hot-swap-optical-pcb", cost: faker.commerce.price(), link: faker.internet.url() },
-    //     { id: 382, name: "Coorded USB to USB C cable", type: "cable", cost: faker.commerce.price(), link: faker.internet.url() }]));
     res.end();
-    // res.write({'username': 'example-name', 'name': 'Andrew', 'bday': 'The 15th century', 'email': 'example@example.com', 'phone': '500-500-5000'});
 });
 app.get('/socialGet', (req, res) => {
     console.log("Trying to send: JSON response data");
@@ -260,6 +241,8 @@ function writeBlob(res) {
 function pcbObject(object) {
     return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price, link: object.purchase_link};
 }
+
+// These can be modified for more specific stuff, but they already do everything we need them to.
 function caseObject(object) {
     return { imgSource: object.image, imgDesc: 'placeholder text', name: object.partname, id: object.itemid, desc: object.partdescription, price: object.price };
 }

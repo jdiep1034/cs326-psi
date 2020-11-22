@@ -1,5 +1,3 @@
-//const db = require('../client/dbManagement');
-
 // Function to add event listener to remove buttons
 async function addToRemButton() {
     const btnArray = document.getElementsByClassName("remove");
@@ -35,7 +33,7 @@ window.addEventListener("load", async function () {
     // const headerType = document.createElement('th');
     const headerCost = document.createElement('th');
     const headerLink = document.createElement('th');
-    const headerRemove = document.createElement('th');
+    // const headerRemove = document.createElement('th');
 
     headerId.innerText = "Product ID";
     headerImg.innerText = 'Image';
@@ -43,7 +41,7 @@ window.addEventListener("load", async function () {
     // headerType.innerText = "Type";
     headerCost.innerText = "Cost";
     headerLink.innerText = "Link";
-    headerRemove.innerText = "Remove Item";
+    // headerRemove.innerText = "Remove Item";
 
     headerTr.appendChild(headerId);
     headerTr.appendChild(headerImg);
@@ -51,7 +49,7 @@ window.addEventListener("load", async function () {
     // headerTr.appendChild(headerType);
     headerTr.appendChild(headerCost);
     headerTr.appendChild(headerLink);
-    headerTr.appendChild(headerRemove);
+    // headerTr.appendChild(headerRemove);
 
     document.getElementById('user-parts-table').appendChild(headerTr);
 
@@ -66,15 +64,15 @@ window.addEventListener("load", async function () {
         const image = document.createElement('td');
         const cost = document.createElement('td');
         const link = document.createElement('td');
-        const remove = document.createElement('button');
+        // const remove = document.createElement('button');
 
         th.scope = "row";
         th.innerText = rowNum.toString();
         rowNum += 1;
 
-        remove.className = "btn btn-danger remove";
-        remove.type = "button";
-        remove.id = userPart.id;
+        // remove.className = "btn btn-danger remove";
+        // remove.type = "button";
+        // remove.id = userPart.id;
 
         id.innerText = userPart.id;
         name.innerText = userPart.name;
@@ -96,7 +94,7 @@ window.addEventListener("load", async function () {
         // Creating the other stuff
         cost.innerText = "$".concat(userPart.price);
         link.append(innerLink);
-        remove.innerText = "Remove";
+        // remove.innerText = "Remove";
 
         tr.appendChild(th);
         tr.appendChild(id);
@@ -104,7 +102,7 @@ window.addEventListener("load", async function () {
         tr.appendChild(name);
         tr.appendChild(cost);
         tr.appendChild(link);
-        tr.appendChild(remove);
+        // tr.appendChild(remove);
 
         document.getElementById('user-parts-table').appendChild(tr);
     }
