@@ -12,6 +12,7 @@
 ### Justin:
 	Helped plan how the user would interact and navigate through the build page.
     Gathered data (img url, item name, item description, item type, item price, page url) for all parts stored in database.
+		data.sql
     Researched info for completion of Guide Page.
         edited infopage.html and inserted gathered info.
     Implemented front-end of Build page 
