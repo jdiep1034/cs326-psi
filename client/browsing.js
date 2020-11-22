@@ -140,7 +140,7 @@ async function cableBack() {
     backButton.removeEventListener('click', cableBack);
 
     document.getElementById("partGroup").style.visibility = "visible";
-    document.getElementById("sortGroup").style.visibility = "visible";
+    //document.getElementById("sortGroup").style.visibility = "visible";
     document.getElementById("buildButtons").style.visibility = "hidden";
     document.getElementById("rebuildButton").style.visibility = "hidden";
     document.getElementById("cbuildButton").style.visibility = "hidden";
@@ -300,7 +300,7 @@ async function cableButtons() {
 
             // Hide/show correct tabs to display build progress
             document.getElementById("partGroup").style.visibility = "hidden";
-            document.getElementById("sortGroup").style.visibility = "hidden";
+            //document.getElementById("sortGroup").style.visibility = "hidden";
             document.getElementById("buildButtons").style.visibility = "visible";
             document.getElementById("rebuildButton").style.visibility = "visible";
             document.getElementById("cbuildButton").style.visibility = "visible";
@@ -352,7 +352,7 @@ window.addEventListener("load", async function () {
         button.parentNode.removeChild(button);
 
         document.getElementById("partGroup").style.visibility = "visible";
-        document.getElementById("sortGroup").style.visibility = "visible";
+        //document.getElementById("sortGroup").style.visibility = "visible";
 
         document.getElementById("pcbButton").disabled = false;
 
