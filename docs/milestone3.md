@@ -194,3 +194,18 @@ Registers a user. Same as exercise but with a proper database.
 https://psi-326.herokuapp.com/
 
 For local run. Pull from master. Create a local database and change the relevant credentials in dbManagement.js. Copy paste the create table commands above. Import the data file that we hopefully remember to put on github. Run npm i to install all dependencies. Run server.js with node.
+
+# How the site works/high level overview
+Register to creater a profile with a respective build that you can modify on the browse page. Clicking start build removes any current build you may have.
+
+First select a PCB part, which determines which cases and switches are compatible available for you. For instance, selecting the second pcb on the list has no compatible switches currently, while the first item on the list has quite a few option for compatible cases and switches.
+
+Second, you select a case which is compatible with your pcb. Then your switch, keycap, and finally cable.
+
+Compatibility is determined under the hood by relevant SQL table searches using data from previous steps when needed. 
+
+Finally, click view build to both save your current build to database and be redirected to the profile page (which is only accessible when logged in anyways). The profile page has a table summarizing your build, including price, pictures of each part, a link to the site where it can be purchased, etc.
+
+InfoPage.html just has basic information about mechanical keyboards and such.
+
+SocialPage.html was removed due to time constraints and the fact we meet all project specifications without it.
