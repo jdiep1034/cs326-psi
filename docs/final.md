@@ -39,12 +39,12 @@ Milestone 2:
 
     Figured out with Justin most of the API stuff we needed (part 0).
     Setup the server functionality: 
-        Setup js express, made a package.json (since we apparently didn't have one yet)
-        Setup API endpoints for get requests and post requests
-        Organized file structure for project
-		Setup faker for mostly random fake data responses
+    Setup js express, made a package.json (since we apparently didn't have one yet)
+    Setup API endpoints for get requests and post requests
+    Organized file structure for project
+    Setup faker for mostly random fake data responses
     Made a TODO page and a Server Start guide "HOWTO"
-	Setup the project on Herok
+    Setup the project on Herok
 
 Milestone 3:
 
@@ -60,8 +60,33 @@ Milestone 3:
 Final:
     Wrote most of this file.
 
+### Long Vo
 
+Milestone 1:
 
+	Helped with discussion of wireframe with the other 2
+	Completed social page (In idea it had similar structure to when you open a thread in slack but as of today, social page is deemed unecessary and depracated
+	Helped with other pages
+	
+Milestone 2:
+
+	Reworked social page html and setup to dynamically get  "comments" (at this point it's not connected to any database so it's dummy data)
+	Set up get endpoints
+	Worked on social.js
+	Deploy to heroku
+	
+Milestone 3:
+
+	Helped write the majority of planning for part 3.
+	Implemented login and logout functionality 
+	Add authentication so that if a user is not logged in, he/she can't see the website
+	Set up endpoints for login and logout and connect them to database table (profiles)
+	Edited info, browsing page to get data from profiles table
+	Added register user functionality and it's endpoint (INSERT into profiles table)
+
+Final:
+
+	Cleaned up the files.
 # User Interface
 
 # APIs
@@ -261,5 +286,6 @@ Profile Page: https://psi-326.herokuapp.com/profilePage.html
 This is where you can view your account information, including the build you currently have saved to the account. Since builds are currently stored server side with a unique build ID that must be matched by a user account, you MUST have an account to save a build. 
 
 # Authentication
+	For authenticated we used the passport library and set it up so that if someone's not logged in, he she can't access the website at all.
 
 # Conclusion
