@@ -12,3 +12,7 @@ Run npm i to install all dependencies in vscode
 
 Run server.js with node and go to localhost:8080/
 
+
+To run through heroku:
+
+Make a heroku app following the steps we did in class. And most importantly, SET THE CONFIG FOR process.env.SECRET in the heroku config. This ensures the database uses a hidden variable to save passwords. Local runs of the database use a dummy password and so the heroku config must be set. 
