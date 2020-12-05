@@ -84,6 +84,9 @@ Milestone 3:
 	Edited info, browsing page to get data from profiles table
 	Added register user functionality and it's endpoint (INSERT into profiles table)
 
+Final:
+
+	Cleaned up the files.
 # User Interface
 
 # APIs
