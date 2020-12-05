@@ -5,6 +5,9 @@
 # Semester: Fall 2020
 
 # Overview:
+Our application is a website which allows for anyone interested in mechanical keyboards to learn more about mechanical keyboards or customize their own potential custom mechanical keyboard. There are websites which provide information about keyboards or sell parts for custom mechanical keyboards but none that have both.
+Before logging in, the user is able to learn more about mechanical keyboards on the "Guide" page as well as build their own mechanical keyboard on the "Build Your Own" page. However, the user cannot save the build or access the profile page without logging in.
+Afte logging in, the user is able to save their completed build and view it on their profile page. On their profile page will be a table listing the parts selected in their build, and a link to purchase each part.
 
 # Team Members:
 | Member | github alias |
