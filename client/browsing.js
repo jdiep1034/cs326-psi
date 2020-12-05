@@ -372,33 +372,4 @@ window.addEventListener("load", async function () {
     document.getElementById('logoutButton').addEventListener('click', async () => {
         await fetch('/logout');
     });
-
-    /*
-    // If Case button is clicked display all cases
-    document.getElementById("caseButton").addEventListener('click', async () => {
-        cleanTable();
-        await listParts("./caseProducts");
-        await addToBtns();
-    });
-
-    // If Key Switch button is clicked display all key switches
-    document.getElementById("ksButton").addEventListener('click', async () => {
-        cleanTable();
-        await listParts("./keySwitchProducts");
-        await addToBtns();
-    });
-
-    // If Key Caps button is clicked display all key caps
-    document.getElementById("kcButton").addEventListener('click', async () => {
-        cleanTable();
-        await listParts("./keyCapProducts");
-        await addToBtns();
-    });
-
-    //If Cables button is clicked display all cables
-    document.getElementById("cableButton").addEventListener('click', async () => {
-        cleanTable();
-        await listParts("./cableProducts");
-        await addToBtns();
-    });*/
 });
