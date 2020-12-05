@@ -17,6 +17,53 @@ Afte logging in, the user is able to save their completed build and view it on t
 | Long   | longvo2910 |
 
 # User Interface:
+### Register
+This page allows users to create an account.
+![example image](images/final_register.png)
+
+### Login
+This page is where users log-in in order to save their build and access the profile page.
+![example image](images/final_login.png)
+
+### Profile Before Build
+This is the profile page after a user has logged in and before they have saved a build.
+![example image](images/final_profile_before_build.png)
+
+### Guide
+This is the page where users can learn about custom mechanical keyboards.
+![example image](images/final_guide.png)
+
+### Build Intro
+First page where user will begin to build their custom keyboard.
+![example image](images/final_build_1.png)
+
+### Pick PCB
+This is where the user selects a PCB of their choice.
+![example image](images/final_build_2.png)
+
+### Pick Case
+This is where the user selects a case of their choice.
+![example image](images/final_build_3.png)
+
+### Pick Key Switch
+This is where the user selects a keyswitch of their choice.
+![example image](images/final_build_4.png)
+
+### Pick Key Cap
+This is where the user selects a keycap of their choice.
+![example image](images/final_build_5.png)
+
+### Pick Cable
+This is where the user selects a cable of their choice.
+![example image](images/final_build_6.png)
+
+### Build Complete
+This is the page after the user completes their build. They have the option to restart build or save and view build on their profile page. Or go back to reselecting parts
+![example image](images/final_build_7.png)
+
+### Profile After Build
+This is the user's profile after completing and saving a build.
+![example image](images/final_profile_after_build.png)
 
 # APIs:
 
