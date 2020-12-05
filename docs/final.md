@@ -1,95 +1,21 @@
-# Psi-group Project Fall 2020
+# Title: Team Psi
 
-## Mechanical Keyboard Part Picker
+# Subtitle: Mechanical Keyboard Part Picker
 
-### **Team Members:**
+# Semester: Fall 2020
 
-Andrew Leger
+# Overview:
 
-Justin Diep
+# Team Members:
+| Member | github alias |
+| ------ | ----------- |
+| Andrew | AndrewRL97 |
+| Justin | jdiep1034 |
+| Long   | longvo2910 |
 
-Long Vo
+# User Interface:
 
-
-# Overview
-
-
-
-# Breakdown of Work (Whole Project)
-### Andrew Leger:
-
-Summary:
-
-    With the exception of milestone 1 which was mostly the "looks" of the webpage, I did mostly backend stuff (server setup/ server endpoints/ SQL Database management/ ) etc. Then at the end of milestone 3 all 3 of us came together to finish "hooking everything up". IE: Connecting all the different parts of the project so the site actually did what we wanted.
-
-    Basic work strategy overall for me was: Write server/database code, commit to my branch then merge to master, tell Justin to do some stuff. Justin does stuff, tells me what else he needs that I didn't think of, I add it in. Repeat.
-
-    Basically me and Justin flip flopped between tasks we would assign each other while Long worked more alone (since he's in a different time zone) on his own parts of the project. I'd say it was a pretty even split of work overall. For specifics of each Milestone, I copied from the previous documents below.
-
-Milestone 1:
-
-    Drew all the wireframes while discussing with partners
-
-    Completed the profile page.
-
-    Modified the template page that Justin wrote most of, fixing bugs and rearranging some stuff. 
-    Specifically: Moved body tag to end where it should be, took the center three columns out of the footer class (it shouldn't be a footer, but a row of a container), made the body tag not a container, but put a conatiner inside the body withing its own div, added a footer with bottom positioning that looks pretty. Made and added support for styles.css file, Added comments
-
-Milestone 2:
-
-    Figured out with Justin most of the API stuff we needed (part 0).
-    Setup the server functionality: 
-    Setup js express, made a package.json (since we apparently didn't have one yet)
-    Setup API endpoints for get requests and post requests
-    Organized file structure for project
-    Setup faker for mostly random fake data responses
-    Made a TODO page and a Server Start guide "HOWTO"
-    Setup the project on Herok
-
-Milestone 3:
-
-    Planned the milestone with the other 2
-    Did almost all the SQL stuff. Including setting up the database and writing almost all the code in dbmanagament.js
-    Did almost all the updated server endpoints for retrieving sql information
-    Did about half the login stuff, Long did the other half.
-    Made the profile page work.
-    Cleaned up a bunch of code
-    Slightly modified client-side browsepage code, mostly to have it send extra data that the server endpoints needed for tasks.
-    Styled the login and register pages.
-
-Final:
-    Wrote most of this file.
-
-### Long Vo
-
-Milestone 1:
-
-	Helped with discussion of wireframe with the other 2
-	Completed social page (In idea it had similar structure to when you open a thread in slack but as of today, social page is deemed unecessary and depracated
-	Helped with other pages
-	
-Milestone 2:
-
-	Reworked social page html and setup to dynamically get  "comments" (at this point it's not connected to any database so it's dummy data)
-	Set up get endpoints
-	Worked on social.js
-	Deploy to heroku
-	
-Milestone 3:
-
-	Helped write the majority of planning for part 3.
-	Implemented login and logout functionality 
-	Add authentication so that if a user is not logged in, he/she can't see the website
-	Set up endpoints for login and logout and connect them to database table (profiles)
-	Edited info, browsing page to get data from profiles table
-	Added register user functionality and it's endpoint (INSERT into profiles table)
-
-Final:
-
-	Cleaned up the files.
-# User Interface
-
-# APIs
+# APIs:
 
 Login system works as done in the class exercise. Though the pages themselves look prettier.
 
@@ -171,7 +97,7 @@ on fail, redirects to /login
 
 Registers a user. Same as exercise but with a proper database. 
 
-# Database Overview
+# Database:
 
 	Commands used for table creation:
 	CREATE TABLE PCBs (itemID int, image varchar(500), partname varchar(150), partdescription varchar(500), PCB_size int, switch_type varchar(30), price decimal, purchase_link varchar(500)); 
@@ -259,7 +185,7 @@ Builds table:
 | keyCapPartId | int                                          | Same as above for keycaps table                                                      |
 | cablePartId  | int                                          | Same as above for cables table                                                       |
 
-# URL Routes/Mappings
+# URL Routes/Mappings:
 
 HomePage: https://psi-326.herokuapp.com/
 
@@ -285,7 +211,111 @@ Profile Page: https://psi-326.herokuapp.com/profilePage.html
 
 This is where you can view your account information, including the build you currently have saved to the account. Since builds are currently stored server side with a unique build ID that must be matched by a user account, you MUST have an account to save a build. 
 
-# Authentication
-	For authenticated we used the passport library and set it up so that if someone's not logged in, he she can't access the website at all.
+# Authentication:
+For authenticated we used the passport library and set it up so that if someone's not logged in, he she can't access the website at all.
 
+# Breakdown of Work:
+### Andrew Leger:
+
+Summary:
+
+    With the exception of milestone 1 which was mostly the "looks" of the webpage, I did mostly backend stuff (server setup/ server endpoints/ SQL Database management/ ) etc. Then at the end of milestone 3 all 3 of us came together to finish "hooking everything up". IE: Connecting all the different parts of the project so the site actually did what we wanted.
+
+    Basic work strategy overall for me was: Write server/database code, commit to my branch then merge to master, tell Justin to do some stuff. Justin does stuff, tells me what else he needs that I didn't think of, I add it in. Repeat.
+
+    Basically me and Justin flip flopped between tasks we would assign each other while Long worked more alone (since he's in a different time zone) on his own parts of the project. I'd say it was a pretty even split of work overall. For specifics of each Milestone, I copied from the previous documents below.
+
+Milestone 1:
+
+    Drew all the wireframes while discussing with partners
+
+    Completed the profile page.
+
+    Modified the template page that Justin wrote most of, fixing bugs and rearranging some stuff. 
+    Specifically: Moved body tag to end where it should be, took the center three columns out of the footer class (it shouldn't be a footer, but a row of a container), made the body tag not a container, but put a conatiner inside the body withing its own div, added a footer with bottom positioning that looks pretty. Made and added support for styles.css file, Added comments
+
+Milestone 2:
+
+    Figured out with Justin most of the API stuff we needed (part 0).
+    Setup the server functionality: 
+    Setup js express, made a package.json (since we apparently didn't have one yet)
+    Setup API endpoints for get requests and post requests
+    Organized file structure for project
+    Setup faker for mostly random fake data responses
+    Made a TODO page and a Server Start guide "HOWTO"
+    Setup the project on Herok
+
+Milestone 3:
+
+    Planned the milestone with the other 2
+    Did almost all the SQL stuff. Including setting up the database and writing almost all the code in dbmanagament.js
+    Did almost all the updated server endpoints for retrieving sql information
+    Did about half the login stuff, Long did the other half.
+    Made the profile page work.
+    Cleaned up a bunch of code
+    Slightly modified client-side browsepage code, mostly to have it send extra data that the server endpoints needed for tasks.
+    Styled the login and register pages.
+
+Final:
+    Wrote most of this file.
+
+### Long Vo
+
+Milestone 1:
+
+	Helped with discussion of wireframe with the other 2
+	Completed social page (In idea it had similar structure to when you open a thread in slack but as of today, social page is deemed unecessary and depracated
+	Helped with other pages
+	
+Milestone 2:
+
+	Reworked social page html and setup to dynamically get  "comments" (at this point it's not connected to any database so it's dummy data)
+	Set up get endpoints
+	Worked on social.js
+	Deploy to heroku
+	
+Milestone 3:
+
+	Helped write the majority of planning for part 3.
+	Implemented login and logout functionality 
+	Add authentication so that if a user is not logged in, he/she can't see the website
+	Set up endpoints for login and logout and connect them to database table (profiles)
+	Edited info, browsing page to get data from profiles table
+	Added register user functionality and it's endpoint (INSERT into profiles table)
+
+Final:
+
+	Cleaned up the files.
+
+### Justin Diep:
+
+Milestone 1:
+    
+    Helped with discussion about wireframe with the group.
+
+    Completed Info Page.
+    Helped with Browsing Page.
+
+    Created the original Template html which is used for all pages. Navbar and original footer. Footer was later modified.
+    Originally made HomePage html as well however that idea was scrapped. Could come back to it later.
+
+Milestone 2:
+    
+    Worked with Andrew on planning API stuff we needed (part 0).
+    Setup front-end for browse page and profile page: 
+        Refined html and js for both pages
+        Setup up Get and Post requests on browse and profile page.
+
+Milestone 3:
+    
+    Helped plan how the user would interact and navigate through the build page.
+    Gathered data (img url, item name, item description, item type, item price, page url) for all parts stored in database.
+		data.sql
+    Researched info for completion of Guide Page.
+        edited infopage.html and inserted gathered info.
+    Implemented front-end of Build page 
+        modified browsingpage.html and browsing.js so user begins build by clicking a button then continues through the
+        process of making their own build by selecting a part and continuing.
+
+Final: Cleaned up html and js files for any extraneous code.
 # Conclusion
