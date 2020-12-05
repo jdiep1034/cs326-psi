@@ -368,6 +368,11 @@ Milestone 3:
         process of making their own build by selecting a part and continuing.
 
 Final: Cleaned up html and js files for any extraneous code.
+
+## Sidenote
+
+For any discrepancy between commits, Me and Long both ran the website locally and hence did more testing before each commit. Justin did his testing on heroku and therefore more frequently committed so as to test his code. Also, some of my (Andrew's) commits are split between two profiles because github is weird. Hence 4 people show up in commit history.
+
 # Conclusion
 
 The course of the project actually went *fairly* smoothly from milestone to milestone. There were some minor things we didn't get working or we didn't have time to implement, but the core of our project (the actual part picking) ended up being fairly straightforward. We did originally have a comments page in our project idea, but due to time constraints we dropped that after asking a TA. Personally, I (Andrew) thought that determining part compatibility would be the hardest part of the project, but a semester of CS345 lead to the straightforward solution of just storing compatibility data in the tables and joining based on those categories. The actual process of having a user select a part, then retrieve the next list of parts and display them, etc. until the full build was created, ended up being more challenging than the part compatibility itself. 
